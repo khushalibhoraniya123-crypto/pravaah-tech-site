@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #F7F9FC;
+    color: #101828;
+    font-family: 'Inter', 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #6638E8;
+    color: #ffffff;
+  }
+}
+
+@utility gradient-text-blue-purple {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #1769E0, #6638E8, #8B3FE8);
+}
+
+@utility gradient-text-purple-cyan {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #6638E8, #1769E0, #00D2FF);
+}
+
+@utility gradient-text-navy-blue {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #06132D, #081A3A, #1769E0);
+}
+
+@utility bg-gradient-brand {
+  background-image: linear-gradient(to right, #1769E0, #6638E8);
+}
+
+@utility bg-gradient-brand-subtle {
+  background-image: linear-gradient(to bottom right, rgba(23, 105, 224, 0.08), rgba(102, 56, 232, 0.05), transparent);
+}
+
+@utility bg-gradient-dark {
+  background-image: linear-gradient(to bottom right, #06132D, #081A3A, #0E2856);
+}
+
+@utility glass-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E4E7EC;
+  box-shadow: 0 4px 20px -2px rgba(8, 26, 58, 0.05);
+}
+
+@utility glass-card-dark {
+  background-color: rgba(8, 26, 58, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 48px -6px rgba(6, 19, 45, 0.25);
+}
+
+/* Custom modern scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F4F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4CEDA;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #98A2B3;
+}
