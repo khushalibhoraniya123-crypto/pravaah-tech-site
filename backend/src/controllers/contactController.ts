@@ -3,6 +3,7 @@ import validator from 'validator';
 import { ContactInquiry } from '../models/ContactInquiry.js';
 import { getDBStatus } from '../config/db.js';
 import { inMemoryInquiries, InMemoryInquiry } from '../utils/memoryStore.js';
+import { emailService } from '../services/emailService.js';
 
 export const submitContactForm = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -40,18 +41,13 @@ export const submitContactForm = async (req: Request, res: Response): Promise<vo
       status: 'new' as const,
     };
 
+    let inquiryId: string = '';
+    let createdAt: Date = new Date();
+
     if (getDBStatus()) {
       const newInquiry = await ContactInquiry.create(sanitizedData);
-      res.status(201).json({
-        success: true,
-        message: 'Thank you! Your project inquiry has been submitted successfully.',
-        data: {
-          id: newInquiry._id,
-          name: newInquiry.name,
-          createdAt: newInquiry.createdAt,
-        },
-      });
-      return;
+      inquiryId = newInquiry._id.toString();
+      createdAt = newInquiry.createdAt;
     } else {
       // Fallback in-memory persistence
       const memoryInquiry: InMemoryInquiry = {
@@ -61,18 +57,33 @@ export const submitContactForm = async (req: Request, res: Response): Promise<vo
         updatedAt: new Date(),
       };
       inMemoryInquiries.unshift(memoryInquiry);
-
-      res.status(201).json({
-        success: true,
-        message: 'Thank you! Your project inquiry has been submitted successfully.',
-        data: {
-          id: memoryInquiry._id,
-          name: memoryInquiry.name,
-          createdAt: memoryInquiry.createdAt,
-        },
-      });
-      return;
+      inquiryId = memoryInquiry._id;
+      createdAt = memoryInquiry.createdAt;
     }
+
+    // Send instant Nodemailer email notification asynchronously
+    emailService.sendInquiryNotification({
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone?.trim(),
+      company: company?.trim(),
+      service: service.trim(),
+      budget: budget?.trim(),
+      message: message.trim(),
+      createdAt,
+    }).catch((err) => {
+      console.error('Background email notification error:', err);
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'Thank you! Your project inquiry has been submitted successfully.',
+      data: {
+        id: inquiryId,
+        name: sanitizedData.name,
+        createdAt,
+      },
+    });
   } catch (error: any) {
     console.error('Contact submission error:', error);
     res.status(500).json({
