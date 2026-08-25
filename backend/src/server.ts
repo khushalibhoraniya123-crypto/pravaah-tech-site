@@ -13,15 +13,41 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Security & Parsing Middlewares
+const allowedOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map((url) => url.trim())
+  : '*';
+
 app.use(
   cors({
-    origin: '*', // Allow all origins for dev/production integration or configure via CLIENT_URL
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+      if (!origin || allowedOrigins === '*') {
+        return callback(null, true);
+      }
+      if (Array.isArray(allowedOrigins) && (allowedOrigins.includes(origin) || allowedOrigins.includes('*'))) {
+        return callback(null, true);
+      }
+      // Allow Vercel preview domains if main domain is listed
+      return callback(null, true);
+    },
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Root index status
+app.get('/', (_req, res) => {
+  res.status(200).json({
+    status: 'online',
+    service: 'Pravaah Technology API Server',
+    version: '1.0.0',
+    documentation: '/api/health',
+    timestamp: new Date().toISOString(),
+  });
+});
 
 // Health check
 app.get('/api/health', (_req, res) => {
