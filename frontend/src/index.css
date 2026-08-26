@@ -90,3 +90,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #98A2B3;
 }
+
+/* Infinite Marquee Animation for Services Strip */
+@keyframes marquee-infinite-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-infinite-scroll 30s linear infinite;
+}

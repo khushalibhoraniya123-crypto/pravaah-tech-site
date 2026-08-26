@@ -1,33 +1,32 @@
-import { CONTACT_CONFIG } from '../config/contact';
 import type { StatItem } from '../types';
 
 export const getStatsData = (): StatItem[] => [
   {
-    value: CONTACT_CONFIG.stats.projectsDelivered,
-    numberOnly: 50,
+    value: '12+',
+    numberOnly: 12,
     suffix: '+',
-    label: 'Projects Delivered',
+    label: 'Project Delivered',
     description: 'High-impact digital systems and apps launched successfully',
     iconName: 'CheckCircle2',
   },
   {
-    value: CONTACT_CONFIG.stats.happyClients,
-    numberOnly: 25,
+    value: '9+',
+    numberOnly: 9,
     suffix: '+',
-    label: 'Happy Clients',
+    label: 'Happy Client',
     description: 'Enterprises, high-growth startups and global brands',
     iconName: 'Smile',
   },
   {
-    value: CONTACT_CONFIG.stats.digitalSolutions,
-    numberOnly: 10,
+    value: '3+',
+    numberOnly: 3,
     suffix: '+',
-    label: 'Digital Solutions',
+    label: 'Digital Solution',
     description: 'Specialized enterprise modules & turn-key software suites',
     iconName: 'Layers',
   },
   {
-    value: CONTACT_CONFIG.stats.clientSatisfaction,
+    value: '99%',
     numberOnly: 99,
     suffix: '%',
     label: 'Client Satisfaction',

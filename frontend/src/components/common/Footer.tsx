@@ -5,8 +5,7 @@ import {
   Mail, 
   MessageSquare, 
   MapPin, 
-  ArrowUpRight,
-  Shield
+  ArrowUpRight
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { CONTACT_CONFIG } from '../../config/contact';
@@ -44,7 +43,7 @@ export const Footer: React.FC = () => {
   const scrollToSection = (targetId: string) => {
     const el = document.getElementById(targetId);
     if (el) {
-      const navOffset = 80;
+      const navOffset = 64;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - navOffset,
@@ -54,13 +53,13 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#06132D] text-white pt-16 pb-8 border-t border-[#0E2856] relative overflow-hidden">
+    <footer className="bg-[#06132D] text-white pt-10 pb-6 border-t border-[#0E2856] relative overflow-hidden">
       {/* Background ambient lighting effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-8 border-b border-white/10">
           
           {/* Col 1: Brand & Tagline (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
@@ -123,28 +122,13 @@ export const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
+                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Solutions
+                </button>
+              </li>
+              <li>
                 <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
                   About Us
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('values')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Our Values
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('technologies')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Technologies
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('process')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Process
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('portfolio')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Portfolio
                 </button>
               </li>
               <li>
@@ -160,34 +144,34 @@ export const Footer: React.FC = () => {
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Build</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group cursor-pointer text-left">
+                <Link to="/services/web-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
                   <span>Web Development</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group cursor-pointer text-left">
-                  <span>App Development</span>
+                <Link to="/services/ai-solutions" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
+                  <span>AI Solutions & Agents</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group cursor-pointer text-left">
-                  <span>UI/UX Design</span>
+                <Link to="/services/ui-ux-design" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
+                  <span>UI/UX Design Systems</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#B59CFF] transition-colors flex items-center gap-1 group cursor-pointer text-left">
-                  <span>AI & Machine Learning</span>
+                <Link to="/services/software-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
+                  <span>Software Development</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group cursor-pointer text-left">
-                  <span>Custom Software & ERP</span>
+                <Link to="/services/automation" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
+                  <span>Automation & Workflows</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -256,7 +240,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <div className="flex items-center gap-2">
             <span>© {currentYear} {CONTACT_CONFIG.companyName}. All Rights Reserved.</span>
           </div>
@@ -264,10 +248,6 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-6">
             <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
             <span className="hover:text-white cursor-pointer transition-colors">Terms & Conditions</span>
-            <Link to="/admin" className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-300 transition-colors">
-              <Shield className="w-3 h-3" />
-              <span>Admin Portal</span>
-            </Link>
           </div>
         </div>
       </div>

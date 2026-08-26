@@ -92,9 +92,9 @@ export const CONTACT_CONFIG: ContactConfig = {
 
   // EDIT COMPANY STATS HERE
   stats: {
-    projectsDelivered: "50+",
-    happyClients: "25+",
-    digitalSolutions: "10+",
+    projectsDelivered: "12+",
+    happyClients: "9+",
+    digitalSolutions: "3+",
     clientSatisfaction: "99%",
     yearsOfExcellence: "5+",
   },

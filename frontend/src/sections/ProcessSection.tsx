@@ -16,22 +16,22 @@ export const ProcessSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   return (
-    <section id="process" className="py-20 md:py-28 bg-[#FFFFFF] relative overflow-hidden">
+    <section id="process" className="py-12 sm:py-14 md:py-16 bg-[#FFFFFF] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
           <Badge variant="purple">OUR 6-STEP METHODOLOGY</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
             How We Turn Ideas Into <span className="gradient-text-blue-purple">Digital Solutions</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
             A clear and collaborative process that takes your idea from concept to a successful digital product.
           </p>
         </div>
 
         {/* Desktop Horizontal Interactive Timeline (hidden on small screens) */}
-        <div className="hidden lg:block mb-16">
+        <div className="hidden lg:block mb-10">
           {/* Horizontal Track Line */}
           <div className="relative flex items-center justify-between before:absolute before:top-6 before:left-8 before:right-8 before:h-1 before:bg-[#E4E7EC] before:z-0">
             {PROCESS_DATA.map((step, idx) => {
@@ -45,21 +45,21 @@ export const ProcessSection: React.FC = () => {
                 >
                   {/* Step Circle */}
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-sm transition-all duration-300 shadow-soft ${
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm transition-all duration-300 shadow-soft ${
                       isActive
-                        ? 'bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white scale-110 shadow-glow-blue'
+                        ? 'bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white scale-105 shadow-glow-blue'
                         : 'bg-white border-2 border-[#E4E7EC] text-[#667085] group-hover:border-[#1769E0]'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4.5 h-4.5" />
                   </div>
 
                   {/* Step Number & Title */}
-                  <div className="text-center mt-3">
-                    <span className="font-mono text-xs font-bold text-slate-400 block">
+                  <div className="text-center mt-2">
+                    <span className="font-mono text-[11px] font-bold text-slate-400 block">
                       {step.number}
                     </span>
-                    <span className={`text-xs font-bold tracking-wider uppercase ${isActive ? 'text-[#1769E0]' : 'text-[#0B1B3A]'}`}>
+                    <span className={`text-[11px] font-bold tracking-wider uppercase ${isActive ? 'text-[#1769E0]' : 'text-[#0B1B3A]'}`}>
                       {step.title}
                     </span>
                   </div>
@@ -69,7 +69,7 @@ export const ProcessSection: React.FC = () => {
           </div>
 
           {/* Active Step Feature Box */}
-          <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-[#F7F9FC] border border-[#E4E7EC] shadow-medium transition-all duration-300">
+          <div className="mt-8 p-6 sm:p-7 rounded-3xl bg-[#F7F9FC] border border-[#E4E7EC] shadow-medium transition-all duration-300">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-8 space-y-4">
                 <div className="flex items-center gap-3">

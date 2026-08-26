@@ -28,22 +28,22 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onStartInquiry
   };
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-[#F7F9FC] relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-14 md:py-16 bg-[#F7F9FC] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
           <Badge variant="blue">OUR EXPERTISE</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#081A3A] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#081A3A] tracking-tight">
             What We <span className="gradient-text-blue-purple">Build</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
             From initial strategy and modern UI/UX design to enterprise software architecture, cloud platforms and cognitive AI systems.
           </p>
         </div>
 
         {/* 6 Grid Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {SERVICES_DATA.map((service) => (
             <ServiceCard
               key={service.id}

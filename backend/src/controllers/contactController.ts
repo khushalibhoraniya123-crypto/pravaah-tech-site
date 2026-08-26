@@ -1,32 +1,33 @@
 import { Request, Response } from 'express';
 import validator from 'validator';
-import { ContactInquiry } from '../models/ContactInquiry.js';
-import { getDBStatus } from '../config/db.js';
-import { inMemoryInquiries, InMemoryInquiry } from '../utils/memoryStore.js';
 import { emailService } from '../services/emailService.js';
 
-export const submitContactForm = async (req: Request, res: Response): Promise<void> => {
+export const handleContactSubmission = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, email, phone, company, service, budget, message } = req.body;
+    const { name, email, phone, company, service, subject, message } = req.body;
 
-    // Field validation
+    // 1. Basic validation
     if (!name || typeof name !== 'string' || name.trim().length === 0) {
-      res.status(400).json({ success: false, message: 'Full name is required.' });
+      res.status(400).json({
+        success: false,
+        message: 'Full name is required.',
+      });
       return;
     }
 
     if (!email || typeof email !== 'string' || !validator.isEmail(email.trim())) {
-      res.status(400).json({ success: false, message: 'A valid email address is required.' });
-      return;
-    }
-
-    if (!service || typeof service !== 'string' || service.trim().length === 0) {
-      res.status(400).json({ success: false, message: 'Please select a service for your inquiry.' });
+      res.status(400).json({
+        success: false,
+        message: 'Please provide a valid email address.',
+      });
       return;
     }
 
     if (!message || typeof message !== 'string' || message.trim().length === 0) {
-      res.status(400).json({ success: false, message: 'Project details / message is required.' });
+      res.status(400).json({
+        success: false,
+        message: 'Please enter your message or project requirements.',
+      });
       return;
     }
 
@@ -35,60 +36,29 @@ export const submitContactForm = async (req: Request, res: Response): Promise<vo
       email: validator.normalizeEmail(email.trim()) || email.trim(),
       phone: phone ? validator.escape(phone.trim()) : '',
       company: company ? validator.escape(company.trim()) : '',
-      service: validator.escape(service.trim()),
-      budget: budget ? validator.escape(budget.trim()) : 'Flexible / Not sure yet',
-      message: validator.escape(message.trim()),
-      status: 'new' as const,
+      service: service ? validator.escape(service.trim()) : subject ? validator.escape(subject.trim()) : 'General Inquiry',
+      message: message.trim(),
+      createdAt: new Date(),
     };
 
-    let inquiryId: string = '';
-    let createdAt: Date = new Date();
+    // 2. Dispatch via Nodemailer
+    await emailService.sendInquiryEmail(sanitizedData);
 
-    if (getDBStatus()) {
-      const newInquiry = await ContactInquiry.create(sanitizedData);
-      inquiryId = newInquiry._id.toString();
-      createdAt = newInquiry.createdAt;
-    } else {
-      // Fallback in-memory persistence
-      const memoryInquiry: InMemoryInquiry = {
-        _id: 'inq_' + Date.now().toString(36) + Math.random().toString(36).substring(2, 6),
-        ...sanitizedData,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      };
-      inMemoryInquiries.unshift(memoryInquiry);
-      inquiryId = memoryInquiry._id;
-      createdAt = memoryInquiry.createdAt;
-    }
-
-    // Send instant Nodemailer email notification asynchronously
-    emailService.sendInquiryNotification({
-      name: name.trim(),
-      email: email.trim(),
-      phone: phone?.trim(),
-      company: company?.trim(),
-      service: service.trim(),
-      budget: budget?.trim(),
-      message: message.trim(),
-      createdAt,
-    }).catch((err) => {
-      console.error('Background email notification error:', err);
-    });
-
-    res.status(201).json({
+    res.status(200).json({
       success: true,
-      message: 'Thank you! Your project inquiry has been submitted successfully.',
+      message: 'Thank you! Your message has been sent successfully to Pravaah Technology.',
       data: {
-        id: inquiryId,
         name: sanitizedData.name,
-        createdAt,
+        email: sanitizedData.email,
+        service: sanitizedData.service,
+        sentAt: sanitizedData.createdAt.toISOString(),
       },
     });
   } catch (error: any) {
-    console.error('Contact submission error:', error);
+    console.error('❌ [Contact API Error]:', error.message);
     res.status(500).json({
       success: false,
-      message: 'Failed to process inquiry. Please check your information and try again.',
+      message: error.message || 'Failed to send email. Please check server configuration and try again.',
     });
   }
 };

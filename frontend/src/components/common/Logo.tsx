@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logoHorizontalDark from '../../assets/logo/Logo Horizontal Dark.png';
 import logoHorizontalLight from '../../assets/logo/Logo Horizontal Light.png';
 import logoHorizontalLightTransparent from '../../assets/logo/Logo Horizontal Light Transparent.png';
@@ -10,14 +10,17 @@ interface LogoProps {
   className?: string;
   height?: number;
   width?: number | string;
+  onClick?: () => void;
 }
 
 export const Logo: React.FC<LogoProps> = ({ 
   variant = 'dark', 
   className = '',
   height,
-  width
+  width,
+  onClick
 }) => {
+  const navigate = useNavigate();
   const isLight = variant === 'light';
 
   // On light navbar (variant='dark'): Logo Horizontal Light Transparent / Dark
@@ -26,11 +29,28 @@ export const Logo: React.FC<LogoProps> = ({
     ? logoHorizontalLight 
     : (logoHorizontalLightTransparent || logoHorizontalDark);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) {
+      onClick();
+    }
+    
+    // Always navigate cleanly to Home ('/') and scroll smoothly to top
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <Link 
       to="/" 
-      className={`inline-flex items-center group transition-transform duration-300 hover:scale-[1.03] ${className}`} 
-      aria-label="Pravaah Technology Home"
+      onClick={handleClick}
+      className={`inline-flex items-center group transition-transform duration-200 hover:opacity-95 cursor-pointer select-none ${className}`} 
+      aria-label="Pravaah Technology - Back to Home"
+      title="Pravaah Technology - Back to Home"
     >
       <img
         src={selectedLogo}
@@ -39,7 +59,7 @@ export const Logo: React.FC<LogoProps> = ({
           height: height ? (typeof height === 'number' ? `${height}px` : height) : undefined,
           width: width ? (typeof width === 'number' ? `${width}px` : width) : undefined,
         }}
-        className={`w-[210px] sm:w-[240px] md:w-[270px] h-auto object-contain drop-shadow-xs transition-all duration-200 ${
+        className={`w-[160px] sm:w-[185px] md:w-[210px] h-auto object-contain drop-shadow-xs transition-all duration-200 ${
           isLight ? 'brightness-110 contrast-125' : ''
         }`}
         loading="eager"

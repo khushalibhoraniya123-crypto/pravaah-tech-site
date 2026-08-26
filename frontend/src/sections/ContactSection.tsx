@@ -30,7 +30,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
     phone: '',
     company: '',
     service: preselectedService || CONTACT_CONFIG.inquiryServices[0],
-    budget: CONTACT_CONFIG.budgetOptions[1],
     message: '',
   });
 
@@ -109,7 +108,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
       phone: '',
       company: '',
       service: CONTACT_CONFIG.inquiryServices[0],
-      budget: CONTACT_CONFIG.budgetOptions[1],
       message: '',
     });
     setIsSubmitted(false);
@@ -117,7 +115,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-[#FFFFFF] relative overflow-hidden">
+    <section id="contact" className="py-12 sm:py-14 md:py-16 bg-[#FFFFFF] relative overflow-hidden">
       {/* Background Decorative Blur */}
       <div className="absolute top-1/4 -right-32 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -left-32 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -125,22 +123,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
           <Badge variant="blue">INITIATE A PROJECT</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
             Let's Build Something <span className="gradient-text-blue-purple">Great Together</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
             Have an idea, project or business challenge? Let's discuss how we can turn it into a powerful digital solution.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           
           {/* Left Column: Direct Contact & Office Details (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-4">
             
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] text-white shadow-elevated border border-white/10 space-y-6">
+            <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] text-white shadow-elevated border border-white/10 space-y-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#38BDF8]">
                   Direct Connect
@@ -237,39 +235,39 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
 
           {/* Right Column: Interactive Working Contact Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#E4E7EC] shadow-elevated relative">
+            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E4E7EC] shadow-elevated relative">
               
               {/* If already submitted successfully */}
               {isSubmitted ? (
-                <div className="text-center py-12 space-y-6 animate-in fade-in zoom-in-95 duration-300">
-                  <div className="w-20 h-20 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto shadow-soft">
-                    <CheckCircle2 className="w-10 h-10" />
+                <div className="text-center py-8 space-y-4 animate-in fade-in zoom-in-95 duration-300">
+                  <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto shadow-soft">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B1B3A]">
+                  <div className="space-y-1.5">
+                    <h3 className="text-2xl font-extrabold text-[#0B1B3A]">
                       Thank You!
                     </h3>
-                    <p className="text-base font-medium text-[#1769E0]">
+                    <p className="text-sm font-medium text-[#1769E0]">
                       Your project inquiry has been submitted successfully.
                     </p>
-                    <p className="text-sm text-[#667085] max-w-md mx-auto leading-relaxed pt-2">
+                    <p className="text-xs text-[#667085] max-w-md mx-auto leading-relaxed pt-1">
                       Our engineering lead will review your specifications and reach out to you at <strong className="text-[#0B1B3A]">{formData.email}</strong> shortly.
                     </p>
                   </div>
 
-                  <div className="pt-4">
+                  <div className="pt-2">
                     <Button variant="outline" size="md" onClick={handleReset}>
-                      Submit Another Project Inquiry
+                      Send Another Message
                     </Button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="border-b border-slate-100 pb-4 mb-6">
-                    <h3 className="text-xl font-bold text-[#0B1B3A]">Project Inquiry Form</h3>
-                    <p className="text-xs text-[#667085] mt-1">
-                      Fill in the details below and we will prepare a tailored proposal.
+                <form onSubmit={handleSubmit} className="space-y-3.5">
+                  <div className="border-b border-slate-100 pb-3 mb-4">
+                    <h3 className="text-lg font-bold text-[#0B1B3A]">Send Us a Message</h3>
+                    <p className="text-xs text-[#667085] mt-0.5">
+                      Fill in your details below and our team will get back to you promptly.
                     </p>
                   </div>
 
@@ -281,9 +279,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                   )}
 
                   {/* Name & Email Row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
-                      <label htmlFor="inquiry-name" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                      <label htmlFor="inquiry-name" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-1.5">
                         Full Name <span className="text-rose-500">*</span>
                       </label>
                       <input
@@ -294,12 +292,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. John Doe"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-xs sm:text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="inquiry-email" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                      <label htmlFor="inquiry-email" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-1.5">
                         Email Address <span className="text-rose-500">*</span>
                       </label>
                       <input
@@ -310,15 +308,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@company.com"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-xs sm:text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
                       />
                     </div>
                   </div>
 
                   {/* Phone & Company Row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
-                      <label htmlFor="inquiry-phone" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                      <label htmlFor="inquiry-phone" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-1.5">
                         Phone Number
                       </label>
                       <input
@@ -328,12 +326,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+1 (555) 000-0000"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-xs sm:text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="inquiry-company" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
+                      <label htmlFor="inquiry-company" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-1.5">
                         Company / Organization
                       </label>
                       <input
@@ -343,66 +341,45 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Company or Brand Name"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-xs sm:text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
                       />
                     </div>
                   </div>
 
-                  {/* Service & Budget Selectors */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="inquiry-service" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                        Service Needed <span className="text-rose-500">*</span>
-                      </label>
-                      <select
-                        id="inquiry-service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
-                      >
-                        {CONTACT_CONFIG.inquiryServices.map((srv, idx) => (
-                          <option key={idx} value={srv}>
-                            {srv}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="inquiry-budget" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                        Project Budget
-                      </label>
-                      <select
-                        id="inquiry-budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
-                      >
-                        {CONTACT_CONFIG.budgetOptions.map((b, idx) => (
-                          <option key={idx} value={b}>
-                            {b}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                  {/* Service Selector */}
+                  <div>
+                    <label htmlFor="inquiry-service" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-1.5">
+                      Service Interested In <span className="text-rose-500">*</span>
+                    </label>
+                    <select
+                      id="inquiry-service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-xs sm:text-sm text-[#0B1B3A] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all"
+                    >
+                      {CONTACT_CONFIG.inquiryServices.map((srv, idx) => (
+                        <option key={idx} value={srv}>
+                          {srv}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   {/* Message Field */}
                   <div>
-                    <label htmlFor="inquiry-message" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-2">
-                      Project Details / Requirements <span className="text-rose-500">*</span>
+                    <label htmlFor="inquiry-message" className="block text-xs font-bold text-[#334155] uppercase tracking-wider mb-1.5">
+                      Your Message / Inquiry <span className="text-rose-500">*</span>
                     </label>
                     <textarea
                       id="inquiry-message"
                       name="message"
                       required
-                      rows={4}
+                      rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Please tell us about your goals, features, target launch date, and any existing systems..."
-                      className="w-full px-4 py-3 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all resize-none"
+                      placeholder="Please tell us about your goals, features, target launch date, or any specific questions..."
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#E4E7EC] bg-[#F7F9FC] text-xs sm:text-sm text-[#0B1B3A] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1769E0] transition-all resize-none"
                     />
                   </div>
 
@@ -416,7 +393,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                       loading={isSubmitting}
                       className="w-full shadow-glow-blue"
                     >
-                      Send Project Inquiry
+                      Send Message
                     </Button>
                   </div>
                 </form>

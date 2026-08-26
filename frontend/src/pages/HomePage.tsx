@@ -4,11 +4,11 @@ import { ServicesStrip } from '../sections/ServicesStrip';
 import { ServicesSection } from '../sections/ServicesSection';
 import { SolutionsSection } from '../sections/SolutionsSection';
 import { AboutSection } from '../sections/AboutSection';
-import { ValuesSection } from '../sections/ValuesSection';
 import { StatsSection } from '../sections/StatsSection';
+import { CustomerSection } from '../sections/CustomerSection';
 import { TechSection } from '../sections/TechSection';
 import { ProcessSection } from '../sections/ProcessSection';
-import { PortfolioSection } from '../sections/PortfolioSection';
+import { ProjectsSection } from '../sections/ProjectsSection';
 import { ContactSection } from '../sections/ContactSection';
 
 export const HomePage: React.FC = () => {
@@ -20,7 +20,7 @@ export const HomePage: React.FC = () => {
     }
     const el = document.getElementById('contact');
     if (el) {
-      const navOffset = 80;
+      const navOffset = 64;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - navOffset,
@@ -32,7 +32,7 @@ export const HomePage: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
     if (el) {
-      const navOffset = 80;
+      const navOffset = 64;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - navOffset,
@@ -46,33 +46,35 @@ export const HomePage: React.FC = () => {
       {/* 1. Hero Section */}
       <HeroSection
         onStartProject={() => scrollToContact()}
-        onExploreWork={() => scrollToSection('portfolio')}
+        onExploreServices={() => scrollToSection('services')}
       />
 
-      {/* 2. Services Strip & What We Build */}
+      {/* 2. Services Infinite Marquee Strip & Capabilities */}
       <ServicesStrip />
       <ServicesSection onStartInquiryWithService={scrollToContact} />
 
       {/* 3. Solutions Section */}
       <SolutionsSection onConsultSolution={(s) => scrollToContact(s)} />
 
-      {/* 4. About Us */}
+      {/* 4. About Us Overview */}
       <AboutSection onLearnMore={() => scrollToSection('about')} />
 
-      {/* 5. Our Values & Statistics */}
-      <ValuesSection />
+      {/* 5. Key Statistics */}
       <StatsSection />
 
-      {/* 6. Technologies */}
+      {/* 6. Customer Success & Testimonials */}
+      <CustomerSection />
+
+      {/* 7. Technologies Stack */}
       <TechSection />
 
-      {/* 7. Our Process */}
+      {/* 8. Our 4-Phase Process */}
       <ProcessSection />
 
-      {/* 8. Portfolio / Projects */}
-      <PortfolioSection onRequestSimilarProject={scrollToContact} />
+      {/* 9. Featured Projects & Case Studies */}
+      <ProjectsSection />
 
-      {/* 9. Contact Section */}
+      {/* 10. Contact Inquiry Form */}
       <ContactSection preselectedService={inquiryService} />
     </div>
   );

@@ -33,22 +33,22 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onConsultSol
   };
 
   return (
-    <section id="solutions" className="py-20 md:py-28 bg-[#FFFFFF] relative overflow-hidden">
+    <section id="solutions" className="py-12 sm:py-14 md:py-16 bg-[#FFFFFF] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-2 sm:space-y-2.5">
           <Badge variant="purple">INDUSTRY SOLUTIONS</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
             Tailored Solutions for <span className="gradient-text-blue-purple">Modern Enterprises</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
             Pre-architected, highly adaptable enterprise solutions designed to solve critical operational challenges and accelerate revenue.
           </p>
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center justify-center gap-2 mb-14">
+        <div className="flex items-center justify-center gap-2 mb-8">
           {[
             { label: 'All Solutions (10)', value: 'all' },
             { label: 'Enterprise Systems', value: 'enterprise' },
@@ -57,7 +57,7 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onConsultSol
             <button
               key={tab.value}
               onClick={() => setActiveFilter(tab.value as any)}
-              className={`px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-1.5 sm:px-5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 activeFilter === tab.value
                   ? 'bg-[#0B1B3A] text-white shadow-soft'
                   : 'bg-slate-100 text-[#667085] hover:bg-slate-200'
@@ -69,7 +69,7 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onConsultSol
         </div>
 
         {/* 10 Business Solution Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredSolutions.map((solution) => (
             <SolutionCard
               key={solution.id}

@@ -6,10 +6,9 @@ import { Button } from './Button';
 
 const NAV_LINKS = [
   { label: 'Home', targetId: 'home' },
-  { label: 'About', targetId: 'about' },
   { label: 'Services', targetId: 'services' },
   { label: 'Solutions', targetId: 'solutions' },
-  { label: 'Portfolio', targetId: 'portfolio' },
+  { label: 'About', targetId: 'about' },
   { label: 'Contact', targetId: 'contact' },
 ];
 
@@ -30,7 +29,7 @@ export const Navbar: React.FC = () => {
       }
 
       // Scrollspy active section detection
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 90;
       for (let i = NAV_LINKS.length - 1; i >= 0; i--) {
         const link = NAV_LINKS[i];
         const element = document.getElementById(link.targetId);
@@ -63,7 +62,7 @@ export const Navbar: React.FC = () => {
 
     const element = document.getElementById(targetId);
     if (element) {
-      const navOffset = 80;
+      const navOffset = 64;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - navOffset,
@@ -77,8 +76,8 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/92 backdrop-blur-md shadow-soft border-b border-[#E4E7EC]/80 py-3'
-          : 'bg-white/70 backdrop-blur-sm py-4 sm:py-5'
+          ? 'bg-white/95 backdrop-blur-md shadow-xs border-b border-[#E4E7EC]/80 py-2 sm:py-2.5'
+          : 'bg-white/85 backdrop-blur-md border-b border-[#E4E7EC]/40 py-2.5 sm:py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,21 +85,21 @@ export const Navbar: React.FC = () => {
           
           {/* 1. Official Pravaah Logo */}
           <div className="flex items-center">
-            <Logo />
+            <Logo onClick={() => setIsMobileMenuOpen(false)} />
           </div>
 
-          {/* 2. Navigation: Home | About | Services | Solutions | Portfolio | Contact */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          {/* 2. Navigation: Home | Services | Solutions | About | Contact */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.targetId;
               return (
                 <button
                   key={link.targetId}
                   onClick={() => scrollToSection(link.targetId)}
-                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-lg text-[13.5px] lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'text-[#1769E0] font-bold bg-blue-50/70 shadow-xs'
-                      : 'text-[#334155] hover:text-[#081A3A] hover:bg-slate-50'
+                      ? 'text-[#1769E0] font-semibold bg-blue-50/90 shadow-xs'
+                      : 'text-[#475467] hover:text-[#081A3A] hover:bg-slate-50'
                   }`}
                 >
                   {link.label}
@@ -116,7 +115,7 @@ export const Navbar: React.FC = () => {
               size="sm"
               withArrow
               onClick={() => scrollToSection('contact')}
-              className="shadow-soft text-xs"
+              className="shadow-xs text-xs font-semibold py-2 px-3.5 rounded-lg"
             >
               Start a Project
             </Button>
@@ -126,7 +125,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl border border-[#E4E7EC] bg-white text-[#081A3A] hover:bg-slate-50 transition-colors focus:outline-none cursor-pointer"
+              className="p-2 rounded-lg border border-[#E4E7EC] bg-white text-[#081A3A] hover:bg-slate-50 transition-colors focus:outline-none cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

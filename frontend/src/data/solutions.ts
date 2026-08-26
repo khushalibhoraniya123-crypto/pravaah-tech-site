@@ -121,7 +121,7 @@ export const SOLUTIONS_DATA: SolutionItem[] = [
     description: 'Custom financial dashboards, payment reconciliation engines, wealth management portals, and crypto / fiat settlement gateways.',
     iconName: 'TrendingUp',
     features: [
-      'Realtime Portfolio Analytics',
+      'Real-Time Asset & Risk Analytics',
       'Automated Reconciliation',
       'Multi-tier KYC Verification',
       'Bank API Integration',

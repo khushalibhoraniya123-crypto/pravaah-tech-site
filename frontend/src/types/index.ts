@@ -65,25 +65,6 @@ export interface ProcessStep {
   iconName: string;
 }
 
-export type PortfolioCategory = 'all' | 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
-
-export interface PortfolioProject {
-  id: string;
-  name: string;
-  category: 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
-  subtitle: string;
-  shortDesc: string;
-  fullDesc: string;
-  image: string;
-  technologies: string[];
-  stats: { label: string; value: string }[];
-  client: string;
-  year: string;
-  deliverables: string[];
-  liveUrl?: string;
-  featured?: boolean;
-}
-
 export interface ContactFormData {
   name: string;
   email: string;
@@ -102,26 +83,4 @@ export interface ContactInquiryResponse {
     name: string;
     createdAt: string;
   };
-}
-
-export interface AdminInquiry {
-  _id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  company?: string;
-  service: string;
-  budget?: string;
-  message: string;
-  status: 'new' | 'contacted' | 'in_progress' | 'closed';
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface AdminStats {
-  total: number;
-  new: number;
-  contacted: number;
-  inProgress: number;
-  closed: number;
 }
