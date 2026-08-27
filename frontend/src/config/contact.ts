@@ -26,6 +26,7 @@ export interface ContactConfig {
     country: string;
     postalCode: string;
     fullFormatted: string;
+    googleMapsUrl: string;
   };
   workingHours: {
     weekdays: string;
@@ -73,7 +74,8 @@ export const CONTACT_CONFIG: ContactConfig = {
     state: "Gujarat",
     country: "India",
     postalCode: "395010",
-    fullFormatted: "358, 3rd Floor, Amorina Textile Market, near Polaris Mall, opp Saswat Plazza, Punagam, Varachha, Surat, Gujarat 395010"
+    fullFormatted: "358, 3rd Floor, Amorina Textile Market, near Polaris Mall, opp Saswat Plazza, Punagam, Varachha, Surat, Gujarat 395010",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=358%2C+3rd+Floor%2C+Amorina+Textile+Market%2C+near+Polaris+Mall%2C+opp+Saswat+Plazza%2C+Punagam%2C+Varachha%2C+Surat%2C+Gujarat+395010"
   },
 
   workingHours: {

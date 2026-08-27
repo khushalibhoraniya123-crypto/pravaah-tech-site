@@ -192,18 +192,27 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                   </div>
                 </a>
 
-                {/* Location */}
-                <div className="flex items-start gap-4 p-3 rounded-2xl bg-white/5 border border-white/5">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 flex items-center justify-center shrink-0 mt-0.5">
+                {/* Location / Google Maps */}
+                <a
+                  href={CONTACT_CONFIG.address.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open Pravaah Technology office location on Google Maps: ${CONTACT_CONFIG.address.fullFormatted}`}
+                  title="Open location in Google Maps"
+                  className="flex items-start gap-4 p-3 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/5 hover:border-white/20 group cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 group-hover:bg-rose-500 group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-slate-400 font-medium">Headquarters</div>
-                    <div className="text-xs text-slate-300 leading-relaxed mt-0.5">
+                    <div className="text-[11px] text-slate-400 group-hover:text-slate-200 font-medium flex items-center gap-1.5 transition-colors">
+                      <span>Headquarters (Open on Google Maps)</span>
+                    </div>
+                    <div className="text-xs text-slate-300 group-hover:text-white leading-relaxed mt-0.5 transition-colors">
                       {CONTACT_CONFIG.address.fullFormatted}
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* Response SLA */}

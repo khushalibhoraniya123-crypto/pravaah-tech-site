@@ -213,13 +213,25 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
 
-              <li className="flex items-start gap-3 text-slate-300">
-                <div className="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center shrink-0 mt-0.5 border border-white/10">
-                  <MapPin className="w-3.5 h-3.5" />
-                </div>
-                <div className="text-xs leading-relaxed text-slate-400">
-                  {CONTACT_CONFIG.address.fullFormatted}
-                </div>
+              <li>
+                <a
+                  href={CONTACT_CONFIG.address.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open Pravaah Technology office location in Google Maps: ${CONTACT_CONFIG.address.fullFormatted}`}
+                  title="Open location in Google Maps"
+                  className="flex items-start gap-3 text-slate-300 hover:text-white transition-colors group cursor-pointer"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 border border-rose-500/20 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                    <MapPin className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors">Office Location (Maps)</div>
+                    <div className="text-xs leading-relaxed text-slate-300 group-hover:text-white transition-colors">
+                      {CONTACT_CONFIG.address.fullFormatted}
+                    </div>
+                  </div>
+                </a>
               </li>
             </ul>
           </div>
