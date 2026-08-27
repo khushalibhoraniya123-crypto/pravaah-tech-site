@@ -65,28 +65,28 @@ export const StatsSection: React.FC = () => {
       <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-[#6C3FE8]/15 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="max-w-[1440px] mx-auto px-3.5 xs:px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 xs:gap-3.5 sm:gap-6">
           {stats.map((stat: StatItem, idx: number) => {
             const Icon = STATS_ICON_MAP[stat.iconName] || CheckCircle2;
             return (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300 group"
+                className="flex flex-col items-center text-center p-3 xs:p-4 sm:p-5 rounded-xl xs:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300 group"
               >
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white flex items-center justify-center mb-3 shadow-glow-blue group-hover:scale-105 transition-transform duration-300">
-                  <Icon className="w-5 h-5" />
+                <div className="w-8 h-8 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-lg xs:rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white flex items-center justify-center mb-2 xs:mb-3 shadow-glow-blue group-hover:scale-105 transition-transform duration-300">
+                  <Icon className="w-4 h-4 xs:w-5 xs:h-5" />
                 </div>
 
-                <div className="text-2xl sm:text-3xl md:text-4xl font-black gradient-text-blue-purple mb-1">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black gradient-text-blue-purple mb-0.5 xs:mb-1">
                   <AnimatedCounter target={stat.numberOnly} suffix={stat.suffix} />
                 </div>
 
-                <div className="text-xs sm:text-sm font-bold text-white mb-0.5">
+                <div className="text-[11px] xs:text-xs sm:text-sm font-bold text-white mb-0.5">
                   {stat.label}
                 </div>
 
-                <p className="text-[11px] text-slate-400 max-w-[200px] leading-relaxed">
+                <p className="text-[9.5px] xs:text-[11px] text-slate-400 max-w-[200px] leading-relaxed">
                   {stat.description}
                 </p>
               </div>

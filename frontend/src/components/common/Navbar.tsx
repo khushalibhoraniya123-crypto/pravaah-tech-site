@@ -128,7 +128,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Slide Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-b border-[#E4E7EC] bg-white/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-elevated animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden border-b border-[#E4E7EC] bg-white/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-elevated animate-in fade-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-64px)] overflow-y-auto">
           <div className="flex flex-col space-y-1">
             {NAV_LINKS.map((link) => {
               const isActive = isLinkActive(link.path);

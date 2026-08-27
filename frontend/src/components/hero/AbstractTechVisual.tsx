@@ -138,27 +138,31 @@ export const AbstractTechVisual: React.FC = () => {
       {/* FLOATING TECHNOLOGY CARDS (Glassmorphism & Micro-telemetry) */}
       {/* ========================================================================= */}
 
+      {/* ========================================================================= */}
+      {/* FLOATING TECHNOLOGY CARDS (Responsive Glassmorphism & Micro-telemetry) */}
+      {/* ========================================================================= */}
+
       {/* 1. AI Card (Top-Right) */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1 sm:top-2 right-0 sm:right-2 z-20"
+        className="absolute top-1 sm:top-2 right-0.5 xs:right-1.5 sm:right-2 z-20"
       >
-        <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-2.5 max-w-[190px] sm:max-w-[210px]">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#6638E8] to-[#8B3FE8] text-white flex items-center justify-center shrink-0 shadow-sm">
-            <Sparkles className="w-4 h-4" />
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[125px] xs:max-w-[160px] sm:max-w-[210px]">
+          <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#6638E8] to-[#8B3FE8] text-white flex items-center justify-center shrink-0 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
           </div>
-          <div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold text-[#081A3A]">AI Card</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="min-w-0">
+            <div className="flex items-center gap-1">
+              <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate">AI Card</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             </div>
-            <p className="text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5">
+            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5 truncate">
               Intelligent Models & Agents
             </p>
-            <div className="mt-1 flex items-center gap-1 text-[9.5px] font-semibold text-[#6638E8]">
-              <Activity className="w-2.5 h-2.5" />
-              <span>99.4% Accuracy</span>
+            <div className="mt-0.5 sm:mt-1 flex items-center gap-0.5 sm:gap-1 text-[8.5px] xs:text-[9.5px] font-semibold text-[#6638E8]">
+              <Activity className="w-2 h-2 xs:w-2.5 xs:h-2.5 shrink-0" />
+              <span>99.4% Acc.</span>
             </div>
           </div>
         </div>
@@ -168,20 +172,20 @@ export const AbstractTechVisual: React.FC = () => {
       <motion.div
         animate={{ y: [0, 7, 0] }}
         transition={{ duration: 8.0, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute top-4 sm:top-6 left-0 sm:left-2 z-20"
+        className="absolute top-3 xs:top-4 sm:top-6 left-0.5 xs:left-1.5 sm:left-2 z-20"
       >
-        <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-2.5 max-w-[180px] sm:max-w-[200px]">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#00D2FF] text-white flex items-center justify-center shrink-0 shadow-sm">
-            <Globe className="w-4 h-4" />
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[120px] xs:max-w-[150px] sm:max-w-[200px]">
+          <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#00D2FF] text-white flex items-center justify-center shrink-0 shadow-sm">
+            <Globe className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
           </div>
-          <div>
-            <span className="text-xs font-bold text-[#081A3A]">WEB Card</span>
-            <p className="text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5">
+          <div className="min-w-0">
+            <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate block">WEB Card</span>
+            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5 truncate">
               React • Next.js • Vite
             </p>
-            <div className="mt-1 flex items-center gap-1 text-[9.5px] text-emerald-600 font-semibold">
-              <Check className="w-2.5 h-2.5" />
-              <span>Sub-second TTFB</span>
+            <div className="mt-0.5 sm:mt-1 flex items-center gap-0.5 sm:gap-1 text-[8.5px] xs:text-[9.5px] text-emerald-600 font-semibold">
+              <Check className="w-2 h-2 xs:w-2.5 xs:h-2.5 shrink-0" />
+              <span>&lt;0.8s TTFB</span>
             </div>
           </div>
         </div>
@@ -191,26 +195,26 @@ export const AbstractTechVisual: React.FC = () => {
       <motion.div
         animate={{ y: [0, -7, 0] }}
         transition={{ duration: 9.0, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="absolute bottom-2 sm:bottom-4 left-0 sm:left-2 z-20"
+        className="absolute bottom-1 xs:bottom-2 sm:bottom-4 left-0.5 xs:left-1.5 sm:left-2 z-20"
       >
-        <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 max-w-[190px] sm:max-w-[210px]">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#8B3FE8] to-[#6638E8] text-white flex items-center justify-center shrink-0 shadow-sm">
-              <Palette className="w-4 h-4" />
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 max-w-[125px] xs:max-w-[155px] sm:max-w-[210px]">
+          <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5">
+            <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#8B3FE8] to-[#6638E8] text-white flex items-center justify-center shrink-0 shadow-sm">
+              <Palette className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
             </div>
-            <div>
-              <span className="text-xs font-bold text-[#081A3A]">UI/UX Card</span>
-              <p className="text-[10px] text-[#667085]">Figma Design System</p>
+            <div className="min-w-0">
+              <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate block">UI/UX Card</span>
+              <p className="hidden sm:block text-[10px] text-[#667085] truncate">Figma Design System</p>
             </div>
           </div>
           {/* Swatches preview matching brand colors */}
-          <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-between">
-            <span className="text-[9.5px] font-medium text-[#667085]">Tokens</span>
-            <div className="flex -space-x-1.5">
-              <div className="w-3 h-3 rounded-full bg-[#1769E0] border-2 border-white shadow-xs" />
-              <div className="w-3 h-3 rounded-full bg-[#6638E8] border-2 border-white shadow-xs" />
-              <div className="w-3 h-3 rounded-full bg-[#00D2FF] border-2 border-white shadow-xs" />
-              <div className="w-3 h-3 rounded-full bg-[#081A3A] border-2 border-white shadow-xs" />
+          <div className="mt-1.5 sm:mt-2 pt-1 sm:pt-1.5 border-t border-slate-100 flex items-center justify-between">
+            <span className="text-[8.5px] xs:text-[9.5px] font-medium text-[#667085]">Tokens</span>
+            <div className="flex -space-x-1 sm:-space-x-1.5">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#1769E0] border-2 border-white shadow-xs" />
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#6638E8] border-2 border-white shadow-xs" />
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#00D2FF] border-2 border-white shadow-xs" />
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#081A3A] border-2 border-white shadow-xs" />
             </div>
           </div>
         </div>
@@ -220,19 +224,19 @@ export const AbstractTechVisual: React.FC = () => {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 8.8, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
-        className="absolute bottom-4 sm:bottom-6 right-0 sm:right-2 z-20"
+        className="absolute bottom-2 xs:bottom-3 sm:bottom-6 right-0.5 xs:right-1.5 sm:right-2 z-20"
       >
-        <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-2.5 max-w-[195px] sm:max-w-[215px]">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#00D2FF] to-[#1769E0] text-white flex items-center justify-center shrink-0 shadow-sm">
-            <Zap className="w-4 h-4" />
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[130px] xs:max-w-[160px] sm:max-w-[215px]">
+          <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#00D2FF] to-[#1769E0] text-white flex items-center justify-center shrink-0 shadow-sm">
+            <Zap className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
           </div>
-          <div>
-            <span className="text-xs font-bold text-[#081A3A]">AUTOMATION</span>
-            <p className="text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5">
+          <div className="min-w-0">
+            <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate block">AUTOMATION</span>
+            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5 truncate">
               Pipelines & CI/CD
             </p>
-            <div className="mt-1 flex items-center gap-1.5">
-              <span className="px-1.5 py-0.5 rounded bg-emerald-50 text-[8.5px] font-bold text-emerald-600 border border-emerald-200/60">
+            <div className="mt-0.5 sm:mt-1 flex items-center gap-1">
+              <span className="px-1 xs:px-1.5 py-0.5 rounded bg-emerald-50 text-[7.5px] xs:text-[8.5px] font-bold text-emerald-600 border border-emerald-200/60">
                 ACTIVE 24/7
               </span>
             </div>
@@ -244,50 +248,50 @@ export const AbstractTechVisual: React.FC = () => {
       <motion.div
         animate={{ scale: [1, 1.015, 1], y: [0, -5, 0] }}
         transition={{ duration: 10.0, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative z-30 max-w-[260px] sm:max-w-[290px] w-full"
+        className="relative z-30 w-[clamp(240px,78vw,285px)] sm:max-w-[290px]"
       >
-        <div className="rounded-2xl bg-[#06132D]/95 backdrop-blur-2xl border border-white/15 p-4 shadow-elevated text-left">
+        <div className="rounded-2xl bg-[#06132D]/95 backdrop-blur-2xl border border-white/15 p-3.5 xs:p-4 shadow-elevated text-left">
           {/* Terminal Title Bar */}
-          <div className="flex items-center justify-between pb-3 mb-2.5 border-b border-white/10">
+          <div className="flex items-center justify-between pb-2.5 sm:pb-3 mb-2 sm:mb-2.5 border-b border-white/10">
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+              <span className="w-2 h-2 xs:w-2.5 xs:h-2.5 rounded-full bg-rose-500/80" />
+              <span className="w-2 h-2 xs:w-2.5 xs:h-2.5 rounded-full bg-amber-500/80" />
+              <span className="w-2 h-2 xs:w-2.5 xs:h-2.5 rounded-full bg-emerald-500/80" />
             </div>
-            <div className="flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+            <div className="flex items-center gap-1 text-[9.5px] xs:text-[10px] text-slate-400 font-mono">
               <Code2 className="w-3 h-3 text-[#00D2FF]" />
               <span>pravaah.ts</span>
             </div>
           </div>
 
           {/* Mini Code Snippet */}
-          <div className="font-mono text-[11px] leading-relaxed space-y-1 text-slate-300">
+          <div className="font-mono text-[9.5px] xs:text-[10.5px] sm:text-[11px] leading-relaxed space-y-0.5 xs:space-y-1 text-slate-300">
             <p className="text-slate-400">
               <span className="text-[#B59CFF]">import</span> &#123; Future &#125; <span className="text-[#B59CFF]">from</span> <span className="text-emerald-400">'@pravaah/tech'</span>;
             </p>
-            <p className="pt-1">
+            <p className="pt-0.5">
               <span className="text-[#00D2FF]">const</span> <span className="text-amber-300">buildNext</span> = <span className="text-[#B59CFF]">async</span> () =&gt; &#123;
             </p>
-            <p className="pl-3 text-slate-400">
+            <p className="pl-2.5 sm:pl-3 text-slate-400">
               <span className="text-[#B59CFF]">await</span> Innovate.scale(&#123;
             </p>
-            <p className="pl-6 text-slate-300">
+            <p className="pl-5 sm:pl-6 text-slate-300">
               quality: <span className="text-emerald-400">'enterprise'</span>,
             </p>
-            <p className="pl-6 text-slate-300">
+            <p className="pl-5 sm:pl-6 text-slate-300">
               growth: <span className="text-cyan-300">true</span>,
             </p>
-            <p className="pl-3 text-slate-400">&#125;);</p>
+            <p className="pl-2.5 sm:pl-3 text-slate-400">&#125;);</p>
             <p>&#125;;</p>
           </div>
 
           {/* Live Status indicator */}
-          <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-400">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
+          <div className="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-white/10 flex items-center justify-between text-[9px] xs:text-[10px] text-slate-400">
+            <span className="flex items-center gap-1 xs:gap-1.5 text-emerald-400 font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               Engine Online
             </span>
-            <span className="font-mono text-[9px] text-slate-500">v2.6.0</span>
+            <span className="font-mono text-[8.5px] xs:text-[9px] text-slate-500">v2.6.0</span>
           </div>
         </div>
       </motion.div>

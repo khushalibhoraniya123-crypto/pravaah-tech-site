@@ -59,7 +59,7 @@ export const Logo: React.FC<LogoProps> = ({
           height: height ? (typeof height === 'number' ? `${height}px` : height) : undefined,
           width: width ? (typeof width === 'number' ? `${width}px` : width) : undefined,
         }}
-        className={`w-[160px] sm:w-[185px] md:w-[210px] h-auto object-contain drop-shadow-xs transition-all duration-200 ${
+        className={`w-[135px] xs:w-[155px] sm:w-[185px] md:w-[210px] max-w-full h-auto object-contain drop-shadow-xs transition-all duration-200 ${
           isLight ? 'brightness-110 contrast-110' : ''
         }`}
         loading="eager"

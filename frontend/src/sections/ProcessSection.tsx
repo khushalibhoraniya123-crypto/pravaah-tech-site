@@ -129,31 +129,31 @@ export const ProcessSection: React.FC = () => {
         </div>
 
         {/* Mobile / Tablet Vertical Timeline */}
-        <div className="lg:hidden space-y-6">
+        <div className="lg:hidden space-y-4 xs:space-y-6">
           {PROCESS_DATA.map((step) => {
             const Icon = PROCESS_ICON_MAP[step.iconName] || Search;
             return (
               <div
                 key={step.number}
-                className="relative pl-12 before:absolute before:left-5 before:top-12 before:bottom-0 before:w-0.5 before:bg-[#D2DEEE] last:before:hidden"
+                className="relative pl-10 xs:pl-12 before:absolute before:left-4 xs:before:left-5 before:top-10 xs:before:top-12 before:bottom-0 before:w-0.5 before:bg-[#D2DEEE] last:before:hidden"
               >
                 {/* Timeline node icon */}
-                <div className="absolute left-0 top-0 w-10 h-10 rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white flex items-center justify-center shadow-soft">
-                  <Icon className="w-5 h-5" />
+                <div className="absolute left-0 top-0 w-8 h-8 xs:w-10 xs:h-10 rounded-lg xs:rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white flex items-center justify-center shadow-soft">
+                  <Icon className="w-4 h-4 xs:w-5 xs:h-5" />
                 </div>
 
-                <div className="p-6 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE]">
-                  <div className="flex items-center gap-2 mb-1">
+                <div className="p-4 xs:p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE]">
+                  <div className="flex items-center gap-1.5 xs:gap-2 mb-1">
                     <span className="font-mono text-xs font-bold text-[#1769E0]">{step.number}</span>
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#6C3FE8]">{step.tagline}</span>
+                    <span className="text-[10px] xs:text-xs font-bold uppercase tracking-wider text-[#6C3FE8]">{step.tagline}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0B1B3A] mb-2">{step.title}</h3>
-                  <p className="text-xs text-[#667085] leading-relaxed mb-4">{step.description}</p>
+                  <h3 className="text-base xs:text-lg font-bold text-[#0B1B3A] mb-1.5 xs:mb-2">{step.title}</h3>
+                  <p className="text-xs text-[#667085] leading-relaxed mb-3 xs:mb-4">{step.description}</p>
                   
                   <div className="space-y-1.5">
                     {step.highlights.map((h, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs text-[#334155]">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#1769E0]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#1769E0] shrink-0" />
                         <span>{h}</span>
                       </div>
                     ))}

@@ -44,22 +44,22 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
           
           {/* Left Column: Tech Showcase Card (5 cols) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] p-6 sm:p-7 text-white shadow-elevated border border-white/10 overflow-hidden">
+            <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] p-4.5 xs:p-5 sm:p-7 text-white shadow-elevated border border-white/10 overflow-hidden">
               {/* Internal ambient glow */}
               <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#1769E0]/30 rounded-full blur-2xl" />
               <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#6C3FE8]/30 rounded-full blur-2xl" />
 
-              <div className="relative z-10 space-y-4">
+              <div className="relative z-10 space-y-3.5 xs:space-y-4">
                 {/* Brand Logo Header */}
-                <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                  <Logo variant="light" height={32} />
-                  <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 text-[#38BDF8] border border-white/10 px-2.5 py-0.5 rounded-full">
-                    <Sparkles className="w-3 h-3 text-[#9B7BFF]" />
+                <div className="flex items-center justify-between pb-2 border-b border-white/10 gap-2">
+                  <Logo variant="light" height={28} />
+                  <span className="flex items-center gap-1 text-[9px] xs:text-[10px] font-bold uppercase tracking-wider bg-white/10 text-[#38BDF8] border border-white/10 px-2 xs:px-2.5 py-0.5 rounded-full shrink-0">
+                    <Sparkles className="w-2.5 h-2.5 xs:w-3 xs:h-3 text-[#9B7BFF]" />
                     Reliable Engineering
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-extrabold leading-snug">
+                <h3 className="text-lg xs:text-xl sm:text-2xl font-extrabold leading-snug">
                   Software built with care, tested thoroughly, and delivered on time.
                 </h3>
 

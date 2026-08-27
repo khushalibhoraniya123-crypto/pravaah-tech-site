@@ -14,16 +14,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
   return (
     <section
       id="home"
-      className="relative pt-20 pb-6 sm:pt-22 sm:pb-8 md:pt-24 md:pb-8 lg:pt-20 lg:pb-6 lg:min-h-[calc(100vh-112px)] flex flex-col justify-center overflow-hidden"
+      className="relative pt-16 xs:pt-18 sm:pt-20 md:pt-22 lg:pt-20 pb-6 sm:pb-8 lg:min-h-[calc(100vh-100px)] flex flex-col justify-center overflow-hidden"
     >
       {/* Background brand glow matching logo palette */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-[#1769E0]/10 via-[#6C3FE8]/10 to-[#00D2FF]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-[700px] h-[350px] bg-gradient-to-tr from-[#1769E0]/10 via-[#6C3FE8]/10 to-[#00D2FF]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 w-full my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+      <div className="max-w-[1440px] mx-auto px-3.5 xs:px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 w-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 xs:gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Headline & Value Proposition (7 cols) */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-4.5 text-left">
+          <div className="lg:col-span-7 space-y-3 xs:space-y-4 sm:space-y-4.5 text-left">
             
             {/* Small Badge */}
             <div>
@@ -34,31 +34,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
 
             {/* Main Heading */}
             <div className="space-y-1">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[56px] font-extrabold text-[#0B1B3A] tracking-tight leading-[1.08]">
+              <h1 className="text-[28px] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[56px] font-extrabold text-[#0B1B3A] tracking-tight leading-[1.1] break-words">
                 WE BUILD <br />
                 WHAT'S <span className="gradient-text-blue-purple">NEXT.</span>
               </h1>
             </div>
 
             {/* Subheading */}
-            <div className="text-base sm:text-lg font-bold text-[#1769E0] tracking-wide flex items-center gap-2">
-              <span className="w-5 h-0.5 bg-[#1769E0] rounded-full inline-block" />
-              <span>Design. Develop. Innovate. Automate.</span>
+            <div className="text-sm xs:text-base sm:text-lg font-bold text-[#1769E0] tracking-wide flex items-center gap-2">
+              <span className="w-4 xs:w-5 h-0.5 bg-[#1769E0] rounded-full inline-block shrink-0" />
+              <span className="break-words">Design. Develop. Innovate. Automate.</span>
             </div>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-[#667085] leading-relaxed max-w-xl">
+            <p className="text-xs xs:text-sm sm:text-base text-[#667085] leading-relaxed max-w-xl">
               {CONTACT_CONFIG.tagline}
             </p>
 
             {/* Action Buttons */}
-            <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5">
+            <div className="pt-1 flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3.5">
               <Button
                 variant="primary"
                 size="md"
                 withArrow
                 onClick={onStartProject}
-                className="shadow-glow-blue px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold"
+                className="w-full xs:w-auto justify-center shadow-glow-blue px-5 xs:px-6 py-2.5 sm:py-3 text-xs xs:text-sm sm:text-base font-semibold"
               >
                 Start Your Project
               </Button>
@@ -67,24 +67,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
                 variant="outline"
                 size="md"
                 onClick={onExploreServices}
-                className="px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold"
+                className="w-full xs:w-auto justify-center px-5 xs:px-6 py-2.5 sm:py-3 text-xs xs:text-sm sm:text-base font-semibold"
               >
                 Explore Services
               </Button>
             </div>
 
             {/* Micro Highlights Strip */}
-            <div className="pt-4 border-t border-[#E4E7EC] flex flex-wrap items-center gap-4 sm:gap-5 text-xs font-semibold text-[#334155]">
+            <div className="pt-3.5 sm:pt-4 border-t border-[#E4E7EC] flex flex-wrap items-center gap-3 sm:gap-5 text-[11px] xs:text-xs font-semibold text-[#334155]">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-emerald-500 shrink-0" />
                 <span>Custom Web & Mobile Apps</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#1769E0] shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#1769E0] shrink-0" />
                 <span>Clean & Maintainable Code</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#6C3FE8] shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#6C3FE8] shrink-0" />
                 <span>Ongoing Support & Updates</span>
               </div>
             </div>
@@ -92,7 +92,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
           </div>
 
           {/* Right Column: Abstract Technology Visual (5 cols) */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative w-full overflow-hidden">
             <AbstractTechVisual />
           </div>
 
