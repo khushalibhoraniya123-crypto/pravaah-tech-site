@@ -13,7 +13,7 @@ import confetti from 'canvas-confetti';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { CONTACT_CONFIG } from '../config/contact';
-import type { ContactFormData } from '../services/types';
+import type { ContactFormData } from '../types';
 import { api } from '../services/api';
 import { useToast } from '../context/ToastContext';
 

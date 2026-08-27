@@ -1,4 +1,4 @@
-import type { ContactFormData, ContactInquiryResponse } from './types';
+import type { ContactFormData, ContactInquiryResponse } from '../types';
 
 const rawApiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').trim().replace(/\/+$/, '');
 const API_BASE_URL = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Smile, Layers, Award } from 'lucide-react';
 import { getStatsData } from '../data/stats';
-import type { StatItem } from '../services/types';
+import type { StatItem } from '../types';
 
 const STATS_ICON_MAP: Record<string, React.ElementType> = {
   CheckCircle2,
