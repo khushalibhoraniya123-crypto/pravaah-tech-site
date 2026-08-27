@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { HeroSection } from '../sections/HeroSection';
 import { ServicesStrip } from '../sections/ServicesStrip';
 import { ServicesSection } from '../sections/ServicesSection';
-import { SolutionsSection } from '../sections/SolutionsSection';
 import { AboutSection } from '../sections/AboutSection';
 import { StatsSection } from '../sections/StatsSection';
 import { CustomerSection } from '../sections/CustomerSection';
 import { TechSection } from '../sections/TechSection';
 import { ProcessSection } from '../sections/ProcessSection';
-import { ProjectsSection } from '../sections/ProjectsSection';
+// import { ProjectsSection } from '../sections/ProjectsSection';
 import { ContactSection } from '../sections/ContactSection';
 
 export const HomePage: React.FC = () => {
@@ -53,10 +52,7 @@ export const HomePage: React.FC = () => {
       <ServicesStrip />
       <ServicesSection onStartInquiryWithService={scrollToContact} />
 
-      {/* 3. Solutions Section */}
-      <SolutionsSection onConsultSolution={(s) => scrollToContact(s)} />
-
-      {/* 4. About Us Overview */}
+      {/* 3. About Us Overview */}
       <AboutSection onLearnMore={() => scrollToSection('about')} />
 
       {/* 5. Key Statistics */}
@@ -71,8 +67,8 @@ export const HomePage: React.FC = () => {
       {/* 8. Our 4-Phase Process */}
       <ProcessSection />
 
-      {/* 9. Featured Projects & Case Studies */}
-      <ProjectsSection />
+      {/* 9. Featured Projects & Case Studies (Temporarily commented out) */}
+      {/* <ProjectsSection /> */}
 
       {/* 10. Contact Inquiry Form */}
       <ContactSection preselectedService={inquiryService} />

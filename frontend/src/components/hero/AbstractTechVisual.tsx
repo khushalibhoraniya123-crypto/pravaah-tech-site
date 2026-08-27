@@ -84,6 +84,7 @@ export const AbstractTechVisual: React.FC = () => {
             fill="none"
             strokeLinecap="round"
             className="animate-pulse"
+            style={{ animationDuration: '6s' }}
           />
           <path
             d="M 160,390 Q 320,190 510,290 T 680,220"
@@ -109,20 +110,20 @@ export const AbstractTechVisual: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[
           { top: '15%', left: '20%', size: 'w-2 h-2', bg: 'bg-[#00D2FF]', delay: 0 },
-          { top: '25%', left: '75%', size: 'w-2.5 h-2.5', bg: 'bg-[#B59CFF]', delay: 1 },
-          { top: '70%', left: '25%', size: 'w-2 h-2', bg: 'bg-[#1769E0]', delay: 2 },
-          { top: '80%', left: '80%', size: 'w-3 h-3', bg: 'bg-[#6638E8]', delay: 1.5 },
-          { top: '45%', left: '85%', size: 'w-1.5 h-1.5', bg: 'bg-[#00D2FF]', delay: 2.5 },
+          { top: '25%', left: '75%', size: 'w-2.5 h-2.5', bg: 'bg-[#B59CFF]', delay: 1.5 },
+          { top: '70%', left: '25%', size: 'w-2 h-2', bg: 'bg-[#1769E0]', delay: 3 },
+          { top: '80%', left: '80%', size: 'w-3 h-3', bg: 'bg-[#6638E8]', delay: 2 },
+          { top: '45%', left: '85%', size: 'w-1.5 h-1.5', bg: 'bg-[#00D2FF]', delay: 3.5 },
         ].map((p, i) => (
           <motion.div
             key={i}
             animate={{
-              y: [0, -12, 0],
-              x: [0, 6, 0],
-              opacity: [0.4, 0.9, 0.4],
+              y: [0, -10, 0],
+              x: [0, 5, 0],
+              opacity: [0.35, 0.8, 0.35],
             }}
             transition={{
-              duration: 4 + i,
+              duration: 7 + i * 2,
               repeat: Infinity,
               ease: 'easeInOut',
               delay: p.delay,
@@ -140,7 +141,7 @@ export const AbstractTechVisual: React.FC = () => {
       {/* 1. AI Card (Top-Right) */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-1 sm:top-2 right-0 sm:right-2 z-20"
       >
         <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-2.5 max-w-[190px] sm:max-w-[210px]">
@@ -166,7 +167,7 @@ export const AbstractTechVisual: React.FC = () => {
       {/* 2. WEB Card (Top-Left) */}
       <motion.div
         animate={{ y: [0, 7, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+        transition={{ duration: 8.0, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         className="absolute top-4 sm:top-6 left-0 sm:left-2 z-20"
       >
         <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-2.5 max-w-[180px] sm:max-w-[200px]">
@@ -189,7 +190,7 @@ export const AbstractTechVisual: React.FC = () => {
       {/* 3. UI/UX Card (Bottom-Left) */}
       <motion.div
         animate={{ y: [0, -7, 0] }}
-        transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        transition={{ duration: 9.0, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         className="absolute bottom-2 sm:bottom-4 left-0 sm:left-2 z-20"
       >
         <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 max-w-[190px] sm:max-w-[210px]">
@@ -218,7 +219,7 @@ export const AbstractTechVisual: React.FC = () => {
       {/* 4. AUTOMATION Card (Bottom-Right) */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+        transition={{ duration: 8.8, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
         className="absolute bottom-4 sm:bottom-6 right-0 sm:right-2 z-20"
       >
         <div className="p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-2.5 max-w-[195px] sm:max-w-[215px]">
@@ -239,10 +240,10 @@ export const AbstractTechVisual: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* 5. Center Code Card */}
+      {/* 5. Center Code Card (Software Development) */}
       <motion.div
-        animate={{ scale: [1, 1.02, 1], y: [0, -6, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ scale: [1, 1.015, 1], y: [0, -5, 0] }}
+        transition={{ duration: 10.0, repeat: Infinity, ease: 'easeInOut' }}
         className="relative z-30 max-w-[260px] sm:max-w-[290px] w-full"
       >
         <div className="rounded-2xl bg-[#06132D]/95 backdrop-blur-2xl border border-white/15 p-4 shadow-elevated text-left">

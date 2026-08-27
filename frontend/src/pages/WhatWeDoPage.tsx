@@ -316,20 +316,20 @@ export const WhatWeDoPage: React.FC = () => {
             <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold uppercase tracking-wider text-[#38BDF8]">
                 <Terminal className="w-3.5 h-3.5 text-[#00D2FF]" />
-                <span>Technical Capabilities & Service Catalog</span>
+                <span>Our Services & Capabilities</span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                Full-Stack Technical Capabilities Engineered for <span className="gradient-text-blue-purple">Speed, Scale & Security</span>.
+                Software & Technology Services Built for <span className="gradient-text-blue-purple">Your Growth</span>
               </h1>
 
               <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
-                From high-performance React 19 web platforms and autonomous generative AI agents to mission-critical ERP backends and tokenized design systems — explore our technical disciplines.
+                From responsive websites and mobile apps to custom management tools and practical AI integrations — explore what we can build for your business.
               </p>
 
               {/* Capability Quick Pills */}
               <div className="flex flex-wrap gap-2 pt-1">
-                {['Next.js 15 & React', 'Autonomous AI Agents', 'Figma Token Systems', 'Distributed ERP/CRM', 'Workflow Automation', 'Cloud CI/CD'].map((pill, idx) => (
+                {['Web & SaaS Apps', 'Mobile Apps (iOS & Android)', 'UI/UX in Figma', 'Custom ERP & CRM', 'Workflow Automation', 'Cloud Hosting'].map((pill, idx) => (
                   <span key={idx} className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">
                     ✓ {pill}
                   </span>
@@ -340,12 +340,12 @@ export const WhatWeDoPage: React.FC = () => {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link to="/start-a-project">
                   <Button variant="primary" size="md" withArrow className="shadow-glow-blue">
-                    Request Technical Proposal
+                    Start a Project
                   </Button>
                 </Link>
                 <a href="#catalog">
                   <Button variant="glass" size="md" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-                    Explore Catalog Matrix
+                    Browse Services
                   </Button>
                 </a>
               </div>

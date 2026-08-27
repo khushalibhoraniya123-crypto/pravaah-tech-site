@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, CheckCircle2 } from 'lucide-react';
 import { Button } from './Button';
+import { ParticleBackground } from './ParticleBackground';
 
 interface CTASectionProps {
   title?: string;
@@ -34,6 +35,9 @@ export const CTASection: React.FC<CTASectionProps> = ({
 }) => {
   return (
     <section className={`relative py-10 sm:py-14 overflow-hidden bg-gradient-to-b from-[#07152F] via-[#06132D] to-[#040C1D] text-white ${className}`}>
+      {/* Particle background */}
+      <ParticleBackground />
+
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#1769E0]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#6638E8]/20 rounded-full blur-3xl pointer-events-none" />

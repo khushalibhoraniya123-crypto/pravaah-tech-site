@@ -8,6 +8,7 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 import { Logo } from './Logo';
+import { ParticleBackground } from './ParticleBackground';
 import { CONTACT_CONFIG } from '../../config/contact';
 
 // Clean SVG Brand Icons
@@ -40,20 +41,11 @@ const GitHubIcon = () => (
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  const scrollToSection = (targetId: string) => {
-    const el = document.getElementById(targetId);
-    if (el) {
-      const navOffset = 64;
-      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - navOffset,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
     <footer className="bg-[#06132D] text-white pt-10 pb-6 border-t border-[#0E2856] relative overflow-hidden">
+      {/* Particle background */}
+      <ParticleBackground />
+
       {/* Background ambient lighting effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
@@ -112,29 +104,29 @@ export const Footer: React.FC = () => {
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Navigation</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <button onClick={() => scrollToSection('home')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <Link to="/" className="text-slate-300 hover:text-white transition-colors">
                   Home
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <Link to="/services" className="text-slate-300 hover:text-white transition-colors">
                   Services
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <Link to="/solutions" className="text-slate-300 hover:text-[#38BDF8] font-medium transition-colors">
                   Solutions
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <Link to="/about" className="text-slate-300 hover:text-white transition-colors">
                   About Us
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('contact')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <Link to="/contact" className="text-slate-300 hover:text-white transition-colors">
                   Contact
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

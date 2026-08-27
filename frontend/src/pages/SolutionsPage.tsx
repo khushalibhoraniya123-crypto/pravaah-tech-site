@@ -8,16 +8,18 @@ import {
   CheckCircle2, 
   Building2,
   BarChart3,
-  HeartPulse,
-  GraduationCap,
-  UtensilsCrossed,
-  ShoppingBag,
-  Boxes,
   DollarSign,
-  ArrowRight
+  ArrowRight,
+  Globe,
+  Code2,
+  Smartphone,
+  Cloud,
+  Palette,
+  Bot
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { CTASection } from '../components/common/CTASection';
+import { ParticleBackground } from '../components/common/ParticleBackground';
 
 interface SolutionItem {
   id: string;
@@ -35,190 +37,159 @@ const ALL_SOLUTIONS: SolutionItem[] = [
   {
     id: 'business-automation',
     category: 'automation',
-    title: 'Business Automation & Workflow RPA',
-    badge: '70% Time Saved',
+    title: 'Workflow & Task Automation',
+    badge: 'Save Manual Hours',
     icon: Zap,
-    description: 'Automate manual data entry, invoice parsing, and cross-platform workflows with high-accuracy event-driven pipelines.',
+    description: 'Automate repetitive tasks, invoice processing, and cross-tool data entry with dependable background pipelines.',
     capabilities: [
-      'AI OCR document & invoice data extraction',
-      'Automated 2-way sync with ERP accounting ledgers',
-      '24/7 background event triggers & alert notifications',
+      'Automated document & invoice data reading',
+      'Direct 2-way sync with your accounting software',
+      'Automated notifications and status alerts',
     ],
-    highlight: 'Impact: Cuts monthly processing time from days to hours',
-    linkParam: 'Business Automation & RPA',
+    highlight: 'Key benefit: Eliminates hours of manual data entry weekly',
+    linkParam: 'Workflow & Task Automation',
   },
   {
     id: 'ai-business-solutions',
     category: 'ai',
-    title: 'AI-Powered Business Solutions & RAG',
-    badge: '14 hrs Saved/Wk',
+    title: 'AI Assistants & Smart Search',
+    badge: 'Practical AI',
     icon: Sparkles,
-    description: 'Deploy private generative AI workspaces and 24/7 autonomous support agents trained securely on internal corporate data.',
+    description: 'Add smart document search, automated customer support chatbots, and internal AI tools trained safely on your company knowledge.',
     capabilities: [
-      'Grounded vector RAG knowledge search & citations',
-      'Autonomous tier-1 customer query resolution',
-      'Zero-retention private cloud security guardrails',
+      'Fast document search with source references',
+      'Smart customer query auto-replies',
+      'Private data setup with zero public sharing',
     ],
-    highlight: 'Impact: 85%+ automated first-pass resolution rate',
-    linkParam: 'AI-Powered Business Solutions',
+    highlight: 'Key benefit: Quick answers for both your team and customers',
+    linkParam: 'AI Assistants & Smart Search',
   },
   {
     id: 'digital-transformation',
     category: 'cloud',
-    title: 'Digital Transformation & Cloud Modernization',
-    badge: '99.99% Uptime',
+    title: 'Cloud Migration & Modernization',
+    badge: 'Reliable Hosting',
     icon: TrendingUp,
-    description: 'Modernize legacy monolithic systems into scalable, containerized cloud microservices with sub-second responsive frontends.',
+    description: 'Upgrade outdated systems to secure cloud setups with fast loading speeds, automated backups, and zero surprise crashes.',
     capabilities: [
-      'Decoupled Docker & Kubernetes microservice clusters',
-      'Sub-second edge CDN response times globally',
-      'Automated disaster recovery & zero-downtime CI/CD',
+      'Containerized hosting (Docker & Kubernetes)',
+      'Fast global loading via content delivery networks (CDN)',
+      'Automated daily database backups & recovery',
     ],
-    highlight: 'Impact: 4x faster feature velocity with zero server crashes',
-    linkParam: 'Digital Transformation & Cloud',
+    highlight: 'Key benefit: Stable, fast platforms that handle traffic spikes',
+    linkParam: 'Cloud Migration & Modernization',
   },
   {
     id: 'enterprise-erp-crm',
     category: 'erp',
-    title: 'Custom Enterprise ERP & CRM Systems',
-    badge: '$0 Per-Seat Tax',
+    title: 'Custom ERP & Management Software',
+    badge: 'No Per-User Fees',
     icon: Layers,
-    description: 'Centralize inventory, order routing, payroll, and customer accounts under a unified dashboard tailored to your operations.',
+    description: 'Bring inventory, orders, staff accounts, and client records into one straightforward dashboard built specifically for your team.',
     capabilities: [
-      'Multi-warehouse inventory & barcode scanning',
-      'Granular role-based staff permissions (RBAC)',
-      '100% client-owned code with zero per-seat fees',
+      'Inventory tracking & barcode scanning',
+      'Custom user permissions & staff roles',
+      'Full code ownership with zero monthly per-user fees',
     ],
-    highlight: 'Impact: Saves $180,000+ in annual SaaS license fees',
-    linkParam: 'Custom Enterprise ERP & CRM',
+    highlight: 'Key benefit: A tool tailored to your exact daily operations',
+    linkParam: 'Custom ERP & Management Software',
   },
   {
     id: 'workflow-analytics',
     category: 'analytics',
-    title: 'Workflow Optimization & Real-Time Analytics',
-    badge: 'Real-Time P&L',
+    title: 'Business Analytics & Reports',
+    badge: 'Live Dashboard',
     icon: BarChart3,
-    description: 'Aggregate live data into executive telemetry dashboards to identify profit leaks and automate financial reconciliations.',
+    description: 'Connect your sales, stock, and expense data into clear executive dashboards so you can make informed decisions quickly.',
     capabilities: [
-      'Real-time revenue, inventory & funnel telemetry',
-      'Automated balance auditing & reconciliation',
-      'Immutable cryptographic event logs for compliance',
+      'Live revenue, stock, and sales activity metrics',
+      'Automated end-of-month financial summaries',
+      'Exportable CSV and PDF reports',
     ],
-    highlight: 'Impact: +52% faster operational decision velocity',
-    linkParam: 'Workflow Optimization & Analytics',
+    highlight: 'Key benefit: Accurate numbers at a glance anytime',
+    linkParam: 'Business Analytics & Reports',
   },
   {
     id: 'fintech-solutions',
     category: 'erp',
-    title: 'Fintech & Secure Settlement Gateways',
-    badge: 'Bank-Grade SLA',
+    title: 'Payment & Billing Portals',
+    badge: 'Secure Billing',
     icon: DollarSign,
-    description: 'Build high-throughput payment reconciliation engines, wealth management portals, and multi-currency settlement gateways.',
+    description: 'Build custom subscription billing systems, secure customer portals, and automated payment gateway reconciliations.',
     capabilities: [
-      'Multi-tier automated KYC & AML verification',
-      'Real-time transaction fraud anomaly triggers',
-      'PCI-DSS Level 1 compliant data architecture',
+      'Stripe, Razorpay & bank gateway integration',
+      'Automated invoice generation & PDF receipts',
+      'Encrypted client billing records & payment logs',
     ],
-    highlight: 'Impact: Sub-180ms transaction settlement latency',
-    linkParam: 'Fintech & Transaction Systems',
+    highlight: 'Key benefit: Hassle-free customer payments and clear records',
+    linkParam: 'Payment & Billing Portals',
   },
 ];
 
-interface IndustryBlueprint {
+interface TechSolutionCard {
   id: string;
-  name: string;
+  title: string;
+  tag: string;
   icon: React.ElementType;
-  badge: string;
   description: string;
-  capabilities: string[];
-  highlight: string;
-  linkParam: string;
+  highlights: string[];
+  href: string;
 }
 
-const INDUSTRY_BLUEPRINTS: IndustryBlueprint[] = [
+const TECH_SOLUTIONS_DATA: TechSolutionCard[] = [
   {
-    id: 'healthcare',
-    name: 'Healthcare & Telehealth',
-    icon: HeartPulse,
-    badge: 'HIPAA Compliant',
-    description: 'Encrypted WebRTC consultation rooms, unified electronic medical records, and automated patient scheduling.',
-    capabilities: [
-      'End-to-end encrypted video consultation rooms',
-      'Automated doctor calendar & patient SMS reminders',
-      'Digital e-prescription & pharmacy API routing',
-    ],
-    highlight: 'Impact: 65% reduction in patient appointment wait times',
-    linkParam: 'Healthcare & Telehealth Suite',
+    id: 'ai-automation',
+    title: 'AI & Automation',
+    tag: 'Smart Workflows',
+    icon: Bot,
+    description: 'AI-assisted tools, smart document search, and workflow automation scripts to save your team hours of repetitive work.',
+    highlights: ['Custom AI Chatbots & Smart Search', 'Document Reading & Data Extraction', 'Automated Daily Workflows'],
+    href: '/services/ai-solutions',
   },
   {
-    id: 'fintech',
-    name: 'Finance & Asset Management',
-    icon: DollarSign,
-    badge: 'Bank-Grade Security',
-    description: 'Real-time multi-asset portfolios, automated bank reconciliations, and multi-tier KYC verification engines.',
-    capabilities: [
-      'Real-time multi-currency settlement ledger',
-      'Automated bank API payment reconciliation',
-      'Real-time fraud anomaly detection & alerts',
-    ],
-    highlight: 'Impact: Instant real-time multi-bank reconciliation',
-    linkParam: 'Finance & Asset Management Suite',
+    id: 'web-dev',
+    title: 'Web Development',
+    tag: 'Web & Portals',
+    icon: Globe,
+    description: 'Modern, responsive, and fast websites and web applications built with clean code and smooth user navigation.',
+    highlights: ['React & Next.js Frameworks', 'Fast Page Load Speeds', 'Mobile Responsive & Search-Ready'],
+    href: '/services/web-development',
   },
   {
-    id: 'commerce',
-    name: 'Retail & Headless Commerce',
-    icon: ShoppingBag,
-    badge: 'Sub-Second Speed',
-    description: 'Headless Next.js 15 storefronts with dynamic multi-currency checkouts and real-time inventory syncing.',
-    capabilities: [
-      'Sub-0.8s global page load speeds via edge CDN',
-      'Multi-warehouse dynamic inventory sync',
-      'Custom 1-click checkout & payment routing',
-    ],
-    highlight: 'Impact: +38% increase in mobile checkout conversions',
-    linkParam: 'Retail & Headless Commerce Suite',
+    id: 'software-dev',
+    title: 'Software Development',
+    tag: 'Custom Tools',
+    icon: Code2,
+    description: 'Custom software, management tools, and ERP portals designed around your team’s exact daily business processes.',
+    highlights: ['Custom Business Dashboards', 'Secure Backend APIs', '100% Client Code Ownership'],
+    href: '/services/software-development',
   },
   {
-    id: 'education',
-    name: 'Education & Virtual LMS',
-    icon: GraduationCap,
-    badge: 'FERPA Ready',
-    description: 'Interactive virtual classrooms, automated grading engines, and gamified student progress tracking.',
-    capabilities: [
-      'Live HD interactive virtual classroom engine',
-      'Automated assessment & gradebook builder',
-      'Automated verified certificate generation',
-    ],
-    highlight: 'Impact: Scales effortlessly to 100k+ concurrent learners',
-    linkParam: 'Education & Virtual LMS Suite',
+    id: 'mobile-app',
+    title: 'Mobile App Development',
+    tag: 'iOS & Android',
+    icon: Smartphone,
+    description: 'Practical mobile applications designed to run smoothly on both Android and iOS devices with intuitive layouts.',
+    highlights: ['Cross-Platform (Flutter / React Native)', 'Push Notifications & Offline Support', 'Smooth, Simple User Interface'],
+    href: '/start-a-project?solution=Mobile%20App%20Development',
   },
   {
-    id: 'hospitality',
-    name: 'Hospitality & Restaurant POS',
-    icon: UtensilsCrossed,
-    badge: 'POS & KDS',
-    description: 'Contactless QR table ordering, live kitchen display systems, and automated recipe inventory tracking.',
-    capabilities: [
-      'Contactless QR digital ordering & mobile pay',
-      'Real-time Kitchen Display System (KDS)',
-      'Live ingredient costing & stock deduction',
-    ],
-    highlight: 'Impact: +28% faster table turnover velocity',
-    linkParam: 'Hospitality & Restaurant POS Suite',
+    id: 'cloud-api',
+    title: 'Cloud & API Integration',
+    tag: 'Cloud & Sync',
+    icon: Cloud,
+    description: 'Reliable cloud hosting setup, database management, and seamless third-party software and payment API connections.',
+    highlights: ['Cloud Setup & Deployments', 'RESTful API Connections', 'Automated Backups & Monitoring'],
+    href: '/start-a-project?solution=Cloud%20%26%20API%20Solutions',
   },
   {
-    id: 'logistics',
-    name: 'Logistics & Warehousing',
-    icon: Boxes,
-    badge: 'Supply Chain',
-    description: 'Multi-location barcode warehouse scanning, route optimization, and live customer shipment webhooks.',
-    capabilities: [
-      'Multi-warehouse barcode & QR mobile scanning',
-      'Predictive low-stock replenishment triggers',
-      'Automated courier dispatch & route optimization',
-    ],
-    highlight: 'Impact: Zero unscheduled inventory stockouts',
-    linkParam: 'Logistics & Warehousing Suite',
+    id: 'ui-ux',
+    title: 'UI/UX Design',
+    tag: 'Product Design',
+    icon: Palette,
+    description: 'Clean, modern wireframes, interactive prototypes, and design systems in Figma that make your products easy to use.',
+    highlights: ['Clickable Figma Prototypes', 'Complete Design Systems', 'User Journey & Wireframe Planning'],
+    href: '/services/ui-ux-design',
   },
 ];
 
@@ -228,9 +199,9 @@ export const SolutionsPage: React.FC = () => {
   const filterTabs = [
     { id: 'all', label: 'All Solutions' },
     { id: 'automation', label: 'Automation & RPA' },
-    { id: 'ai', label: 'Enterprise AI' },
-    { id: 'cloud', label: 'Cloud Modernization' },
-    { id: 'erp', label: 'ERP & Software' },
+    { id: 'ai', label: 'AI Tools' },
+    { id: 'cloud', label: 'Cloud & Web' },
+    { id: 'erp', label: 'Custom Software' },
     { id: 'analytics', label: 'Analytics' },
   ];
 
@@ -241,8 +212,11 @@ export const SolutionsPage: React.FC = () => {
   return (
     <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
       
-      {/* 1. Hero Section (Compact & Focused) */}
+      {/* 1. Hero Section */}
       <section className="relative py-8 sm:py-10 overflow-hidden bg-gradient-to-b from-[#06132D] via-[#081A3A] to-[#06132D] text-white border-b border-white/10">
+        {/* Particle background */}
+        <ParticleBackground />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-3xl mx-auto space-y-2.5">
             
@@ -252,32 +226,32 @@ export const SolutionsPage: React.FC = () => {
 
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 border border-white/15 text-[11px] font-semibold uppercase tracking-wider text-[#38BDF8]">
               <Building2 className="w-3.5 h-3.5 text-[#00D2FF]" />
-              <span>OUTCOME-DRIVEN BUSINESS SOLUTIONS</span>
+              <span>PRACTICAL BUSINESS SOLUTIONS</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Enterprise Solutions That Solve <span className="gradient-text-blue-purple">Real Business Friction</span>.
+              Software Solutions Built for <span className="gradient-text-blue-purple">Everyday Work</span>
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              We engineer custom, outcome-focused technology systems that eliminate manual bottlenecks, unite fragmented departments, and deliver quantifiable commercial ROI.
+              We design and build custom software that simplifies your business processes, eliminates manual paperwork, and helps your team get work done smoothly.
             </p>
 
             {/* Quick Metrics Bar */}
             <div className="pt-3 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs font-semibold text-slate-300">
               <div className="flex items-center gap-1.5">
-                <span className="text-[#38BDF8] font-extrabold">+45%</span>
-                <span>Operating Speed</span>
+                <span className="text-[#38BDF8] font-extrabold">100%</span>
+                <span>Custom Built</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5">
-                <span className="text-[#00D2FF] font-extrabold">70%</span>
-                <span>Manual Time Saved</span>
+                <span className="text-[#00D2FF] font-extrabold">Zero</span>
+                <span>Monthly Per-User Fees</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1.5">
-                <span className="text-emerald-400 font-extrabold">$0</span>
-                <span>Per-Seat License Tax</span>
+                <span className="text-emerald-400 font-extrabold">Direct</span>
+                <span>Developer Support</span>
               </div>
             </div>
 
@@ -285,20 +259,20 @@ export const SolutionsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Core Business Solutions Section */}
+      {/* 2. Core Business Solutions by Goal */}
       <section className="py-8 sm:py-10 bg-[#F7F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Title & Filter Tabs */}
           <div className="text-center max-w-2xl mx-auto mb-6 space-y-1.5">
             <span className="text-[11px] font-bold text-[#1769E0] uppercase tracking-wider">
-              ENTERPRISE CAPABILITIES
+              TAILORED SOLUTIONS
             </span>
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B1B3A]">
-              Strategic Solutions by Business Goal
+              Choose a Solution by Business Goal
             </h2>
             <p className="text-xs text-slate-600">
-              Choose a category to explore our tailored problem-solving architectures.
+              Filter through our core solutions to find what fits your current operational needs.
             </p>
 
             {/* Filter Tabs */}
@@ -319,7 +293,7 @@ export const SolutionsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Unified Compact Solutions Grid (3 Columns) */}
+          {/* Solutions Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {filteredSolutions.map((sol) => {
               const Icon = sol.icon;
@@ -369,7 +343,7 @@ export const SolutionsPage: React.FC = () => {
                       to={`/start-a-project?solution=${encodeURIComponent(sol.linkParam)}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1769E0] hover:text-[#0B1B3A] transition-colors"
                     >
-                      <span>Explore Solution</span>
+                      <span>Discuss This Solution</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -381,75 +355,70 @@ export const SolutionsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Pre-Engineered Turnkey Industry Suites (Same Compact System) */}
-      <section className="py-8 sm:py-10 bg-white border-y border-[#E4E7EC]">
+      {/* 3. Technology Solutions Section */}
+      <section className="py-10 sm:py-12 bg-white border-y border-[#E4E7EC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-6 space-y-1">
+          <div className="text-center max-w-2xl mx-auto mb-8 space-y-1.5">
             <span className="text-[11px] font-bold text-[#1769E0] uppercase tracking-wider">
-              INDUSTRY FRAMEWORKS
+              TECHNOLOGY SOLUTIONS
             </span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B1B3A]">
-              Pre-Engineered Industry Blueprints
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0B1B3A] tracking-tight">
+              Software Services Designed for <span className="gradient-text-blue-purple">Your Needs</span>
             </h2>
-            <p className="text-xs text-slate-600">
-              Turnkey compliance and operational workflows customized for high-growth sectors.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Explore our core technology services designed to make your web, mobile, and internal operations reliable.
             </p>
           </div>
 
-          {/* Unified Industry Grid (Same Card Sizing & Hierarchy) */}
+          {/* 6 Technology Solution Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {INDUSTRY_BLUEPRINTS.map((ind) => {
-              const Icon = ind.icon;
+            {TECH_SOLUTIONS_DATA.map((card) => {
+              const Icon = card.icon;
               return (
                 <div
-                  key={ind.id}
-                  className="p-4 sm:p-5 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] hover:border-[#1769E0]/40 hover:shadow-medium transition-all duration-200 flex flex-col justify-between"
+                  key={card.id}
+                  className="p-5 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] hover:border-[#1769E0]/50 hover:shadow-medium hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    {/* Header: Icon + Badge */}
+                    {/* Top Row: Icon + Badge */}
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#1769E0] shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/90 text-[#1769E0] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-bold text-slate-700 bg-white px-2 py-0.5 rounded-full border border-slate-200">
-                        {ind.badge}
+                      <span className="text-[10.5px] font-semibold text-slate-600 bg-white px-2.5 py-0.5 rounded-full border border-slate-200">
+                        {card.tag}
                       </span>
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="text-base font-bold text-[#0B1B3A] mb-1.5">
-                      {ind.name}
+                    <h3 className="text-base font-bold text-[#0B1B3A] mb-1.5 group-hover:text-[#1769E0] transition-colors">
+                      {card.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
-                      {ind.description}
+                    <p className="text-xs text-slate-600 leading-relaxed mb-3.5 line-clamp-2">
+                      {card.description}
                     </p>
 
-                    {/* Max 3 Capabilities */}
-                    <div className="space-y-1.5 mb-3 pt-2 border-t border-slate-200/80">
-                      {ind.capabilities.slice(0, 3).map((cap, idx) => (
+                    {/* Key Highlights */}
+                    <div className="space-y-1.5 mb-4 pt-2.5 border-t border-slate-200/80">
+                      {card.highlights.map((item, idx) => (
                         <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-700">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span className="leading-tight">{cap}</span>
+                          <span className="leading-tight">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div>
-                    {/* 1-Line Compact Highlight */}
-                    <div className="p-2 rounded-lg bg-white border border-slate-200 text-[11px] font-semibold text-slate-700 mb-3 truncate">
-                      {ind.highlight}
-                    </div>
-
-                    {/* Compact CTA Link */}
+                  {/* Bottom Action Link */}
+                  <div className="pt-2">
                     <Link
-                      to={`/start-a-project?solution=${encodeURIComponent(ind.linkParam)}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1769E0] hover:text-[#0B1B3A] transition-colors"
+                      to={card.href}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1769E0] hover:text-[#081A3A] transition-colors group/link"
                     >
-                      <span>Request Blueprint</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>Learn More</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -466,13 +435,13 @@ export const SolutionsPage: React.FC = () => {
           
           <div className="text-center max-w-2xl mx-auto mb-6 space-y-1">
             <span className="text-[11px] font-bold text-[#1769E0] uppercase tracking-wider">
-              STRATEGIC ADVANTAGE
+              PRACTICAL COMPARISON
             </span>
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B1B3A]">
-              Custom Software vs. Off-The-Shelf SaaS
+              Custom Software vs. Off-The-Shelf Tools
             </h2>
             <p className="text-xs text-slate-600">
-              Why fast-growing businesses replace bloated SaaS subscriptions with bespoke technology.
+              Why many growing companies choose custom software over generic monthly subscriptions.
             </p>
           </div>
 
@@ -480,31 +449,31 @@ export const SolutionsPage: React.FC = () => {
             <table className="w-full text-left text-xs border-collapse">
               <thead>
                 <tr className="bg-[#06132D] text-white text-[11px] uppercase tracking-wider">
-                  <th className="p-3.5 font-bold">Key Architectural Decision</th>
+                  <th className="p-3.5 font-bold">Key Consideration</th>
                   <th className="p-3.5 font-bold text-rose-300 bg-[#081A3A]">Generic SaaS Tools</th>
-                  <th className="p-3.5 font-bold text-emerald-400 bg-[#07152F]">Pravaah Custom Solution</th>
+                  <th className="p-3.5 font-bold text-emerald-400 bg-[#07152F]">Pravaah Custom Software</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 <tr>
-                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Recurring User License Costs</td>
-                  <td className="p-3.5 text-rose-600 bg-rose-50/20">$150–$300 / user / month</td>
-                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">$0 Recurring License Tax (Unlimited Users)</td>
+                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Monthly Per-User Fees</td>
+                  <td className="p-3.5 text-rose-600 bg-rose-50/20">$30–$150 per staff member / month</td>
+                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">$0 Monthly per-user cost (Unlimited staff)</td>
                 </tr>
                 <tr>
-                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Workflow Customization</td>
-                  <td className="p-3.5 text-rose-600 bg-rose-50/20">Forces rigid workarounds</td>
-                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">100% Tailored to your competitive advantage</td>
+                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Custom Workflows</td>
+                  <td className="p-3.5 text-rose-600 bg-rose-50/20">Forces your team into rigid templates</td>
+                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">Built to match your exact team process</td>
                 </tr>
                 <tr>
-                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Data Sovereignty & IP</td>
-                  <td className="p-3.5 text-rose-600 bg-rose-50/20">Vendor lock-in on shared DB</td>
-                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">100% Client-Owned Private Cloud & IP</td>
+                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Data Ownership</td>
+                  <td className="p-3.5 text-rose-600 bg-rose-50/20">Stored on 3rd party shared servers</td>
+                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">100% Owned by your business</td>
                 </tr>
                 <tr>
-                  <td className="p-3.5 font-semibold text-[#0B1B3A]">Legacy System Integration</td>
-                  <td className="p-3.5 text-rose-600 bg-rose-50/20">Limited paid API connectors</td>
-                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">Bespoke 2-way database & API sync</td>
+                  <td className="p-3.5 font-semibold text-[#0B1B3A]">System Integrations</td>
+                  <td className="p-3.5 text-rose-600 bg-rose-50/20">Requires paid add-ons or plugins</td>
+                  <td className="p-3.5 text-emerald-700 font-bold bg-emerald-50/20">Directly connected to your tools & APIs</td>
                 </tr>
               </tbody>
             </table>
@@ -513,28 +482,28 @@ export const SolutionsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. 4-Step Strategic Transformation Roadmap (Matching Compact System) */}
-      <section className="py-8 sm:py-10 bg-white border-y border-[#E4E7EC]">
+      {/* 5. 4-Step Roadmap */}
+      <section className="py-8 sm:py-10 bg-white border-t border-[#E4E7EC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
             <span className="text-[11px] font-bold text-[#1769E0] uppercase tracking-wider">
-              EXECUTION BLUEPRINT
+              HOW WE WORK
             </span>
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B1B3A]">
-              The 4-Step Transformation Roadmap
+              Our 4-Step Development Process
             </h2>
             <p className="text-xs text-slate-600">
-              A proven methodology from operational discovery to continuous SLA scaling.
+              A straightforward process from initial discussion to launch and support.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { phase: 'Phase 01', title: 'Operational Audit', desc: 'Diagnose workflow bottlenecks and compute projected ROI.' },
-              { phase: 'Phase 02', title: 'Interactive Prototype', desc: 'Interactive UX and validated database schemas with department heads.' },
-              { phase: 'Phase 03', title: 'Agile Engineering', desc: 'Sprints with legacy data migration and automated security testing.' },
-              { phase: 'Phase 04', title: 'Deployment & SLA', desc: 'Production rollout with staff training and continuous 24/7 SLA monitoring.' },
+              { phase: 'Step 01', title: 'Consultation & Goals', desc: 'We review your requirements, discuss features, and provide a clear timeline.' },
+              { phase: 'Step 02', title: 'UI/UX Prototype', desc: 'We design clear wireframes and clickable screens for your feedback.' },
+              { phase: 'Step 03', title: 'Coding & Testing', desc: 'We write clean code and test features across browsers and mobile screens.' },
+              { phase: 'Step 04', title: 'Launch & Support', desc: 'We deploy to your live domain and provide ongoing maintenance support.' },
             ].map((st, idx) => (
               <div key={idx} className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] space-y-1">
                 <span className="text-[11px] font-mono font-bold text-[#1769E0] uppercase">{st.phase}</span>
@@ -549,8 +518,8 @@ export const SolutionsPage: React.FC = () => {
 
       {/* 6. Consultation CTA */}
       <CTASection
-        title="Ready to Build Your Custom Enterprise Solution?"
-        subtitle="Schedule a free technical architecture consultation with our senior solution engineers."
+        title="Have a Project or Idea in Mind?"
+        subtitle="Talk directly with our development team about your requirements, timeline, and budget."
         buttonText="Start a Project"
         buttonLink="/start-a-project"
         secondaryButtonText="Explore Services"

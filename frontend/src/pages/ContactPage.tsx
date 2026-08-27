@@ -23,16 +23,16 @@ export const ContactPage: React.FC = () => {
 
             <div className="mb-2.5">
               <Badge variant="blue" size="md">
-                GET IN TOUCH WITH PRAVAAH
+                GET IN TOUCH
               </Badge>
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight leading-tight">
-              Let's Discuss Your Technology Roadmap.
+              Let's Discuss Your Project
             </h1>
 
             <p className="mt-3 text-sm sm:text-base text-[#556987] leading-relaxed">
-              Connect directly with our engineering and solution architecture leads. We review every inquiry and respond within 24 hours with an actionable roadmap.
+              Have questions about a new website, mobile app, or custom software? Tell us what you're building and we'll get back to you within 24 hours.
             </p>
           </div>
         </div>

@@ -1,45 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { Button } from './Button';
 
-const NAV_LINKS = [
-  { label: 'Home', targetId: 'home' },
-  { label: 'Services', targetId: 'services' },
-  { label: 'Solutions', targetId: 'solutions' },
-  { label: 'About', targetId: 'about' },
-  { label: 'Contact', targetId: 'contact' },
+interface NavItem {
+  label: string;
+  path: string;
+}
+
+const NAV_LINKS: NavItem[] = [
+  { label: 'Home', path: '/' },
+  { label: 'Services', path: '/services' },
+  { label: 'Solutions', path: '/solutions' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('home');
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Handle scroll state and scrollspy
+  // Handle scroll state for navbar shadow
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
-      }
-
-      // Scrollspy active section detection
-      const scrollPosition = window.scrollY + 90;
-      for (let i = NAV_LINKS.length - 1; i >= 0; i--) {
-        const link = NAV_LINKS[i];
-        const element = document.getElementById(link.targetId);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          if (scrollPosition >= offsetTop) {
-            setActiveSection(link.targetId);
-            break;
-          }
-        }
       }
     };
 
@@ -48,28 +38,28 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (targetId: string) => {
+  const isLinkActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname === path || location.pathname.startsWith(path + '/');
+  };
+
+  const handleNavClick = (link: NavItem) => {
     setIsMobileMenuOpen(false);
 
-    if (location.pathname !== '/') {
-      navigate(`/#${targetId}`);
-      setTimeout(() => {
-        const el = document.getElementById(targetId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+    if (link.path === '/') {
+      if (location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        navigate('/');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       return;
     }
 
-    const element = document.getElementById(targetId);
-    if (element) {
-      const navOffset = 64;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - navOffset,
-        behavior: 'smooth',
-      });
-      setActiveSection(targetId);
-    }
+    navigate(link.path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -91,11 +81,11 @@ export const Navbar: React.FC = () => {
           {/* 2. Navigation: Home | Services | Solutions | About | Contact */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.targetId;
+              const isActive = isLinkActive(link.path);
               return (
                 <button
-                  key={link.targetId}
-                  onClick={() => scrollToSection(link.targetId)}
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
                   className={`px-3 py-1.5 rounded-lg text-[13.5px] lg:text-sm font-medium transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'text-[#1769E0] font-semibold bg-blue-50/90 shadow-xs'
@@ -108,17 +98,18 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* 3. Right Action: Start a Project → Button Only */}
+          {/* 3. Right Action: Start a Project */}
           <div className="hidden md:flex items-center">
-            <Button
-              variant="primary"
-              size="sm"
-              withArrow
-              onClick={() => scrollToSection('contact')}
-              className="shadow-xs text-xs font-semibold py-2 px-3.5 rounded-lg"
-            >
-              Start a Project
-            </Button>
+            <Link to="/start-a-project">
+              <Button
+                variant="primary"
+                size="sm"
+                withArrow
+                className="shadow-xs text-xs font-semibold py-2 px-3.5 rounded-lg"
+              >
+                Start a Project
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -140,11 +131,11 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden border-b border-[#E4E7EC] bg-white/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-elevated animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1">
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.targetId;
+              const isActive = isLinkActive(link.path);
               return (
                 <button
-                  key={link.targetId}
-                  onClick={() => scrollToSection(link.targetId)}
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
                   className={`flex items-center justify-between px-4 py-3 rounded-xl text-left text-sm font-medium transition-all cursor-pointer ${
                     isActive
                       ? 'bg-blue-50 text-[#1769E0] font-bold'
@@ -158,15 +149,16 @@ export const Navbar: React.FC = () => {
             })}
 
             <div className="pt-4 mt-2 border-t border-[#E4E7EC]">
-              <Button
-                variant="primary"
-                size="md"
-                withArrow
-                onClick={() => scrollToSection('contact')}
-                className="w-full justify-center"
-              >
-                Start a Project
-              </Button>
+              <Link to="/start-a-project" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button
+                  variant="primary"
+                  size="md"
+                  withArrow
+                  className="w-full justify-center"
+                >
+                  Start a Project
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

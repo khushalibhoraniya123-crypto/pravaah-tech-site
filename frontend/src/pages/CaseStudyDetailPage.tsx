@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/common/Button';
 import { CTASection } from '../components/common/CTASection';
+import { ParticleBackground } from '../components/common/ParticleBackground';
 import { CASE_STUDIES_DATA } from '../data/caseStudies';
 
 export const CaseStudyDetailPage: React.FC = () => {
@@ -25,6 +26,9 @@ export const CaseStudyDetailPage: React.FC = () => {
       
       {/* Hero Banner */}
       <section className={`py-12 sm:py-16 bg-gradient-to-r ${caseStudy.heroImageGradient} text-white relative overflow-hidden`}>
+        {/* Particle background */}
+        <ParticleBackground />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <button

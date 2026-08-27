@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import type { CaseStudy } from '../../data/caseStudies';
 import { Button } from './Button';
+import { ParticleBackground } from './ParticleBackground';
 
 interface CaseStudyModalProps {
   caseStudy: CaseStudy | null;
@@ -51,7 +52,9 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ caseStudy, onClo
       <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 max-h-[92vh] flex flex-col my-auto border border-[#E4E7EC] animate-in zoom-in-95 duration-200">
         
         {/* Modal Header Banner */}
-        <div className={`p-6 sm:p-8 bg-gradient-to-r ${caseStudy.heroImageGradient} text-white relative shrink-0`}>
+        <div className={`p-6 sm:p-8 bg-gradient-to-r ${caseStudy.heroImageGradient} text-white relative shrink-0 overflow-hidden`}>
+          {/* Particle background */}
+          <ParticleBackground />
           
           {/* Close Button */}
           <button

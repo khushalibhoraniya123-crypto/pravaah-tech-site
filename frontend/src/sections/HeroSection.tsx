@@ -74,15 +74,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
             <div className="pt-4 border-t border-[#E4E7EC] flex flex-wrap items-center gap-4 sm:gap-5 text-xs font-semibold text-[#334155]">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Enterprise Architecture</span>
+                <span>Custom Web & Mobile Apps</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#1769E0] shrink-0" />
-                <span>Modern React & AI Stack</span>
+                <span>Clean & Maintainable Code</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#6C3FE8] shrink-0" />
-                <span>99.9% Uptime SLAs</span>
+                <span>Ongoing Support & Updates</span>
               </div>
             </div>
 

@@ -21,17 +21,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
           <Badge variant="blue">ABOUT US</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
-            Turning Ideas Into <span className="gradient-text-blue-purple">Digital Solutions</span>
+            Turning Ideas Into <span className="gradient-text-blue-purple">Working Digital Products</span>
           </h2>
           <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
-            We combine technology, creativity and innovation to build digital experiences that make a real difference.
+            We are a hands-on technology team helping companies design, build, and maintain software that solves everyday operational challenges.
           </p>
         </div>
 
         {/* Two-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Abstract Tech Showcase Card (5 cols) */}
+          {/* Left Column: Tech Showcase Card (5 cols) */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] p-6 sm:p-7 text-white shadow-elevated border border-white/10 overflow-hidden">
               {/* Internal ambient glow */}
@@ -44,16 +44,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                   <Logo variant="light" height={32} />
                   <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 text-[#38BDF8] border border-white/10 px-2.5 py-0.5 rounded-full">
                     <Sparkles className="w-3 h-3 text-[#9B7BFF]" />
-                    Engineered for Impact
+                    Reliable Engineering
                   </span>
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-extrabold leading-snug">
-                  Modern Software Architecture That Accelerates Growth.
+                  Software built with care, tested thoroughly, and delivered on time.
                 </h3>
 
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                  We bridge the gap between complex engineering and human-centered design, delivering enterprise-grade web applications, AI integrations, and automated digital ecosystems.
+                  We work closely with founders, business owners, and engineering teams to turn ideas into clean, maintainable web apps, mobile products, and custom back-office tools.
                 </p>
 
                 {/* Key Pillars */}
@@ -62,14 +62,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                     <div className="w-5 h-5 rounded-md bg-[#1769E0]/30 text-[#38BDF8] flex items-center justify-center shrink-0">
                       <Zap className="w-3 h-3" />
                     </div>
-                    <span>Agile & Scalable Engineering Pipelines</span>
+                    <span>Clear Communication & Fast Turnaround</span>
                   </div>
 
                   <div className="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
                     <div className="w-5 h-5 rounded-md bg-[#6C3FE8]/30 text-[#9B7BFF] flex items-center justify-center shrink-0">
                       <ShieldCheck className="w-3 h-3" />
                     </div>
-                    <span>Security-First & Cloud-Native Reliability</span>
+                    <span>Secure Setup & 100% Client Code Ownership</span>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
           <div className="lg:col-span-7 space-y-4 text-left">
             <div className="space-y-1.5">
               <span className="text-xs font-bold uppercase tracking-widest text-[#1769E0]">
-                Our Identity & Philosophy
+                Our Philosophy
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B1B3A]">
                 Who We Are
@@ -89,23 +89,23 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
 
             <div className="space-y-3 text-sm sm:text-[15px] text-[#475467] leading-relaxed">
               <p>
-                <strong className="text-[#0B1B3A]">Pravaah Technology</strong> is a technology and digital solutions company focused on helping businesses transform their ideas into modern, scalable and meaningful digital experiences.
+                <strong className="text-[#0B1B3A]">Pravaah Technology</strong> is a software development and digital solutions company. We help businesses create clean websites, mobile applications, and internal software that make their day-to-day work simpler.
               </p>
               <p>
-                From websites and applications to UI/UX, software solutions, AI and automation, we combine creativity with technology to deliver solutions built around real business needs.
+                Whether you need a new customer-facing web portal, an iOS and Android app, or custom software to replace manual spreadsheets, our team handles design, development, and deployment from start to finish.
               </p>
               <p className="p-3.5 rounded-xl bg-[#F7F9FC] border-l-4 border-[#1769E0] text-[#0B1B3A] font-medium text-xs sm:text-sm">
-                Our approach is simple — understand the problem, create the right strategy, build with modern technology and deliver a solution that creates long-term value.
+                Our approach is straightforward: listen to your goals, recommend practical technology, write clean code, and support your product long after launch.
               </p>
             </div>
 
             {/* Checkpoints */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
               {[
-                'Tailored Custom Solutions',
-                'Transparent Collaborative Roadmap',
-                'Modern Next-Gen Tech Stacks',
-                'Dedicated Post-Launch Support',
+                'Direct Developer Communication',
+                'Transparent Milestones & Pricing',
+                'Modern, Long-Lasting Tech Stack',
+                'Reliable Post-Launch Support',
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0B1B3A]">
                   <CheckCircle2 className="w-4 h-4 text-[#1769E0] shrink-0" />

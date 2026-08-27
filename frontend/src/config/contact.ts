@@ -51,12 +51,12 @@ export interface ContactConfig {
 
 export const CONTACT_CONFIG: ContactConfig = {
   companyName: "Pravaah Technology",
-  tagline: "Transforming ideas into powerful digital experiences, intelligent solutions and scalable technology.",
-  badgeText: "INNOVATION • TECHNOLOGY • DIGITAL FUTURE",
+  tagline: "We build reliable web applications, custom software, and digital solutions for growing businesses.",
+  badgeText: "SOFTWARE & DIGITAL PRODUCT DEVELOPMENT",
 
-  // EDIT PHONE NUMBER HERE
-  phone: "+91 95743 43531",
-  phoneRaw: "+919574343531",
+  // EDIT PHONE NUMBER HERE (Direct Call)
+  phone: "+91 90161 41437",
+  phoneRaw: "+919016141437",
 
   // EDIT EMAIL ADDRESS HERE
   email: "pravaahtechnologies15@gmail.com",

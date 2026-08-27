@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logoHorizontalDark from '../../assets/logo/Logo Horizontal Dark.png';
-import logoHorizontalLight from '../../assets/logo/Logo Horizontal Light.png';
+import logoHorizontalDarkTransparent from '../../assets/logo/Logo Horizontal Dark Transparent.png';
 import logoHorizontalLightTransparent from '../../assets/logo/Logo Horizontal Light Transparent.png';
+import logoHorizontalDark from '../../assets/logo/Logo Horizontal Dark.png';
 
 interface LogoProps {
   variant?: 'light' | 'dark';
@@ -23,10 +23,10 @@ export const Logo: React.FC<LogoProps> = ({
   const navigate = useNavigate();
   const isLight = variant === 'light';
 
-  // On light navbar (variant='dark'): Logo Horizontal Light Transparent / Dark
-  // On dark footer (variant='light'): Logo Horizontal Light (White text)
+  // Footer Logo (variant='light'): Logo Horizontal Dark Transparent.png
+  // Navbar Logo (variant='dark'): Logo Horizontal Light Transparent.png / Dark
   const selectedLogo = isLight 
-    ? logoHorizontalLight 
+    ? logoHorizontalDarkTransparent 
     : (logoHorizontalLightTransparent || logoHorizontalDark);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -60,15 +60,15 @@ export const Logo: React.FC<LogoProps> = ({
           width: width ? (typeof width === 'number' ? `${width}px` : width) : undefined,
         }}
         className={`w-[160px] sm:w-[185px] md:w-[210px] h-auto object-contain drop-shadow-xs transition-all duration-200 ${
-          isLight ? 'brightness-110 contrast-125' : ''
+          isLight ? 'brightness-110 contrast-110' : ''
         }`}
         loading="eager"
         onError={(e) => {
           const target = e.currentTarget;
           if (isLight) {
-            target.src = logoHorizontalLightTransparent;
+            target.src = logoHorizontalDarkTransparent;
           } else {
-            target.src = logoHorizontalDark;
+            target.src = logoHorizontalLightTransparent;
           }
         }}
       />

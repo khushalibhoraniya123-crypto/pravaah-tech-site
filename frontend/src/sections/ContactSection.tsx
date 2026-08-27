@@ -124,12 +124,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
-          <Badge variant="blue">INITIATE A PROJECT</Badge>
+          <Badge variant="blue">CONTACT US</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
-            Let's Build Something <span className="gradient-text-blue-purple">Great Together</span>
+            Let's Discuss Your <span className="gradient-text-blue-purple">Next Project</span>
           </h2>
           <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
-            Have an idea, project or business challenge? Let's discuss how we can turn it into a powerful digital solution.
+            Have a project in mind, need a quote, or want to discuss technical feasibility? Send us a message and we'll reply within 24 hours.
           </p>
         </div>
 
@@ -141,13 +141,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
             <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] text-white shadow-elevated border border-white/10 space-y-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#38BDF8]">
-                  Direct Connect
+                  Contact Details
                 </span>
                 <h3 className="text-2xl font-bold mt-1 text-white">
                   Get In Touch Directly
                 </h3>
                 <p className="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
-                  Our solution architects respond within 24 business hours to review your architecture and provide an estimated timeline.
+                  Call, email, or message us directly on WhatsApp. We will discuss your requirements and share an estimated project timeline.
                 </p>
               </div>
 
@@ -162,7 +162,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-slate-400 font-medium">Direct Telephone</div>
+                    <div className="text-[11px] text-slate-400 font-medium">Direct Call</div>
                     <div className="text-sm font-bold text-white">{CONTACT_CONFIG.phone}</div>
                   </div>
                 </a>
@@ -176,7 +176,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-slate-400 font-medium">Official Inquiries</div>
+                    <div className="text-[11px] text-slate-400 font-medium">Email Address</div>
                     <div className="text-sm font-bold text-white break-all">{CONTACT_CONFIG.email}</div>
                   </div>
                 </a>
@@ -192,7 +192,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-emerald-300 font-medium">WhatsApp Priority Chat</div>
+                    <div className="text-[11px] text-emerald-300 font-medium">WhatsApp Chat</div>
                     <div className="text-sm font-bold text-white">{CONTACT_CONFIG.whatsapp}</div>
                   </div>
                 </a>

@@ -194,7 +194,8 @@ export const emailService = {
 
             <div class="info-box">
               <div style="font-weight: 700; color: #0f172a; margin-bottom: 6px;">Need immediate assistance?</div>
-              <div>Phone / WhatsApp: <strong>+91 95743 43531</strong></div>
+              <div>Direct Call: <strong>+91 90161 41437</strong></div>
+              <div>WhatsApp: <strong>+91 95743 43531</strong></div>
               <div>Email: <strong>${adminEmail}</strong></div>
             </div>
 
