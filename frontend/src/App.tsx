@@ -19,6 +19,8 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { StartProjectPage } from './pages/StartProjectPage';
 import { CaseStudyDetailPage } from './pages/CaseStudyDetailPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsConditionsPage } from './pages/TermsConditionsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 // Scroll to top or anchor handler on every route transition
@@ -93,6 +95,13 @@ export const App: React.FC = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/start-a-project" element={<StartProjectPage />} />
             
+            {/* Legal Pages */}
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+            <Route path="/terms" element={<TermsConditionsPage />} />
+            <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+
             {/* Case Study Detail View */}
             <Route path="/case-studies/:id" element={<CaseStudyDetailPage />} />
 
