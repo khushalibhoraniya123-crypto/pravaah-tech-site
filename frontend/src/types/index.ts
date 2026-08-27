@@ -65,6 +65,25 @@ export interface ProcessStep {
   iconName: string;
 }
 
+export type PortfolioCategory = 'all' | 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
+
+export interface PortfolioProject {
+  id: string;
+  name: string;
+  category: 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
+  subtitle: string;
+  shortDesc: string;
+  fullDesc: string;
+  image: string;
+  technologies: string[];
+  stats: { label: string; value: string }[];
+  client: string;
+  year: string;
+  deliverables: string[];
+  liveUrl?: string;
+  featured?: boolean;
+}
+
 export interface ContactFormData {
   name: string;
   email: string;

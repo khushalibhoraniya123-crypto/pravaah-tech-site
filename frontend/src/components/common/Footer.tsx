@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Phone, 
   Mail, 
@@ -39,9 +39,36 @@ const GitHubIcon = () => (
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToSection = (targetId: string) => {
+    if (location.pathname !== '/') {
+      navigate(`/#${targetId}`);
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          const navOffset = 70;
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: elementPosition - navOffset, behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
+    const element = document.getElementById(targetId);
+    if (element) {
+      const navOffset = 70;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navOffset,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
-    <footer className="bg-[#06132D] text-white pt-10 pb-6 border-t border-[#0E2856] relative overflow-hidden">
+    <footer className="bg-[#06132D] text-white pt-12 pb-6 border-t border-[#0E2856] relative overflow-hidden">
       {/* Particle background */}
       <ParticleBackground />
 
@@ -98,66 +125,81 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2: Company Navigation (2 cols) */}
+          {/* Col 2: Navigation (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Navigation</h3>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="text-slate-300 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('home')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
                   Home
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services" className="text-slate-300 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
                   Services
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/solutions" className="text-slate-300 hover:text-[#38BDF8] font-medium transition-colors">
+                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-[#38BDF8] font-medium transition-colors cursor-pointer">
                   Solutions
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/about" className="text-slate-300 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
                   About Us
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/contact" className="text-slate-300 hover:text-white transition-colors">
-                  Contact
-                </Link>
+                <button onClick={() => scrollToSection('process')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Our Process
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('portfolio')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('contact')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Contact Us
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Services (3 cols) */}
+          {/* Col 3: What We Build (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Build</h3>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/services/web-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
                   Web Development
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services/ai-solutions" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
-                  AI Solutions & Agents
-                </Link>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  App Development
+                </button>
               </li>
               <li>
-                <Link to="/services/ui-ux-design" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
                   UI/UX Design Systems
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services/software-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
-                  Software Development
-                </Link>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  Software Solutions & ERP
+                </button>
               </li>
               <li>
-                <Link to="/services/automation" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
-                  Automation & Workflows
-                </Link>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  AI Solutions & Agents
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  Digital Transformation
+                </button>
               </li>
             </ul>
           </div>

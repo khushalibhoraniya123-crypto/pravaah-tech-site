@@ -8,17 +8,6 @@ import { ToastProvider } from './context/ToastContext';
 
 // Pages
 import { HomePage } from './pages/HomePage';
-import { WhatWeDoPage } from './pages/WhatWeDoPage';
-import { WebDevelopmentPage } from './pages/services/WebDevelopmentPage';
-import { AISolutionsPage } from './pages/services/AISolutionsPage';
-import { UIUXDesignPage } from './pages/services/UIUXDesignPage';
-import { SoftwareDevelopmentPage } from './pages/services/SoftwareDevelopmentPage';
-import { AutomationPage } from './pages/services/AutomationPage';
-import { SolutionsPage } from './pages/SolutionsPage';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
-import { StartProjectPage } from './pages/StartProjectPage';
-import { CaseStudyDetailPage } from './pages/CaseStudyDetailPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsConditionsPage } from './pages/TermsConditionsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -33,7 +22,7 @@ const ScrollHandler: React.FC = () => {
       const tryScroll = (attempts = 0) => {
         const element = document.getElementById(targetId);
         if (element) {
-          const navOffset = 64;
+          const navOffset = 70;
           const elementPosition = element.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
             top: elementPosition - navOffset,
@@ -46,7 +35,6 @@ const ScrollHandler: React.FC = () => {
       setTimeout(() => tryScroll(), 50);
       return;
     }
-    // Instant scroll to top on page change if no hash
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
   }, [pathname, hash]);
 
@@ -73,37 +61,24 @@ export const App: React.FC = () => {
       <Router>
         <AppLayout>
           <Routes>
-            {/* Core Home Route */}
+            {/* Master Single-Page Route */}
             <Route path="/" element={<HomePage />} />
             
-            {/* What We Do & Service Routes */}
-            <Route path="/what-we-do" element={<WhatWeDoPage />} />
-            <Route path="/services" element={<WhatWeDoPage />} />
-            <Route path="/services/web-development" element={<WebDevelopmentPage />} />
-            <Route path="/services/ai-solutions" element={<AISolutionsPage />} />
-            <Route path="/services/ui-ux-design" element={<UIUXDesignPage />} />
-            <Route path="/services/software-development" element={<SoftwareDevelopmentPage />} />
-            <Route path="/services/automation" element={<AutomationPage />} />
-            
-            {/* Solutions */}
-            <Route path="/solutions" element={<SolutionsPage />} />
-            
-            {/* About Navigation: Dedicated About Page reusing exact same AboutSection */}
-            <Route path="/about" element={<AboutPage />} />
+            {/* Direct Section Alias Redirects */}
+            <Route path="/services" element={<HomePage />} />
+            <Route path="/solutions" element={<HomePage />} />
+            <Route path="/about" element={<HomePage />} />
+            <Route path="/process" element={<HomePage />} />
+            <Route path="/portfolio" element={<HomePage />} />
+            <Route path="/contact" element={<HomePage />} />
+            <Route path="/start-a-project" element={<HomePage />} />
 
-            {/* Contact & Project Initiation */}
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/start-a-project" element={<StartProjectPage />} />
-            
             {/* Legal Pages */}
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-conditions" element={<TermsConditionsPage />} />
             <Route path="/terms" element={<TermsConditionsPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
-
-            {/* Case Study Detail View */}
-            <Route path="/case-studies/:id" element={<CaseStudyDetailPage />} />
 
             {/* 404 Fallback */}
             <Route path="*" element={<NotFoundPage />} />
