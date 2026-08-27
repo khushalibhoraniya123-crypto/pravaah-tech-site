@@ -52,13 +52,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
             </p>
 
             {/* Action Buttons */}
-            <div className="pt-1 flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3.5">
+            <div className="pt-1 flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3">
               <Button
                 variant="primary"
                 size="md"
                 withArrow
                 onClick={onStartProject}
-                className="w-full xs:w-auto justify-center shadow-glow-blue px-5 xs:px-6 py-2.5 sm:py-3 text-xs xs:text-sm sm:text-base font-semibold"
+                className="w-full xs:w-auto justify-center shadow-glow-blue"
               >
                 Start Your Project
               </Button>
@@ -67,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
                 variant="outline"
                 size="md"
                 onClick={onExploreServices}
-                className="w-full xs:w-auto justify-center px-5 xs:px-6 py-2.5 sm:py-3 text-xs xs:text-sm sm:text-base font-semibold"
+                className="w-full xs:w-auto justify-center"
               >
                 Explore Services
               </Button>

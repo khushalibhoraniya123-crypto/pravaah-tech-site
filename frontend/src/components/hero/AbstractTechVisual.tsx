@@ -148,16 +148,16 @@ export const AbstractTechVisual: React.FC = () => {
         transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-1 sm:top-2 right-0.5 xs:right-1.5 sm:right-2 z-20"
       >
-        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[125px] xs:max-w-[160px] sm:max-w-[210px]">
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[135px] xs:max-w-[165px] sm:max-w-[210px]">
           <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#6638E8] to-[#8B3FE8] text-white flex items-center justify-center shrink-0 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1">
-              <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate">AI Card</span>
+              <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] whitespace-nowrap">AI Solutions</span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             </div>
-            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5 truncate">
+            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5">
               Intelligent Models & Agents
             </p>
             <div className="mt-0.5 sm:mt-1 flex items-center gap-0.5 sm:gap-1 text-[8.5px] xs:text-[9.5px] font-semibold text-[#6638E8]">
@@ -174,13 +174,13 @@ export const AbstractTechVisual: React.FC = () => {
         transition={{ duration: 8.0, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         className="absolute top-3 xs:top-4 sm:top-6 left-0.5 xs:left-1.5 sm:left-2 z-20"
       >
-        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[120px] xs:max-w-[150px] sm:max-w-[200px]">
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[130px] xs:max-w-[155px] sm:max-w-[200px]">
           <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#00D2FF] text-white flex items-center justify-center shrink-0 shadow-sm">
             <Globe className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
           </div>
           <div className="min-w-0">
-            <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate block">WEB Card</span>
-            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5 truncate">
+            <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] whitespace-nowrap block">Web Apps</span>
+            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5">
               React • Next.js • Vite
             </p>
             <div className="mt-0.5 sm:mt-1 flex items-center gap-0.5 sm:gap-1 text-[8.5px] xs:text-[9.5px] text-emerald-600 font-semibold">
@@ -197,14 +197,14 @@ export const AbstractTechVisual: React.FC = () => {
         transition={{ duration: 9.0, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         className="absolute bottom-1 xs:bottom-2 sm:bottom-4 left-0.5 xs:left-1.5 sm:left-2 z-20"
       >
-        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 max-w-[125px] xs:max-w-[155px] sm:max-w-[210px]">
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 max-w-[130px] xs:max-w-[160px] sm:max-w-[210px]">
           <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5">
             <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#8B3FE8] to-[#6638E8] text-white flex items-center justify-center shrink-0 shadow-sm">
               <Palette className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
             </div>
             <div className="min-w-0">
-              <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate block">UI/UX Card</span>
-              <p className="hidden sm:block text-[10px] text-[#667085] truncate">Figma Design System</p>
+              <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] whitespace-nowrap block">UI/UX Design</span>
+              <p className="hidden sm:block text-[10px] text-[#667085]">Figma Design System</p>
             </div>
           </div>
           {/* Swatches preview matching brand colors */}
@@ -226,13 +226,13 @@ export const AbstractTechVisual: React.FC = () => {
         transition={{ duration: 8.8, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
         className="absolute bottom-2 xs:bottom-3 sm:bottom-6 right-0.5 xs:right-1.5 sm:right-2 z-20"
       >
-        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[130px] xs:max-w-[160px] sm:max-w-[215px]">
+        <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-medium hover:shadow-elevated transition-all duration-300 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[135px] xs:max-w-[165px] sm:max-w-[215px]">
           <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#00D2FF] to-[#1769E0] text-white flex items-center justify-center shrink-0 shadow-sm">
             <Zap className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
           </div>
           <div className="min-w-0">
-            <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] truncate block">AUTOMATION</span>
-            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5 truncate">
+            <span className="text-[11px] xs:text-xs font-bold text-[#081A3A] whitespace-nowrap block">Automation</span>
+            <p className="hidden sm:block text-[10.5px] font-medium text-[#667085] leading-tight mt-0.5">
               Pipelines & CI/CD
             </p>
             <div className="mt-0.5 sm:mt-1 flex items-center gap-1">
