@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MessageSquare, 
-  MapPin, 
-  CheckCircle2, 
-  Clock, 
+import React, { useState } from 'react';
+import {
+  Phone,
+  Mail,
+  MessageSquare,
+  MapPin,
+  CheckCircle2,
+  Clock,
   ShieldCheck,
   AlertCircle
 } from 'lucide-react';
@@ -13,39 +13,32 @@ import confetti from 'canvas-confetti';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { CONTACT_CONFIG } from '../config/contact';
-import type { ContactFormData } from '../types';
+import type { ContactFormData } from '../services/types';
 import { api } from '../services/api';
 import { useToast } from '../context/ToastContext';
 
 interface ContactSectionProps {
   preselectedService?: string;
+  hideHeader?: boolean;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedService = '' }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedService = '', hideHeader = false }) => {
   const { showToast } = useToast();
 
-  const [formData, setFormData] = useState<ContactFormData>({
+  const [formData, setFormData] = useState<ContactFormData>(() => ({
     name: '',
     email: '',
     phone: '',
     company: '',
     service: preselectedService || CONTACT_CONFIG.inquiryServices[0],
-    message: '',
-  });
+    message: preselectedService 
+      ? `Hi Pravaah team, I am interested in getting a consultation regarding ${preselectedService}.` 
+      : '',
+  }));
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (preselectedService) {
-      setFormData((prev) => ({
-        ...prev,
-        service: preselectedService,
-        message: prev.message || `Hi Pravaah team, I am interested in getting a consultation regarding ${preselectedService}.`,
-      }));
-    }
-  }, [preselectedService]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -74,10 +67,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
     try {
       setIsSubmitting(true);
       const res = await api.submitContact(formData);
-      
+
       setIsSubmitting(false);
       setIsSubmitted(true);
-      
+
       // Celebrate submission
       try {
         confetti({
@@ -86,7 +79,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
           origin: { y: 0.6 },
           colors: ['#1769E0', '#6C3FE8', '#38BDF8', '#10B981'],
         });
-      } catch {}
+      } catch { }
 
       showToast(
         'Inquiry Submitted!',
@@ -115,29 +108,31 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-14 md:py-16 bg-[#FFFFFF] relative overflow-hidden">
-      {/* Background Decorative Blur */}
-      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -left-32 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F1EDFB] to-[#EAF2FB] border-t border-[#D2DEEE] relative overflow-hidden">
+      {/* Background Brand Decorative Glow matching Logo Theme */}
+      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -left-32 w-96 h-96 bg-[#6C3FE8]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
-          <Badge variant="blue">CONTACT US</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
-            Let's Discuss Your <span className="gradient-text-blue-purple">Next Project</span>
-          </h2>
-          <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
-            Have a project in mind, need a quote, or want to discuss technical feasibility? Send us a message and we'll reply within 24 hours.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1.5 sm:space-y-2">
+            <Badge variant="blue">CONTACT US</Badge>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
+              Let's Discuss Your <span className="gradient-text-blue-purple">Next Project</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#556987] leading-relaxed">
+              Have a project in mind, need a quote, or want to discuss technical feasibility? Send us a message and we'll reply within 24 hours.
+            </p>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-          
+
           {/* Left Column: Direct Contact & Office Details (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            
+
             <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-[#07152F] to-[#0B1B3A] text-white shadow-elevated border border-white/10 space-y-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#38BDF8]">
@@ -219,13 +214,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
             </div>
 
             {/* Privacy & NDA Guarantee Card */}
-            <div className="p-6 rounded-3xl bg-[#F7F9FC] border border-[#E4E7EC] flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#1769E0] flex items-center justify-center shrink-0">
+            <div className="p-6 rounded-3xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] flex items-center gap-4 shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#1769E0] flex items-center justify-center shrink-0 border border-blue-200/50">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
                 <h4 className="text-sm font-bold text-[#0B1B3A]">100% Confidential & NDA Ready</h4>
-                <p className="text-xs text-[#667085] mt-0.5">
+                <p className="text-xs text-[#556987] mt-0.5">
                   All intellectual property, proprietary datasets, and concepts shared are protected.
                 </p>
               </div>
@@ -235,8 +230,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
 
           {/* Right Column: Interactive Working Contact Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E4E7EC] shadow-elevated relative">
-              
+            <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-white via-[#F7FAFD] to-[#EDF3FB] border border-[#D2DEEE] shadow-elevated relative">
+
               {/* If already submitted successfully */}
               {isSubmitted ? (
                 <div className="text-center py-8 space-y-4 animate-in fade-in zoom-in-95 duration-300">

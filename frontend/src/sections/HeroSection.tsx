@@ -12,12 +12,15 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExploreServices }) => {
   return (
-    <section id="home" className="relative pt-18 pb-8 sm:pt-20 sm:pb-10 md:pt-24 md:pb-12 lg:pt-26 lg:pb-14 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F7F9FC] to-[#F7F9FC]">
-      {/* Background ambient gradient glow */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-blue-400/10 via-purple-400/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+    <section
+      id="home"
+      className="relative pt-20 pb-6 sm:pt-22 sm:pb-8 md:pt-24 md:pb-8 lg:pt-20 lg:pb-6 lg:min-h-[calc(100vh-112px)] flex flex-col justify-center overflow-hidden"
+    >
+      {/* Background brand glow matching logo palette */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-[#1769E0]/10 via-[#6C3FE8]/10 to-[#00D2FF]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 w-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Headline & Value Proposition (7 cols) */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-4.5 text-left">

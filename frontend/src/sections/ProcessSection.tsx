@@ -16,24 +16,28 @@ export const ProcessSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   return (
-    <section id="process" className="py-12 sm:py-14 md:py-16 bg-[#FFFFFF] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="process" className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EAF1FA] via-[#F2EEFB] to-[#EBF3FB] border-t border-[#D2DEEE] relative overflow-hidden">
+      {/* Brand Flow Glow */}
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#6C3FE8]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1.5 sm:space-y-2">
           <Badge variant="purple">OUR 6-STEP METHODOLOGY</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
             How We Turn Ideas Into <span className="gradient-text-blue-purple">Digital Solutions</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#556987] leading-relaxed">
             A clear and collaborative process that takes your idea from concept to a successful digital product.
           </p>
         </div>
 
         {/* Desktop Horizontal Interactive Timeline (hidden on small screens) */}
-        <div className="hidden lg:block mb-10">
+        <div className="hidden lg:block mb-6">
           {/* Horizontal Track Line */}
-          <div className="relative flex items-center justify-between before:absolute before:top-6 before:left-8 before:right-8 before:h-1 before:bg-[#E4E7EC] before:z-0">
+          <div className="relative flex items-center justify-between before:absolute before:top-6 before:left-8 before:right-8 before:h-1 before:bg-[#D2DEEE] before:z-0">
             {PROCESS_DATA.map((step, idx) => {
               const Icon = PROCESS_ICON_MAP[step.iconName] || Search;
               const isActive = activeStep === idx;
@@ -48,7 +52,7 @@ export const ProcessSection: React.FC = () => {
                     className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm transition-all duration-300 shadow-soft ${
                       isActive
                         ? 'bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white scale-105 shadow-glow-blue'
-                        : 'bg-white border-2 border-[#E4E7EC] text-[#667085] group-hover:border-[#1769E0]'
+                        : 'bg-white border-2 border-[#D2DEEE] text-[#556987] group-hover:border-[#1769E0]'
                     }`}
                   >
                     <Icon className="w-4.5 h-4.5" />
@@ -56,7 +60,7 @@ export const ProcessSection: React.FC = () => {
 
                   {/* Step Number & Title */}
                   <div className="text-center mt-2">
-                    <span className="font-mono text-[11px] font-bold text-slate-400 block">
+                    <span className="font-mono text-[11px] font-bold text-slate-500 block">
                       {step.number}
                     </span>
                     <span className={`text-[11px] font-bold tracking-wider uppercase ${isActive ? 'text-[#1769E0]' : 'text-[#0B1B3A]'}`}>
@@ -69,14 +73,14 @@ export const ProcessSection: React.FC = () => {
           </div>
 
           {/* Active Step Feature Box */}
-          <div className="mt-8 p-6 sm:p-7 rounded-3xl bg-[#F7F9FC] border border-[#E4E7EC] shadow-medium transition-all duration-300">
+          <div className="mt-6 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-white via-[#F5F8FD] to-[#EDF3FB] border border-[#D2DEEE] shadow-medium transition-all duration-300">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-8 space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-2xl font-black gradient-text-blue-purple">
                     {PROCESS_DATA[activeStep].number}
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#1769E0] bg-blue-50 px-3 py-1 rounded-full">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#1769E0] bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
                     {PROCESS_DATA[activeStep].tagline}
                   </span>
                 </div>
@@ -99,7 +103,7 @@ export const ProcessSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="md:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-white border border-[#E4E7EC] text-center shadow-xs">
+              <div className="md:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-white/90 border border-[#D2DEEE] text-center shadow-xs">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white flex items-center justify-center mb-3 shadow-glow-blue">
                   {React.createElement(PROCESS_ICON_MAP[PROCESS_DATA[activeStep].iconName] || Search, { className: 'w-8 h-8' })}
                 </div>
@@ -108,13 +112,13 @@ export const ProcessSection: React.FC = () => {
                 <div className="mt-4 flex items-center gap-2">
                   <button
                     onClick={() => setActiveStep((prev) => (prev > 0 ? prev - 1 : PROCESS_DATA.length - 1))}
-                    className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold hover:bg-slate-50"
+                    className="px-3 py-1.5 rounded-lg border border-[#D2DEEE] text-xs font-semibold hover:bg-slate-100 cursor-pointer"
                   >
                     Previous
                   </button>
                   <button
                     onClick={() => setActiveStep((prev) => (prev < PROCESS_DATA.length - 1 ? prev + 1 : 0))}
-                    className="px-3 py-1.5 rounded-lg bg-[#0B1B3A] text-white text-xs font-semibold hover:bg-[#1769E0]"
+                    className="px-3 py-1.5 rounded-lg bg-[#0B1B3A] text-white text-xs font-semibold hover:bg-[#1769E0] cursor-pointer"
                   >
                     Next Step →
                   </button>
@@ -131,14 +135,14 @@ export const ProcessSection: React.FC = () => {
             return (
               <div
                 key={step.number}
-                className="relative pl-12 before:absolute before:left-5 before:top-12 before:bottom-0 before:w-0.5 before:bg-[#E4E7EC] last:before:hidden"
+                className="relative pl-12 before:absolute before:left-5 before:top-12 before:bottom-0 before:w-0.5 before:bg-[#D2DEEE] last:before:hidden"
               >
                 {/* Timeline node icon */}
                 <div className="absolute left-0 top-0 w-10 h-10 rounded-xl bg-gradient-to-tr from-[#1769E0] to-[#6C3FE8] text-white flex items-center justify-center shadow-soft">
                   <Icon className="w-5 h-5" />
                 </div>
 
-                <div className="p-6 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC]">
+                <div className="p-6 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE]">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-mono text-xs font-bold text-[#1769E0]">{step.number}</span>
                     <span className="text-xs font-bold uppercase tracking-wider text-[#6C3FE8]">{step.tagline}</span>

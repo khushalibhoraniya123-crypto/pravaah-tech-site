@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
@@ -9,16 +10,26 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
-  return (
-    <section id="about" className="py-12 sm:py-14 md:py-16 bg-[#FFFFFF] relative overflow-hidden">
-      {/* Background Subtle Wave Accents */}
-      <div className="absolute top-1/2 -right-40 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -left-40 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+  const navigate = useNavigate();
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  const handleLearnMore = () => {
+    if (onLearnMore) {
+      onLearnMore();
+    } else {
+      navigate('/about');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  return (
+    <section id="about" className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F0EEFB] to-[#EBF3FB] border-t border-[#D2DEEE] relative overflow-hidden">
+      {/* Background Subtle Wave Accents matching brand palette */}
+      <div className="absolute top-1/2 -right-40 w-96 h-96 bg-[#6C3FE8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 -left-40 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1.5 sm:space-y-2">
           <Badge variant="blue">ABOUT US</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
             Turning Ideas Into <span className="gradient-text-blue-purple">Working Digital Products</span>
@@ -94,7 +105,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
               <p>
                 Whether you need a new customer-facing web portal, an iOS and Android app, or custom software to replace manual spreadsheets, our team handles design, development, and deployment from start to finish.
               </p>
-              <p className="p-3.5 rounded-xl bg-[#F7F9FC] border-l-4 border-[#1769E0] text-[#0B1B3A] font-medium text-xs sm:text-sm">
+              <p className="p-3.5 rounded-xl bg-[#E2ECF9]/80 border-l-4 border-[#1769E0] text-[#0B1B3A] font-medium text-xs sm:text-sm">
                 Our approach is straightforward: listen to your goals, recommend practical technology, write clean code, and support your product long after launch.
               </p>
             </div>
@@ -120,7 +131,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                 variant="primary"
                 size="md"
                 withArrow
-                onClick={onLearnMore}
+                onClick={handleLearnMore}
               >
                 Learn More About Us
               </Button>

@@ -9,13 +9,13 @@ export const ContactPage: React.FC = () => {
   const preselectedService = searchParams.get('service') || '';
 
   return (
-    <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
+    <div className="pt-16 sm:pt-20 min-h-screen bg-transparent">
       
       {/* Hero Section */}
-      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-white via-[#F7F9FC] to-[#F7F9FC] border-b border-[#E4E7EC] text-center">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-blue-400/15 via-purple-400/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-[#EBF2FA] via-[#F0EEFB] to-transparent border-b border-[#D2DEEE] text-center">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-[#1769E0]/15 via-[#6C3FE8]/12 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="flex justify-center mb-3">
               <Breadcrumbs items={[{ label: 'Contact' }]} />
@@ -39,7 +39,7 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* Main Interactive Contact Section */}
-      <ContactSection preselectedService={preselectedService} />
+      <ContactSection preselectedService={preselectedService} hideHeader={true} />
 
     </div>
   );

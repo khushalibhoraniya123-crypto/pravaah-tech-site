@@ -4,7 +4,7 @@ import { Sparkles, Globe, Palette, Zap, Code2, Check, Activity } from 'lucide-re
 
 export const AbstractTechVisual: React.FC = () => {
   return (
-    <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[450px] flex items-center justify-center select-none">
+    <div className="relative w-full h-[320px] sm:h-[360px] lg:h-[390px] flex items-center justify-center select-none">
       
       {/* Background Radial Glow Blobs */}
       <div className="absolute w-60 h-60 rounded-full bg-blue-500/15 blur-[80px] -top-6 left-6 pointer-events-none animate-pulse-subtle" />

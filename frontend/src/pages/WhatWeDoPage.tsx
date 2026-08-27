@@ -294,7 +294,7 @@ export const WhatWeDoPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
+    <div className="pt-16 sm:pt-20 min-h-screen bg-transparent">
       
       {/* 1. Technical Capabilities Hero Section */}
       <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-[#06132D] via-[#081A3A] to-[#06132D] text-white border-b border-white/10">
@@ -302,7 +302,7 @@ export const WhatWeDoPage: React.FC = () => {
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <div className="mb-3">
             <Breadcrumbs 
               items={[{ label: 'Services Catalog' }]} 
@@ -358,23 +358,24 @@ export const WhatWeDoPage: React.FC = () => {
                 {/* Terminal Header & Switcher Tabs */}
                 <div className="bg-[#07152F] px-4 py-2.5 border-b border-white/10 flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                    <span className="text-[11px] font-mono text-slate-400 pl-2">pravaah-core-engine</span>
+                    <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                    <span className="ml-2 text-[10.5px] font-mono text-slate-400">pravaah-core-engine</span>
                   </div>
-                  <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">
-                    {CODE_SNIPPETS[activeSnippetKey].badge}
-                  </span>
+                  <div className="flex items-center gap-1 text-[10.5px] font-mono text-emerald-400">
+                    <CheckCircle2 className="w-3 h-3" />
+                    <span>Active Production Engine</span>
+                  </div>
                 </div>
 
-                {/* Switcher Buttons */}
-                <div className="grid grid-cols-4 bg-black/40 border-b border-white/5 text-[11px] font-mono text-slate-400">
+                {/* Tabs switcher */}
+                <div className="grid grid-cols-4 bg-[#0B1B3A] border-b border-white/10 text-[10px] font-mono text-slate-400">
                   <button
                     onClick={() => setActiveSnippetKey('web')}
                     className={`py-1.5 px-2 text-center transition-colors cursor-pointer ${activeSnippetKey === 'web' ? 'bg-white/10 text-white font-bold border-b-2 border-[#1769E0]' : 'hover:text-white'}`}
                   >
-                    Web.tsx
+                    Router.tsx
                   </button>
                   <button
                     onClick={() => setActiveSnippetKey('ai')}
@@ -416,21 +417,21 @@ export const WhatWeDoPage: React.FC = () => {
       </section>
 
       {/* 2. Main Capabilities Catalog Section */}
-      <section id="catalog" className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="catalog" className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-8 space-y-2">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1.5">
             <Badge variant="blue">CAPABILITIES CATALOG</Badge>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1B3A] tracking-tight">
               Our Core Technical Disciplines & Deliverables
             </h2>
-            <p className="text-xs sm:text-sm text-[#667085] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#556987] leading-relaxed">
               Every discipline is architected by dedicated senior engineers and product designers with deep domain expertise.
             </p>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-3">
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-2 sm:pt-3">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
@@ -438,7 +439,7 @@ export const WhatWeDoPage: React.FC = () => {
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     selectedCategory === cat.id
                       ? 'bg-[#1769E0] text-white shadow-soft'
-                      : 'bg-white text-[#334155] border border-[#E4E7EC] hover:bg-slate-50'
+                      : 'bg-white/90 text-[#334155] border border-[#D2DEEE] hover:bg-white'
                   }`}
                 >
                   {cat.label}
@@ -448,19 +449,19 @@ export const WhatWeDoPage: React.FC = () => {
           </div>
 
           {/* Capabilities Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
             {filteredCapabilities.map((srv) => {
               const Icon = srv.icon;
               return (
                 <div
                   key={srv.id}
-                  className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E4E7EC] hover:border-[#1769E0]/40 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
+                  className="p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white via-[#F7FAFD] to-[#EDF3FB] border border-[#D2DEEE] hover:border-[#1769E0]/50 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     {/* Header Row */}
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-[#1769E0] flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-[#1769E0] flex items-center justify-center shrink-0 border border-blue-200/50">
                           <Icon className="w-5 h-5" />
                         </div>
                         <div>
@@ -468,7 +469,7 @@ export const WhatWeDoPage: React.FC = () => {
                           <div className="text-[11px] font-semibold text-[#1769E0]">{srv.highlightMetric}</div>
                         </div>
                       </div>
-                      <span className="px-2 py-0.5 rounded-md text-[9.5px] font-bold uppercase bg-slate-100 text-slate-700">
+                      <span className="px-2 py-0.5 rounded-md text-[9.5px] font-bold uppercase bg-blue-50 text-blue-700 border border-blue-200">
                         {srv.badge}
                       </span>
                     </div>
@@ -478,8 +479,8 @@ export const WhatWeDoPage: React.FC = () => {
                     </p>
 
                     {/* Deliverables List */}
-                    <div className="space-y-1.5 mb-4 bg-[#F7F9FC] p-3 rounded-xl border border-slate-100">
-                      <div className="text-[10.5px] font-bold uppercase tracking-wider text-slate-500">Core Deliverables & Specs</div>
+                    <div className="space-y-1.5 mb-4 bg-[#E5EEF9]/70 p-3 rounded-xl border border-[#D2DEEE]">
+                      <div className="text-[10.5px] font-bold uppercase tracking-wider text-slate-600">Core Deliverables & Specs</div>
                       <ul className="space-y-1 text-xs text-slate-700 font-medium">
                         {srv.deliverables.map((item, idx) => (
                           <li key={idx} className="flex items-center gap-2">
@@ -492,10 +493,10 @@ export const WhatWeDoPage: React.FC = () => {
 
                     {/* Tech Stack Pills */}
                     <div className="mb-4">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Stack & Frameworks</div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Stack & Frameworks</div>
                       <div className="flex flex-wrap gap-1.5">
                         {srv.techStack.map((tech, idx) => (
-                          <span key={idx} className="px-2 py-0.5 rounded text-[10.5px] font-mono font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                          <span key={idx} className="px-2 py-0.5 rounded text-[10.5px] font-mono font-medium bg-white text-slate-700 border border-[#D2DEEE]">
                             {tech}
                           </span>
                         ))}
@@ -504,7 +505,7 @@ export const WhatWeDoPage: React.FC = () => {
                   </div>
 
                   {/* Actions Row */}
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <div className="pt-3 border-t border-[#D2DEEE] flex items-center justify-between">
                     <Link
                       to={srv.link}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1769E0] hover:text-[#0B1B3A] transition-colors group"
@@ -515,7 +516,7 @@ export const WhatWeDoPage: React.FC = () => {
 
                     <Link
                       to={`/start-a-project?service=${encodeURIComponent(srv.title)}`}
-                      className="text-xs text-slate-500 hover:text-slate-900 font-semibold"
+                      className="text-xs text-slate-600 hover:text-slate-900 font-semibold"
                     >
                       Build This →
                     </Link>
@@ -529,8 +530,8 @@ export const WhatWeDoPage: React.FC = () => {
       </section>
 
       {/* 3. Interactive Technology Matrix Section */}
-      <section className="py-10 sm:py-12 bg-white border-y border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F2EDFB] to-[#EAF2FB] border-y border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
           <div className="text-center max-w-2xl mx-auto mb-6 space-y-1.5">
             <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1769E0] uppercase tracking-wider">
@@ -540,7 +541,7 @@ export const WhatWeDoPage: React.FC = () => {
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B1B3A]">
               Battle-Tested Technologies We Rely On
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-600">
               Selected specifically for extreme speed, developer velocity, type safety, and multi-tenant reliability.
             </p>
 
@@ -553,7 +554,7 @@ export const WhatWeDoPage: React.FC = () => {
                   className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     techFilter === cat
                       ? 'bg-[#0B1B3A] text-white'
-                      : 'bg-[#F7F9FC] text-slate-600 hover:bg-slate-100 border border-slate-200'
+                      : 'bg-white/90 text-slate-600 hover:bg-white border border-[#D2DEEE]'
                   }`}
                 >
                   {cat}
@@ -565,7 +566,7 @@ export const WhatWeDoPage: React.FC = () => {
           {/* Matrix Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {filteredTech.map((tech, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-[#F7F9FC] border border-[#E4E7EC] hover:border-[#1769E0]/40 transition-all flex flex-col justify-between">
+              <div key={idx} className="p-3.5 rounded-xl bg-white/90 border border-[#D2DEEE] hover:border-[#1769E0]/50 transition-all flex flex-col justify-between shadow-xs">
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-xs font-bold text-[#0B1B3A]">{tech.name}</span>
@@ -573,9 +574,9 @@ export const WhatWeDoPage: React.FC = () => {
                       {tech.level}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-snug">{tech.desc}</p>
+                  <p className="text-[11px] text-slate-600 leading-snug">{tech.desc}</p>
                 </div>
-                <div className="mt-2 text-[9.5px] font-bold text-slate-400 uppercase tracking-wider">{tech.category}</div>
+                <div className="mt-2 text-[9.5px] font-bold text-slate-500 uppercase tracking-wider">{tech.category}</div>
               </div>
             ))}
           </div>
@@ -584,22 +585,22 @@ export const WhatWeDoPage: React.FC = () => {
       </section>
 
       {/* 4. Engineering Standards & Code Quality Rigor */}
-      <section className="py-10 sm:py-14 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
-          <div className="text-center max-w-2xl mx-auto mb-8 space-y-1.5">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8 space-y-1.5">
             <Badge variant="blue">ENGINEERING STANDARDS</Badge>
             <h2 className="text-2xl font-extrabold text-[#0B1B3A]">
               What Sets Pravaah Engineering Apart
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-[#556987]">
               We enforce strict engineering disciplines across every commit, avoiding technical debt.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             
-            <div className="p-5 rounded-2xl bg-white border border-[#E4E7EC] space-y-2 shadow-xs">
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] space-y-2 shadow-xs">
               <div className="w-8 h-8 rounded-lg bg-blue-100 text-[#1769E0] flex items-center justify-center font-bold">
                 1
               </div>
@@ -609,7 +610,7 @@ export const WhatWeDoPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-[#E4E7EC] space-y-2 shadow-xs">
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] space-y-2 shadow-xs">
               <div className="w-8 h-8 rounded-lg bg-purple-100 text-[#6C3FE8] flex items-center justify-center font-bold">
                 2
               </div>
@@ -619,7 +620,7 @@ export const WhatWeDoPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-[#E4E7EC] space-y-2 shadow-xs">
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] space-y-2 shadow-xs">
               <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
                 3
               </div>
@@ -629,7 +630,7 @@ export const WhatWeDoPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-[#E4E7EC] space-y-2 shadow-xs">
+            <div className="p-5 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] space-y-2 shadow-xs">
               <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
                 4
               </div>
@@ -644,9 +645,9 @@ export const WhatWeDoPage: React.FC = () => {
       </section>
 
       {/* 5. 5-Stage Engineering Lifecycle */}
-      <section className="py-10 sm:py-12 bg-white border-y border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-8 space-y-1">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F2EDFB] to-[#EAF2FB] border-y border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8 space-y-1">
             <h2 className="text-xl font-bold text-[#0B1B3A]">Our 5-Stage Technical Lifecycle</h2>
             <p className="text-xs text-slate-600">From initial system design to continuous SLA cloud support.</p>
           </div>
@@ -659,7 +660,7 @@ export const WhatWeDoPage: React.FC = () => {
               { step: '04', title: 'Pen-Testing & QA', desc: 'Automated test suites, security vulnerability scan, and load testing.' },
               { step: '05', title: 'CI/CD & Cloud SLA', desc: 'Zero-downtime deployment, continuous telemetry, and 99.9% uptime maintenance.' },
             ].map((st, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-[#F7F9FC] border border-[#E4E7EC] space-y-1">
+              <div key={idx} className="p-4 rounded-xl bg-white/90 border border-[#D2DEEE] space-y-1 shadow-xs">
                 <div className="text-xs font-mono font-extrabold text-[#1769E0]">{st.step}</div>
                 <h3 className="text-xs font-bold text-[#0B1B3A]">{st.title}</h3>
                 <p className="text-[11px] text-slate-600 leading-relaxed">{st.desc}</p>
@@ -670,9 +671,9 @@ export const WhatWeDoPage: React.FC = () => {
       </section>
 
       {/* 6. Technical Delivery FAQs */}
-      <section className="py-10 sm:py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-8 space-y-1">
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8 space-y-1">
             <h2 className="text-xl font-bold text-[#0B1B3A]">Frequently Asked Technical Questions</h2>
             <p className="text-xs text-slate-600">Everything you need to know about our engineering and delivery model.</p>
           </div>
@@ -683,7 +684,7 @@ export const WhatWeDoPage: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="rounded-xl bg-white border border-[#E4E7EC] overflow-hidden transition-all shadow-xs"
+                  className="rounded-xl bg-gradient-to-b from-white to-[#F6F9FD] border border-[#D2DEEE] overflow-hidden transition-all shadow-xs"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
@@ -693,7 +694,7 @@ export const WhatWeDoPage: React.FC = () => {
                     <ChevronRight className={`w-4 h-4 text-slate-400 transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-90 text-[#1769E0]' : ''}`} />
                   </button>
                   {isOpen && (
-                    <div className="px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3 bg-[#F7F9FC]">
+                    <div className="px-5 pb-4 text-xs text-slate-600 leading-relaxed border-t border-[#D2DEEE] pt-3 bg-[#E5EEF9]/50">
                       {faq.a}
                     </div>
                   )}

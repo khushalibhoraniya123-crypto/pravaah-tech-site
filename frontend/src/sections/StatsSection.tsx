@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Smile, Layers, Award } from 'lucide-react';
 import { getStatsData } from '../data/stats';
-import type { StatItem } from '../types';
+import type { StatItem } from '../services/types';
 
 const STATS_ICON_MAP: Record<string, React.ElementType> = {
   CheckCircle2,
@@ -60,12 +60,12 @@ export const StatsSection: React.FC = () => {
   const stats = getStatsData();
 
   return (
-    <section className="py-10 sm:py-12 md:py-14 bg-gradient-to-r from-[#07152F] via-[#0B1B3A] to-[#07152F] text-white relative overflow-hidden">
+    <section className="py-8 sm:py-9 md:py-10 bg-gradient-to-r from-[#07152F] via-[#0B1B3A] to-[#07152F] text-white relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-[#6C3FE8]/15 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat: StatItem, idx: number) => {
             const Icon = STATS_ICON_MAP[stat.iconName] || CheckCircle2;

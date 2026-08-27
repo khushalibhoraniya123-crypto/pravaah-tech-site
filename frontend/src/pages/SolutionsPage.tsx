@@ -210,15 +210,17 @@ export const SolutionsPage: React.FC = () => {
     : ALL_SOLUTIONS.filter((s) => s.category === activeCategory);
 
   return (
-    <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
+    <div className="pt-16 sm:pt-20 min-h-screen bg-transparent">
       
       {/* 1. Hero Section */}
       <section className="relative py-8 sm:py-10 overflow-hidden bg-gradient-to-b from-[#06132D] via-[#081A3A] to-[#06132D] text-white border-b border-white/10">
-        {/* Particle background */}
+        {/* Particle background & Brand lighting */}
         <ParticleBackground />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6C3FE8]/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-3xl mx-auto space-y-2.5">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 text-center">
+          <div className="max-w-4xl mx-auto space-y-2.5">
             
             <div className="flex justify-center mb-1">
               <Breadcrumbs items={[{ label: 'Solutions' }]} className="text-slate-400" />
@@ -260,8 +262,8 @@ export const SolutionsPage: React.FC = () => {
       </section>
 
       {/* 2. Core Business Solutions by Goal */}
-      <section className="py-8 sm:py-10 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
           {/* Section Title & Filter Tabs */}
           <div className="text-center max-w-2xl mx-auto mb-6 space-y-1.5">
@@ -284,7 +286,7 @@ export const SolutionsPage: React.FC = () => {
                   className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     activeCategory === tab.id
                       ? 'bg-[#1769E0] text-white shadow-xs'
-                      : 'bg-white text-slate-700 border border-[#E4E7EC] hover:bg-slate-50'
+                      : 'bg-white/90 text-slate-700 border border-[#D2DEEE] hover:bg-white'
                   }`}
                 >
                   {tab.label}
@@ -300,15 +302,15 @@ export const SolutionsPage: React.FC = () => {
               return (
                 <div
                   key={sol.id}
-                  className="p-4 sm:p-5 rounded-2xl bg-white border border-[#E4E7EC] hover:border-[#1769E0]/40 hover:shadow-medium transition-all duration-200 flex flex-col justify-between"
+                  className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-white via-[#F7FAFD] to-[#EDF3FB] border border-[#D2DEEE] hover:border-[#1769E0]/50 hover:shadow-medium transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     {/* Header: Icon + Badge */}
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-[#1769E0] shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-200/60 flex items-center justify-center text-[#1769E0] shrink-0">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-bold text-[#1769E0] bg-blue-50 px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] font-bold text-[#1769E0] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
                         {sol.badge}
                       </span>
                     </div>
@@ -322,7 +324,7 @@ export const SolutionsPage: React.FC = () => {
                     </p>
 
                     {/* Max 3 Capabilities */}
-                    <div className="space-y-1.5 mb-3 pt-2 border-t border-slate-100">
+                    <div className="space-y-1.5 mb-3 pt-2 border-t border-[#D2DEEE]">
                       {sol.capabilities.slice(0, 3).map((cap, idx) => (
                         <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-700">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
@@ -334,7 +336,7 @@ export const SolutionsPage: React.FC = () => {
 
                   <div>
                     {/* 1-Line Compact Highlight */}
-                    <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 text-[11px] font-semibold text-slate-700 mb-3 truncate">
+                    <div className="p-2 rounded-lg bg-[#E5EEF9]/70 border border-[#D2DEEE] text-[11px] font-semibold text-slate-700 mb-3 truncate">
                       {sol.highlight}
                     </div>
 
@@ -356,8 +358,8 @@ export const SolutionsPage: React.FC = () => {
       </section>
 
       {/* 3. Technology Solutions Section */}
-      <section className="py-10 sm:py-12 bg-white border-y border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F2EDFB] to-[#EAF2FB] border-y border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-8 space-y-1.5">
@@ -379,12 +381,12 @@ export const SolutionsPage: React.FC = () => {
               return (
                 <div
                   key={card.id}
-                  className="p-5 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] hover:border-[#1769E0]/50 hover:shadow-medium hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group"
+                  className="p-5 rounded-2xl bg-gradient-to-b from-white to-[#F6F9FD] border border-[#D2DEEE] hover:border-[#1769E0]/50 hover:shadow-medium hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group shadow-xs"
                 >
                   <div>
                     {/* Top Row: Icon + Badge */}
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/90 text-[#1769E0] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-[#1769E0] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                         <Icon className="w-5 h-5" />
                       </div>
                       <span className="text-[10.5px] font-semibold text-slate-600 bg-white px-2.5 py-0.5 rounded-full border border-slate-200">
@@ -401,7 +403,7 @@ export const SolutionsPage: React.FC = () => {
                     </p>
 
                     {/* Key Highlights */}
-                    <div className="space-y-1.5 mb-4 pt-2.5 border-t border-slate-200/80">
+                    <div className="space-y-1.5 mb-4 pt-2.5 border-t border-[#D2DEEE]">
                       {card.highlights.map((item, idx) => (
                         <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-700">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
@@ -430,8 +432,8 @@ export const SolutionsPage: React.FC = () => {
       </section>
 
       {/* 4. Strategic Comparison: Custom Solutions vs Generic SaaS */}
-      <section className="py-8 sm:py-10 bg-[#F7F9FC]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
           <div className="text-center max-w-2xl mx-auto mb-6 space-y-1">
             <span className="text-[11px] font-bold text-[#1769E0] uppercase tracking-wider">
@@ -445,7 +447,7 @@ export const SolutionsPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white border border-[#E4E7EC] overflow-hidden shadow-soft">
+          <div className="rounded-2xl bg-gradient-to-b from-white to-[#F7FAFD] border border-[#D2DEEE] overflow-hidden shadow-soft">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
                 <tr className="bg-[#06132D] text-white text-[11px] uppercase tracking-wider">
@@ -454,7 +456,7 @@ export const SolutionsPage: React.FC = () => {
                   <th className="p-3.5 font-bold text-emerald-400 bg-[#07152F]">Pravaah Custom Software</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tbody className="divide-y divide-[#D2DEEE] text-slate-700">
                 <tr>
                   <td className="p-3.5 font-semibold text-[#0B1B3A]">Monthly Per-User Fees</td>
                   <td className="p-3.5 text-rose-600 bg-rose-50/20">$30–$150 per staff member / month</td>
@@ -483,8 +485,8 @@ export const SolutionsPage: React.FC = () => {
       </section>
 
       {/* 5. 4-Step Roadmap */}
-      <section className="py-8 sm:py-10 bg-white border-t border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 bg-gradient-to-b from-[#EBF2FA] via-[#F2EDFB] to-[#EAF2FB] border-t border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
           <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
             <span className="text-[11px] font-bold text-[#1769E0] uppercase tracking-wider">
@@ -505,7 +507,7 @@ export const SolutionsPage: React.FC = () => {
               { phase: 'Step 03', title: 'Coding & Testing', desc: 'We write clean code and test features across browsers and mobile screens.' },
               { phase: 'Step 04', title: 'Launch & Support', desc: 'We deploy to your live domain and provide ongoing maintenance support.' },
             ].map((st, idx) => (
-              <div key={idx} className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] space-y-1">
+              <div key={idx} className="p-4 rounded-2xl bg-white/90 border border-[#D2DEEE] space-y-1 shadow-xs">
                 <span className="text-[11px] font-mono font-bold text-[#1769E0] uppercase">{st.phase}</span>
                 <h3 className="text-sm font-bold text-[#0B1B3A]">{st.title}</h3>
                 <p className="text-xs text-slate-600 leading-snug">{st.desc}</p>

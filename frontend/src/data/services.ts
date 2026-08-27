@@ -1,4 +1,4 @@
-import type { ServiceItem } from '../types';
+import type { ServiceItem } from '../services/types';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {

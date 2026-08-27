@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { 
   Sparkles, 
@@ -45,39 +45,46 @@ export const StartProjectPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const { showToast } = useToast();
 
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedServices, setSelectedServices] = useState<string[]>(() => {
+    const solution = searchParams.get('solution');
+    const serviceParam = searchParams.get('service');
+    const initial: string[] = [];
+    if (solution) initial.push('industry');
+    if (serviceParam) {
+      const match = SERVICE_OPTIONS.find(
+        (s) => s.label.toLowerCase() === serviceParam.toLowerCase() || s.id.toLowerCase() === serviceParam.toLowerCase()
+      );
+      if (match) initial.push(match.id);
+      else initial.push('web');
+    } else if (!solution) {
+      initial.push('web');
+    }
+    return Array.from(new Set(initial));
+  });
+
   const [selectedBudget, setSelectedBudget] = useState<string>('$5,000 - $15,000');
   const [selectedTimeline, setSelectedTimeline] = useState<string>('1-2 Months');
   
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
+  const [formData, setFormData] = useState(() => {
+    const solution = searchParams.get('solution');
+    const reference = searchParams.get('reference');
+    let message = '';
+    if (solution) {
+      message = `Interested in deploying industry solution: ${solution}`;
+    } else if (reference) {
+      message = `Looking to build a system similar to case study: ${reference}`;
+    }
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      message,
+    };
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Pre-select service or solution from URL parameters if present
-  useEffect(() => {
-    const solution = searchParams.get('solution');
-    const reference = searchParams.get('reference');
-    if (solution) {
-      setSelectedServices((prev) => Array.from(new Set([...prev, 'industry'])));
-      setFormData((prev) => ({
-        ...prev,
-        message: `Interested in deploying industry solution: ${solution}`,
-      }));
-    }
-    if (reference) {
-      setFormData((prev) => ({
-        ...prev,
-        message: `Looking to build a system similar to case study: ${reference}`,
-      }));
-    }
-  }, [searchParams]);
 
   const toggleService = (id: string) => {
     setSelectedServices((prev) => 
@@ -127,14 +134,14 @@ export const StartProjectPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
+    <div className="pt-16 sm:pt-20 min-h-screen bg-transparent">
       
       {/* Hero Header */}
-      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-white via-[#F7F9FC] to-[#F7F9FC] border-b border-[#E4E7EC] text-center">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-blue-500/15 via-purple-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-6 sm:py-8 md:py-10 overflow-hidden bg-gradient-to-b from-[#EBF2FA] via-[#F0EEFB] to-transparent border-b border-[#D2DEEE] text-center">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-[#1769E0]/15 via-[#6C3FE8]/12 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+          <div className="max-w-4xl mx-auto">
             <div className="flex justify-center mb-3">
               <Breadcrumbs items={[{ label: 'Start a Project' }]} />
             </div>
@@ -157,11 +164,11 @@ export const StartProjectPage: React.FC = () => {
       </section>
 
       {/* Main Intake Form Section */}
-      <section className="py-8 sm:py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-8 md:py-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {isSubmitted ? (
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E4E7EC] shadow-elevated text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
+            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white via-[#F7FAFD] to-[#EDF3FB] border border-[#D2DEEE] shadow-elevated text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
               <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
@@ -190,7 +197,7 @@ export const StartProjectPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="p-5 sm:p-8 rounded-3xl bg-white border border-[#E4E7EC] shadow-elevated space-y-6">
+            <form onSubmit={handleSubmit} className="p-5 sm:p-8 rounded-3xl bg-gradient-to-b from-white via-[#F7FAFD] to-[#EDF3FB] border border-[#D2DEEE] shadow-elevated space-y-6">
               
               {/* Step 1: Select Services */}
               <div className="space-y-3">

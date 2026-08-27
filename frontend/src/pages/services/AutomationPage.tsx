@@ -55,13 +55,13 @@ export const AutomationPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
+    <div className="pt-16 sm:pt-20 min-h-screen bg-transparent">
       
       {/* Hero Section */}
-      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-white via-[#F7F9FC] to-[#F7F9FC] border-b border-[#E4E7EC]">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-amber-400/15 via-blue-400/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-white/80 via-[#F8FAFD]/90 to-transparent border-b border-[#E8EDF5]">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-[#6C3FE8]/15 via-[#1769E0]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <Breadcrumbs 
             items={[
               { label: 'What We Do', href: '/what-we-do' },
@@ -153,23 +153,23 @@ export const AutomationPage: React.FC = () => {
       </section>
 
       {/* Capabilities */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1B3A]">
               Intelligent Automation Solutions
             </h2>
-            <p className="mt-1 text-xs sm:text-sm text-slate-600">
+            <p className="mt-1 text-xs sm:text-sm text-[#556987]">
               Transform slow manual procedures into rapid, deterministic background workflows.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {automationCapabilities.map((cap, idx) => {
               const Icon = cap.icon;
               return (
-                <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E4E7EC] hover:shadow-elevated transition-all flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
+                <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] hover:border-amber-500/50 hover:shadow-elevated transition-all flex gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200/50">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -184,11 +184,11 @@ export const AutomationPage: React.FC = () => {
       </section>
 
       {/* Benefits Metrics */}
-      <section className="py-10 sm:py-12 bg-white border-y border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F2EDFB] to-[#EAF2FB] border-y border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {automationBenefits.map((ben, idx) => (
-              <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] text-center md:text-left">
+              <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-white/90 border border-[#D2DEEE] text-center md:text-left shadow-xs">
                 <div className="text-3xl font-extrabold text-amber-600 mb-1">{ben.metric}</div>
                 <h3 className="text-sm font-bold text-[#0B1B3A] mb-1">{ben.label}</h3>
                 <p className="text-xs text-slate-600 leading-relaxed">{ben.desc}</p>

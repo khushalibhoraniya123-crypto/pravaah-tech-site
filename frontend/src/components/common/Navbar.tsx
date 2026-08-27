@@ -66,11 +66,11 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-xs border-b border-[#E4E7EC]/80 py-2 sm:py-2.5'
-          : 'bg-white/85 backdrop-blur-md border-b border-[#E4E7EC]/40 py-2.5 sm:py-3.5'
+          ? 'bg-[#EBF2FA]/95 backdrop-blur-md shadow-xs border-b border-[#D2DEEE] py-2 sm:py-2.5'
+          : 'bg-[#EBF2FA]/85 backdrop-blur-md border-b border-[#D2DEEE]/60 py-2.5 sm:py-3.5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between">
           
           {/* 1. Official Pravaah Logo */}

@@ -66,13 +66,13 @@ export const WebDevelopmentPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
+    <div className="pt-16 sm:pt-20 min-h-screen bg-transparent">
       
       {/* Hero Section */}
-      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-white via-[#F7F9FC] to-[#F7F9FC] border-b border-[#E4E7EC]">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-blue-400/15 via-purple-400/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-white/80 via-[#F8FAFD]/90 to-transparent border-b border-[#E8EDF5]">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-[#1769E0]/10 via-[#6C3FE8]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <Breadcrumbs 
             items={[
               { label: 'What We Do', href: '/what-we-do' },
@@ -160,23 +160,23 @@ export const WebDevelopmentPage: React.FC = () => {
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1B3A]">
               Full-Spectrum Web Capabilities
             </h2>
-            <p className="mt-1 text-xs sm:text-sm text-slate-600">
+            <p className="mt-1 text-xs sm:text-sm text-[#556987]">
               Tailored architecture and modern engineering for ambitious startups to large enterprises.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {capabilities.map((cap, idx) => {
               const Icon = cap.icon;
               return (
-                <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E4E7EC] hover:shadow-elevated transition-all flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-[#1769E0] flex items-center justify-center shrink-0">
+                <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white to-[#F5F8FD] border border-[#D2DEEE] hover:border-[#1769E0]/50 hover:shadow-elevated transition-all flex gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-[#1769E0] flex items-center justify-center shrink-0 border border-blue-200/50">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -191,13 +191,13 @@ export const WebDevelopmentPage: React.FC = () => {
       </section>
 
       {/* Key Benefits Grid */}
-      <section className="py-10 sm:py-12 bg-white border-y border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F2EDFB] to-[#EAF2FB] border-y border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
             {features.map((feat, idx) => {
               const Icon = feat.icon;
               return (
-                <div key={idx} className="p-5 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC]">
+                <div key={idx} className="p-5 rounded-2xl bg-white/90 border border-[#D2DEEE] shadow-xs">
                   <div className="w-9 h-9 rounded-xl bg-[#1769E0] text-white flex items-center justify-center mb-3 shadow-xs">
                     <Icon className="w-4 h-4" />
                   </div>
@@ -211,12 +211,12 @@ export const WebDevelopmentPage: React.FC = () => {
       </section>
 
       {/* Technologies Used */}
-      <section className="py-10 sm:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-xl font-bold text-[#0B1B3A] mb-6">Technologies We Rely On</h2>
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
+          <h2 className="text-xl font-bold text-[#0B1B3A] mb-5">Technologies We Rely On</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {techStack.map((tech, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-white border border-[#E4E7EC] shadow-xs text-center">
+              <div key={idx} className="p-3.5 rounded-xl bg-gradient-to-b from-white to-[#F6F9FD] border border-[#D2DEEE] shadow-xs text-center">
                 <div className="text-xs sm:text-sm font-bold text-[#0B1B3A]">{tech.name}</div>
                 <div className="text-[10px] text-slate-500 mt-0.5">{tech.category}</div>
               </div>
@@ -226,8 +226,8 @@ export const WebDevelopmentPage: React.FC = () => {
       </section>
 
       {/* Case Studies Teaser */}
-      <section className="py-10 sm:py-12 bg-white border-t border-[#E4E7EC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F0EEFB] to-[#EBF3FB] border-t border-[#D2DEEE]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-xl font-extrabold text-[#0B1B3A]">Featured Web Projects</h2>
@@ -240,7 +240,7 @@ export const WebDevelopmentPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            <div className="p-5 rounded-2xl bg-[#F7F9FC] border border-[#E4E7EC] flex flex-col justify-between">
+            <div className="p-5 rounded-2xl bg-white/90 border border-[#D2DEEE] flex flex-col justify-between shadow-xs">
               <div>
                 <div className="text-[11px] font-bold text-[#1769E0] uppercase mb-1">E-Commerce</div>
                 <h3 className="text-base font-bold text-[#0B1B3A] mb-1.5">Aura Luxe Marketplace</h3>

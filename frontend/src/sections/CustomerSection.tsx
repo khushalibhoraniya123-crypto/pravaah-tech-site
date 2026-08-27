@@ -56,20 +56,20 @@ const CUSTOMER_TESTIMONIALS: CustomerTestimonial[] = [
 
 export const CustomerSection: React.FC = () => {
   return (
-    <section id="customers" className="py-12 sm:py-14 md:py-16 bg-white border-y border-[#E4E7EC] relative overflow-hidden">
-      {/* Subtle ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="customers" className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#EBF2FA] via-[#F1EDFB] to-[#EAF2FB] border-t border-[#D2DEEE] relative overflow-hidden">
+      {/* Subtle brand ambient lighting */}
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#6C3FE8]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1.5 sm:space-y-2">
           <Badge variant="blue">CUSTOMER SUCCESS STORIES</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1B3A] tracking-tight">
             Trusted by Leaders Who Value <span className="gradient-text-blue-purple">Performance & ROI</span>
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-[#667085] leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-[#556987] leading-relaxed">
             Read how Pravaah Technologies has partnered with founders, CTOs, and enterprises to deliver high-impact digital solutions.
           </p>
         </div>
@@ -79,7 +79,7 @@ export const CustomerSection: React.FC = () => {
           {CUSTOMER_TESTIMONIALS.map((cust, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-[#F7F9FC] border border-[#E4E7EC] hover:border-[#1769E0]/40 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
+              className="p-6 rounded-3xl bg-gradient-to-b from-white via-[#F7FAFD] to-[#EDF3FB] border border-[#D2DEEE] hover:border-[#1769E0]/50 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Top Row: Stars & Quote Icon */}
@@ -89,7 +89,7 @@ export const CustomerSection: React.FC = () => {
                       <Star key={i} className="w-4 h-4 fill-amber-400" />
                     ))}
                   </div>
-                  <Quote className="w-6 h-6 text-[#1769E0]/20" />
+                  <Quote className="w-6 h-6 text-[#1769E0]/30" />
                 </div>
 
                 {/* Testimonial Quote */}
@@ -100,19 +100,19 @@ export const CustomerSection: React.FC = () => {
 
               <div>
                 {/* Key Outcome Highlight Banner */}
-                <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 mb-4 flex items-center justify-between">
+                <div className="p-2.5 rounded-xl bg-white/90 border border-[#D2DEEE] mb-4 flex items-center justify-between shadow-xs">
                   <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Impact:</span>
                   <span className="text-xs font-extrabold text-[#1769E0]">{cust.keyOutcome}</span>
                 </div>
 
                 {/* Customer Profile Row */}
-                <div className="pt-3 border-t border-slate-200/80 flex items-center gap-3">
+                <div className="pt-3 border-t border-[#D2DEEE] flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-full bg-gradient-to-tr ${cust.avatarBg} text-white font-bold text-xs flex items-center justify-center shadow-xs shrink-0`}>
                     {cust.avatarText}
                   </div>
                   <div className="min-w-0">
                     <div className="text-sm font-bold text-[#0B1B3A] truncate">{cust.name}</div>
-                    <div className="text-[11px] text-[#667085] truncate">{cust.role} • <strong className="text-slate-700">{cust.company}</strong></div>
+                    <div className="text-[11px] text-[#556987] truncate">{cust.role} • <strong className="text-slate-800">{cust.company}</strong></div>
                   </div>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export const CustomerSection: React.FC = () => {
         </div>
 
         {/* Customer Trust Strip */}
-        <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-slate-600">
+        <div className="mt-8 pt-6 border-t border-[#D2DEEE] flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-slate-600">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
             <span>99% Client Satisfaction</span>

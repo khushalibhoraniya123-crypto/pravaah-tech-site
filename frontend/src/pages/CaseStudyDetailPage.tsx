@@ -25,35 +25,35 @@ export const CaseStudyDetailPage: React.FC = () => {
     <div className="pt-16 sm:pt-20 min-h-screen bg-[#F7F9FC]">
       
       {/* Hero Banner */}
-      <section className={`py-12 sm:py-16 bg-gradient-to-r ${caseStudy.heroImageGradient} text-white relative overflow-hidden`}>
+      <section className={`py-8 sm:py-10 md:py-12 bg-gradient-to-r ${caseStudy.heroImageGradient} text-white relative overflow-hidden`}>
         {/* Particle background */}
         <ParticleBackground />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white mb-4 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white mb-3 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back</span>
           </button>
 
-          <div className="space-y-3 max-w-3xl">
+          <div className="space-y-2.5 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
               <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" />
               <span>{caseStudy.category}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
               {caseStudy.title}
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl">
               {caseStudy.tagline}
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-300">
+            <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-300">
               <div className="flex items-center gap-1.5">
                 <Building2 className="w-4 h-4 text-[#38BDF8]" />
                 <span>Client: <strong>{caseStudy.client}</strong></span>
@@ -70,8 +70,8 @@ export const CaseStudyDetailPage: React.FC = () => {
       </section>
 
       {/* Main Content Body */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 space-y-6">
           
           {/* 1. Quantified Metrics Highlights */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-3xl bg-white border border-[#E4E7EC] shadow-soft">

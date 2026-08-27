@@ -1,4 +1,4 @@
-import type { StatItem } from '../types';
+import type { StatItem } from '../services/types';
 
 export const getStatsData = (): StatItem[] => [
   {

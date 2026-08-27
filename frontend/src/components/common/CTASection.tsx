@@ -34,7 +34,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   className = '',
 }) => {
   return (
-    <section className={`relative py-10 sm:py-14 overflow-hidden bg-gradient-to-b from-[#07152F] via-[#06132D] to-[#040C1D] text-white ${className}`}>
+    <section className={`relative py-8 sm:py-10 md:py-12 overflow-hidden bg-gradient-to-b from-[#07152F] via-[#06132D] to-[#040C1D] text-white ${className}`}>
       {/* Particle background */}
       <ParticleBackground />
 
@@ -42,7 +42,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#1769E0]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#6638E8]/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold uppercase tracking-wider text-[#38BDF8] mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" />

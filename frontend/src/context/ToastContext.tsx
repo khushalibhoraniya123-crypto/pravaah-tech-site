@@ -17,21 +17,24 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
+let toastCounter = 0;
+
 export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
 
+  const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
   const showToast = (title: string, message: string, type: ToastType = 'success') => {
-    const id = Date.now().toString();
+    toastCounter += 1;
+    const id = `toast-${toastCounter}-${Date.now()}`;
     const newToast: ToastItem = { id, type, title, message };
     setToasts((prev) => [...prev, newToast]);
 
     setTimeout(() => {
       removeToast(id);
     }, 5000);
-  };
-
-  const removeToast = (id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
   return (
@@ -83,6 +86,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useToast = () => {
   const context = useContext(ToastContext);
   if (!context) {
