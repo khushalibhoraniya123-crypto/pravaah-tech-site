@@ -1,20 +1,13 @@
 {
   "name": "pravaah_technology",
   "version": "1.0.0",
-  "description": "Pravaah Technology - Modern Technology Agency Website with Nodemailer Backend",
+  "description": "Pravaah Technology - Modern Technology Agency Website (Frontend)",
   "scripts": {
-    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"blue,cyan\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
-    "dev:backend": "npm run dev --prefix backend",
-    "dev:frontend": "npm run dev --prefix frontend",
-    "build": "npm run build --prefix backend && npm run build --prefix frontend",
-    "build:backend": "npm run build --prefix backend",
-    "build:frontend": "npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "preview": "npm run preview --prefix frontend"
   },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
-  },
-  "keywords": ["react", "vite", "typescript", "nodemailer", "express", "technology-agency", "pravaah-technology"],
+  "keywords": ["react", "vite", "typescript", "technology-agency", "pravaah-technology"],
   "author": "Pravaah Technology",
   "license": "ISC"
 }
