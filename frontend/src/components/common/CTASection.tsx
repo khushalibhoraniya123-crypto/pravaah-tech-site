@@ -76,7 +76,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
             <Button
               variant="glass"
               size="md"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold"
+              className="w-full sm:w-auto px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold border border-white/35 hover:border-[#00D2FF] text-white bg-white/10 hover:bg-gradient-to-r hover:from-[#1769E0]/30 hover:to-[#6C3FE8]/30 hover:shadow-glow-blue transition-all"
             >
               {secondaryButtonText}
             </Button>

@@ -34,15 +34,15 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      'bg-gradient-to-r from-[#1769E0] to-[#6C3FE8] text-white hover:shadow-glow-blue hover:brightness-105 focus:ring-[#1769E0]',
+      'bg-gradient-to-r from-[#1769E0] via-[#4D55E8] to-[#6C3FE8] text-white hover:shadow-glow-blue hover:brightness-105 focus:ring-[#1769E0]',
     secondary:
-      'bg-[#0B1B3A] text-white hover:bg-[#07152F] hover:shadow-medium focus:ring-[#0B1B3A]',
+      'bg-[#0B1B3A] text-white hover:bg-[#1769E0] hover:shadow-medium focus:ring-[#0B1B3A]',
     outline:
-      'border border-[#E4E7EC] bg-white text-[#0B1B3A] hover:bg-[#F7F9FC] hover:border-[#CBD5E1] focus:ring-[#1769E0]',
+      'border-2 border-[#1769E0]/35 bg-white text-[#1769E0] hover:bg-[#1769E0] hover:text-white hover:border-[#1769E0] hover:shadow-glow-blue shadow-xs focus:ring-[#1769E0]',
     glass:
-      'bg-white/80 backdrop-blur-md border border-[#E4E7EC] text-[#0B1B3A] hover:bg-white hover:shadow-soft focus:ring-[#1769E0]',
+      'bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-white/25 hover:border-[#00D2FF]/70 hover:shadow-glow-blue focus:ring-[#1769E0]',
     white:
-      'bg-white text-[#0B1B3A] hover:bg-[#F7F9FC] hover:shadow-medium focus:ring-white',
+      'bg-white text-[#1769E0] hover:bg-gradient-to-r hover:from-white hover:to-[#EBF2FA] hover:shadow-medium focus:ring-white border border-[#D2DEEE]',
   };
 
   return (
