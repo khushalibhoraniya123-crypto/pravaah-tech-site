@@ -4,7 +4,6 @@ import { ServicesStrip } from '../sections/ServicesStrip';
 import { ServicesSection } from '../sections/ServicesSection';
 import { SolutionsSection } from '../sections/SolutionsSection';
 import { AboutSection } from '../sections/AboutSection';
-import { ValuesSection } from '../sections/ValuesSection';
 import { StatsSection } from '../sections/StatsSection';
 import { TechSection } from '../sections/TechSection';
 import { ProcessSection } from '../sections/ProcessSection';
@@ -59,8 +58,7 @@ export const HomePage: React.FC = () => {
       {/* 4. About Us Section */}
       <AboutSection onLearnMore={() => scrollToSection('about')} />
 
-      {/* 5. Core Values & Performance Statistics */}
-      <ValuesSection />
+      {/* 5. Performance Statistics */}
       <StatsSection />
 
       {/* 6. Technology Matrix */}
