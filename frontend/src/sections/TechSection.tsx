@@ -4,10 +4,10 @@ import { TechCard } from '../components/cards/TechCard';
 import { TECH_STACK_DATA } from '../data/techStack';
 
 export const TechSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  // Default to Frontend, "All Technologies" tab removed as requested
+  const [activeCategory, setActiveCategory] = useState<string>('frontend');
 
   const categories = [
-    { id: 'all', label: 'All Technologies' },
     { id: 'frontend', label: 'Frontend' },
     { id: 'backend', label: 'Backend' },
     { id: 'database', label: 'Database' },
@@ -15,9 +15,7 @@ export const TechSection: React.FC = () => {
     { id: 'ai', label: 'AI & Automation' },
   ];
 
-  const filteredCategories = activeCategory === 'all'
-    ? TECH_STACK_DATA
-    : TECH_STACK_DATA.filter((cat) => cat.id === activeCategory);
+  const filteredCategories = TECH_STACK_DATA.filter((cat) => cat.id === activeCategory);
 
   return (
     <section id="technologies" className="py-20 md:py-28 bg-[#FFFFFF] relative overflow-hidden">
@@ -34,7 +32,7 @@ export const TechSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Category Tabs */}
+        {/* Category Tabs (Without All Technologies) */}
         <div className="flex items-center justify-center flex-wrap gap-2 mb-14">
           {categories.map((tab) => (
             <button
