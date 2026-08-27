@@ -4,8 +4,7 @@ import {
   Phone, 
   Mail, 
   MessageSquare, 
-  MapPin, 
-  ArrowUpRight
+  MapPin 
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { ParticleBackground } from './ParticleBackground';
@@ -136,33 +135,28 @@ export const Footer: React.FC = () => {
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Build</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/services/web-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
-                  <span>Web Development</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link to="/services/web-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                  Web Development
                 </Link>
               </li>
               <li>
-                <Link to="/services/ai-solutions" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
-                  <span>AI Solutions & Agents</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link to="/services/ai-solutions" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                  AI Solutions & Agents
                 </Link>
               </li>
               <li>
-                <Link to="/services/ui-ux-design" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
-                  <span>UI/UX Design Systems</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link to="/services/ui-ux-design" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                  UI/UX Design Systems
                 </Link>
               </li>
               <li>
-                <Link to="/services/software-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
-                  <span>Software Development</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link to="/services/software-development" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                  Software Development
                 </Link>
               </li>
               <li>
-                <Link to="/services/automation" className="text-slate-300 hover:text-[#38BDF8] transition-colors flex items-center gap-1 group text-left">
-                  <span>Automation & Workflows</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link to="/services/automation" className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block">
+                  Automation & Workflows
                 </Link>
               </li>
             </ul>
