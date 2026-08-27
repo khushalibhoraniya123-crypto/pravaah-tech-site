@@ -6,6 +6,9 @@ node_modules/
 # Production Builds
 dist/
 build/
+.next/
+out/
+frontend/
 *.tsbuildinfo
 
 # Environment Variables

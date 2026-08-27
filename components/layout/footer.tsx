@@ -1,0 +1,278 @@
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+import { 
+  Phone, 
+  Mail, 
+  MessageSquare, 
+  MapPin 
+} from 'lucide-react';
+import { Logo } from './logo';
+import { CONTACT_CONFIG } from '@/config/contact';
+
+const LinkedInIcon = () => (
+  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 1.66-1.66 1.66 1.66 0 0 0-3.32 0c0 .92.74 1.66 1.66 1.66m1.39 9.74v-8.37H5.07v8.37h2.78z"/>
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg className="w-4 h-4 fill-none stroke-current stroke-2 stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
+const FacebookIcon = () => (
+  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+  </svg>
+);
+
+const GitHubIcon = () => (
+  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+  </svg>
+);
+
+export const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  const scrollToSection = (targetId: string) => {
+    const element = document.getElementById(targetId);
+    if (element) {
+      const navOffset = 70;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navOffset,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <footer className="bg-[#06132D] text-white pt-12 pb-6 border-t border-[#0E2856] relative overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-8 border-b border-white/10">
+          
+          {/* Col 1: Brand & Tagline (4 cols) */}
+          <div className="lg:col-span-4 space-y-4">
+            <Logo variant="light" />
+            <p className="text-slate-300 text-sm leading-relaxed max-w-sm pt-2">
+              {CONTACT_CONFIG.tagline}
+            </p>
+            <div className="pt-2 flex items-center gap-3">
+              <a
+                href={CONTACT_CONFIG.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1769E0] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+              >
+                <LinkedInIcon />
+              </a>
+              <a
+                href={CONTACT_CONFIG.socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#E1306C] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href={CONTACT_CONFIG.socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+              >
+                <FacebookIcon />
+              </a>
+              <a
+                href={CONTACT_CONFIG.socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#333] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+              >
+                <GitHubIcon />
+              </a>
+            </div>
+          </div>
+
+          {/* Col 2: Navigation (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Navigation</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <button onClick={() => scrollToSection('home')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Home
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Services
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-[#38BDF8] font-medium transition-colors cursor-pointer">
+                  Solutions
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('process')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Our Process
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('portfolio')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('contact')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                  Contact Us
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: What We Build (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Build</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  Web Development
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  App Development
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  UI/UX Design Systems
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  Software Solutions & ERP
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  AI Solutions & Agents
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  Digital Transformation
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Contact & Office (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Get in Touch</h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a
+                  href={`tel:${CONTACT_CONFIG.phoneRaw}`}
+                  className="flex items-start gap-3 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-blue-500/10 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5 border border-blue-500/20 group-hover:bg-[#1769E0] group-hover:text-white transition-all">
+                    <Phone className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400">Call Us Directly</div>
+                    <div className="font-semibold text-white">{CONTACT_CONFIG.phone}</div>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href={`mailto:${CONTACT_CONFIG.email}`}
+                  className="flex items-start gap-3 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-purple-500/10 text-[#B59CFF] flex items-center justify-center shrink-0 mt-0.5 border border-purple-500/20 group-hover:bg-[#6638E8] group-hover:text-white transition-all">
+                    <Mail className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400">Email Inquiry</div>
+                    <div className="font-medium text-white break-all">{CONTACT_CONFIG.email}</div>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href={`https://wa.me/${CONTACT_CONFIG.whatsappRaw}?text=${encodeURIComponent(CONTACT_CONFIG.whatsappMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/20 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                    <MessageSquare className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400">WhatsApp Chat</div>
+                    <div className="font-medium text-white">{CONTACT_CONFIG.whatsapp}</div>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href={CONTACT_CONFIG.address.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open Pravaah Technology office location in Google Maps: ${CONTACT_CONFIG.address.fullFormatted}`}
+                  title="Open location in Google Maps"
+                  className="flex items-start gap-3 text-slate-300 hover:text-white transition-colors group cursor-pointer"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 border border-rose-500/20 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                    <MapPin className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors">Office Location (Maps)</div>
+                    <div className="text-xs leading-relaxed text-slate-300 group-hover:text-white transition-colors">
+                      {CONTACT_CONFIG.address.fullFormatted}
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <div>
+            <span>© {currentYear} {CONTACT_CONFIG.companyName}. All Rights Reserved.</span>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <span className="text-slate-400">Privacy Policy</span>
+            <span className="text-slate-400">Terms & Conditions</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
