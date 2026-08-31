@@ -43,8 +43,8 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Atom', 
     iconColor: '#00D2FF', 
     dotColor: '#00D2FF', 
-    x: 41, 
-    y: 20 
+    x: 32, 
+    y: 16 
   },
   // Mid-Left: Next.js
   { 
@@ -56,21 +56,8 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Globe', 
     iconColor: '#0B1B3A', 
     dotColor: '#00D2FF', 
-    x: 34, 
-    y: 44 
-  },
-  // Left-Bottom: Tailwind CSS
-  { 
-    id: 'tailwind', 
-    name: 'Tailwind CSS', 
-    category: 'frontend', 
-    categoryLabel: 'FRONTEND', 
-    categoryColor: '#00D2FF',
-    iconName: 'Palette', 
-    iconColor: '#38BDF8', 
-    dotColor: '#00D2FF', 
-    x: 31, 
-    y: 64 
+    x: 16, 
+    y: 42 
   },
   // Center-Left: JavaScript
   { 
@@ -80,25 +67,25 @@ const CONSTELLATION_NODES: TechNode[] = [
     categoryLabel: 'FRONTEND', 
     categoryColor: '#00D2FF',
     iconName: 'FileCode2', 
-    iconColor: '#F7DF1E', 
+    iconColor: '#EAB308', 
     dotColor: '#00D2FF', 
-    x: 48, 
-    y: 36 
+    x: 38, 
+    y: 35 
   },
-  // Bottom-Left Inner: TypeScript
+  // Bottom-Left Outer: Tailwind CSS
   { 
-    id: 'typescript', 
-    name: 'TypeScript', 
+    id: 'tailwind', 
+    name: 'Tailwind CSS', 
     category: 'frontend', 
     categoryLabel: 'FRONTEND', 
     categoryColor: '#00D2FF',
-    iconName: 'Code2', 
-    iconColor: '#3178C6', 
+    iconName: 'Palette', 
+    iconColor: '#38BDF8', 
     dotColor: '#00D2FF', 
-    x: 47, 
-    y: 78 
+    x: 15, 
+    y: 72 
   },
-  // Bottom-Left Outer: Python
+  // Bottom-Left Inner: Python
   { 
     id: 'python', 
     name: 'Python', 
@@ -108,10 +95,23 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Terminal', 
     iconColor: '#3776AB', 
     dotColor: '#10B981', 
-    x: 41, 
-    y: 69 
+    x: 33, 
+    y: 68 
   },
-  // Bottom-Center: PHP
+  // Bottom-Left Center: TypeScript
+  { 
+    id: 'typescript', 
+    name: 'TypeScript', 
+    category: 'frontend', 
+    categoryLabel: 'FRONTEND', 
+    categoryColor: '#00D2FF',
+    iconName: 'Code2', 
+    iconColor: '#3178C6', 
+    dotColor: '#00D2FF', 
+    x: 44, 
+    y: 86 
+  },
+  // Bottom-Right Center: PHP
   { 
     id: 'php', 
     name: 'PHP', 
@@ -121,10 +121,10 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Server', 
     iconColor: '#777BB4', 
     dotColor: '#10B981', 
-    x: 61, 
-    y: 78 
+    x: 58, 
+    y: 86 
   },
-  // Bottom-Right: Node.js
+  // Bottom-Right Outer: Node.js
   { 
     id: 'nodejs', 
     name: 'Node.js', 
@@ -134,10 +134,10 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Server', 
     iconColor: '#5FA04E', 
     dotColor: '#10B981', 
-    x: 73, 
-    y: 78 
+    x: 74, 
+    y: 86 
   },
-  // Bottom-Mid-Right: MongoDB
+  // Bottom-Right Mid: MongoDB
   { 
     id: 'mongodb', 
     name: 'MongoDB', 
@@ -147,10 +147,10 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'HardDrive', 
     iconColor: '#47A248', 
     dotColor: '#F59E0B', 
-    x: 69, 
-    y: 69 
+    x: 70, 
+    y: 68 
   },
-  // Center-Right: GitHub CI/CD
+  // Center-Right Inner: GitHub CI/CD
   { 
     id: 'github', 
     name: 'GitHub CI/CD', 
@@ -160,8 +160,8 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'GitBranch', 
     iconColor: '#2088FF', 
     dotColor: '#1769E0', 
-    x: 74, 
-    y: 54 
+    x: 73, 
+    y: 50 
   },
   // Far-Right: Docker
   { 
@@ -173,8 +173,8 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Box', 
     iconColor: '#2496ED', 
     dotColor: '#1769E0', 
-    x: 85, 
-    y: 53 
+    x: 88, 
+    y: 50 
   },
   // Top-Right Mid: AWS Cloud
   { 
@@ -186,8 +186,8 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Cloud', 
     iconColor: '#FF9900', 
     dotColor: '#1769E0', 
-    x: 77, 
-    y: 33 
+    x: 79, 
+    y: 30 
   },
   // Top-Right High: OpenAI / LLMs
   { 
@@ -199,8 +199,8 @@ const CONSTELLATION_NODES: TechNode[] = [
     iconName: 'Sparkles', 
     iconColor: '#10A37F', 
     dotColor: '#9333EA', 
-    x: 70, 
-    y: 21 
+    x: 69, 
+    y: 16 
   },
 ];
 
@@ -235,14 +235,14 @@ export const TechSection: React.FC = () => {
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
 
   // Exact focal center coordinate of the Pravaah logo emblem on the canvas
-  const centerX = 58;
-  const centerY = 50;
+  const centerX = 55;
+  const centerY = 48;
 
   return (
-    <section id="technologies" className="py-14 sm:py-16 md:py-20 bg-gradient-to-b from-[#EBF3FC] via-[#F6F2FE]/60 to-[#EDF4FC] relative overflow-hidden border-b border-[#D8E4F5]">
+    <section id="technologies" className="py-14 sm:py-16 md:py-20 bg-gradient-to-b from-[#EBF3FC] via-[#F4F1FD]/60 to-[#E8F1FC] relative overflow-hidden border-b border-[#D8E4F5]">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-20 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#1769E0]/12 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-20 w-96 h-96 bg-[#6638E8]/12 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-tech-grid opacity-15 pointer-events-none" />
 
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
@@ -317,14 +317,14 @@ export const TechSection: React.FC = () => {
             </Reveal>
           </div>
 
-          {/* Right Panel: Interactive Visual Constellation Canvas (8.5 cols) */}
+          {/* Right Panel: Prominently Boxed Visual Constellation Canvas (8.5 cols) */}
           <div className="lg:col-span-8 xl:col-span-9">
             <Reveal direction="left" duration={700}>
-              <div className="relative rounded-[32px] bg-gradient-to-br from-white/95 via-[#F4F8FD]/90 to-white/95 border border-[#D5E3F5] shadow-elevated p-6 sm:p-10 min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] flex items-center justify-center overflow-hidden">
+              <div className="relative rounded-[36px] bg-white/90 backdrop-blur-xl border border-[#D5E3F5] shadow-[0_12px_44px_rgba(23,105,224,0.12)] p-6 sm:p-10 min-h-[480px] sm:min-h-[540px] lg:min-h-[580px] flex items-center justify-center overflow-hidden">
                 
-                {/* Background Tech Grid */}
-                <div className="absolute inset-0 bg-tech-grid opacity-15 pointer-events-none" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-[#1769E0]/8 rounded-full blur-3xl pointer-events-none" />
+                {/* Background Tech Grid & Ambient Glow */}
+                <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
 
                 {/* SVG Connecting Dotted Lines from Center to Each Node */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 hidden sm:block">
@@ -339,7 +339,7 @@ export const TechSection: React.FC = () => {
                         x2={`${centerX}%`}
                         y2={`${centerY}%`}
                         stroke={isHovered ? '#1769E0' : isMatched ? '#94A3B8' : '#CBD5E1'}
-                        strokeWidth={isHovered ? '2.2' : '1.2'}
+                        strokeWidth={isHovered ? '2.4' : '1.2'}
                         strokeDasharray={isHovered ? 'none' : '3 4'}
                         strokeOpacity={isMatched ? (isHovered ? '0.95' : '0.45') : '0.12'}
                         className="transition-all duration-300"
@@ -348,7 +348,7 @@ export const TechSection: React.FC = () => {
                   })}
                 </svg>
 
-                {/* Center Core: Official High-Definition Vector Pravaah Wave Emblem & Particle Cubes */}
+                {/* Center Core: Prominently Scaled Vector Pravaah Wave Emblem & Particle Cubes */}
                 <div 
                   className="absolute hidden sm:flex items-center justify-center pointer-events-none select-none z-20"
                   style={{
@@ -357,12 +357,12 @@ export const TechSection: React.FC = () => {
                     transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  <div className="relative w-44 h-32 flex items-center justify-center">
+                  <div className="relative w-56 h-36 flex items-center justify-center">
                     {/* Ambient Aura */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/25 via-blue-500/20 to-purple-500/25 rounded-full blur-2xl animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-blue-500/25 to-purple-500/30 rounded-full blur-2xl animate-pulse" />
                     
                     {/* Vector Pravaah Flow Wave Graphic with Particle Stream */}
-                    <svg viewBox="0 0 240 140" className="w-full h-full drop-shadow-[0_6px_22px_rgba(23,105,224,0.32)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 240 140" className="w-full h-full drop-shadow-[0_8px_26px_rgba(23,105,224,0.35)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <defs>
                         <linearGradient id="pravaahWave1" x1="0%" y1="50%" x2="100%" y2="50%">
                           <stop offset="0%" stopColor="#00D2FF" />
@@ -399,8 +399,8 @@ export const TechSection: React.FC = () => {
 
                 {/* Constellation Nodes (Desktop absolute positioning / Mobile responsive grid) */}
                 
-                {/* Desktop View: Constellation Layout matching reference */}
-                <div className="relative w-full h-[520px] hidden sm:block z-30">
+                {/* Desktop View: Well-Spaced Non-Overlapping Constellation Layout */}
+                <div className="relative w-full h-[540px] hidden sm:block z-30">
                   {CONSTELLATION_NODES.map((node) => {
                     const isMatched = activeFilter === 'all' || activeFilter === node.category;
                     const isHovered = hoveredNodeId === node.id;
