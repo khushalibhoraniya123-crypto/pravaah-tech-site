@@ -37,23 +37,23 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
           {/* Left Column: Visual Showcase & Highlight Grid (5 cols) */}
           <div className="lg:col-span-5 relative">
             <Reveal direction="right" duration={700}>
-              {/* Outer Card with Exact Multi-Color Glowing Border Perimeter */}
-              <div className="relative p-[2px] rounded-3xl overflow-hidden shadow-elevated group">
+              {/* Outer Card with Thicker, Highly Visible Multi-Color Glowing Border Perimeter */}
+              <div className="relative p-[3.5px] rounded-3xl overflow-hidden shadow-elevated group bg-[#06132D]/40">
                 
-                {/* 1. Soft Ambient Multi-Color Glow Layer */}
+                {/* 1. Deep Radiant Ambient Multi-Color Glow Layer */}
                 <div 
                   aria-hidden="true"
-                  className="absolute -inset-[150%] animate-[spin_10s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_260deg,#00D2FF_290deg,#1769E0_315deg,#6638E8_338deg,#EC4899_355deg,#FFFFFF_360deg)] blur-md opacity-80 pointer-events-none"
+                  className="absolute -inset-[150%] animate-[spin_8.5s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_190deg,#00D2FF_235deg,#1769E0_270deg,#6638E8_305deg,#EC4899_340deg,#FFFFFF_360deg)] blur-xl opacity-90 pointer-events-none"
                 />
 
-                {/* 2. Crisp Multi-Color Light Beam Tracer */}
+                {/* 2. Crisp, Solid, Thick Multi-Color Light Beam Tracer */}
                 <div 
                   aria-hidden="true"
-                  className="absolute -inset-[150%] animate-[spin_10s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_260deg,#00D2FF_290deg,#1769E0_315deg,#6638E8_338deg,#EC4899_355deg,#FFFFFF_360deg)] pointer-events-none opacity-100"
+                  className="absolute -inset-[150%] animate-[spin_8.5s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_190deg,#00D2FF_235deg,#1769E0_270deg,#6638E8_305deg,#EC4899_340deg,#FFFFFF_360deg)] pointer-events-none opacity-100"
                 />
 
                 {/* 3. Inner Card Content (Zero distortion, perfectly framed) */}
-                <div className="relative rounded-[22px] bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white overflow-hidden h-full">
+                <div className="relative rounded-[21px] bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white overflow-hidden h-full">
                   {/* Background ambient lighting */}
                   <div className="absolute top-0 right-0 w-48 h-48 bg-[#1769E0]/20 rounded-full blur-2xl pointer-events-none" />
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#6638E8]/20 rounded-full blur-2xl pointer-events-none" />
