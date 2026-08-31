@@ -55,11 +55,24 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onStartInquiry
   ];
 
   return (
-    <section id="services" className="relative bg-[#06132D] text-white py-16 sm:py-20 md:py-24 overflow-hidden border-b border-[#0E2856]">
-      {/* Ambient background glows & tech grid */}
+    <section id="services" className="relative bg-dark-cosmos text-white py-16 sm:py-20 md:py-24 overflow-hidden border-b border-[#0E2856]">
+      {/* Ambient background glows, geometric circuits & dark tech grid */}
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#1769E0]/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[550px] h-[550px] bg-[#6638E8]/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute inset-0 bg-tech-grid opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-tech-grid-dark opacity-60 pointer-events-none" />
+      
+      {/* Soft geometric background vector lines for visual depth */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gridGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#1769E0" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6638E8" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.3" />
+          </linearGradient>
+        </defs>
+        <path d="M0,120 Q350,180 700,100 T1400,150" fill="none" stroke="url(#gridGrad)" strokeWidth="1" strokeDasharray="6 8" />
+        <path d="M0,450 Q400,380 800,480 T1600,420" fill="none" stroke="url(#gridGrad)" strokeWidth="1" strokeDasharray="4 6" />
+      </svg>
 
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         

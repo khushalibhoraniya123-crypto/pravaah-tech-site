@@ -64,11 +64,12 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#06132D] text-white pt-14 pb-8 border-t border-[#0E2856] relative overflow-hidden">
-      {/* Ambient background glows & grid */}
+    <footer className="bg-dark-cosmos text-white pt-14 pb-8 border-t border-[#0E2856] relative overflow-hidden">
+      {/* Ambient background glows & tech grid */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 bg-tech-grid opacity-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-tech-grid-dark opacity-50 pointer-events-none" />
 
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/10">

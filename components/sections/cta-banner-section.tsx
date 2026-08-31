@@ -22,8 +22,11 @@ export const CtaBannerSection: React.FC<CtaBannerSectionProps> = ({ onStartProje
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#1769E0]/30 via-[#6638E8]/25 to-[#00D2FF]/20 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
             <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-[#1769E0]/20 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Subtle Tech Grid overlay */}
-            <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
+            {/* Subtle Tech Grid overlay & Geometric circuits */}
+            <div className="absolute inset-0 bg-tech-grid-dark opacity-60 pointer-events-none" />
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0,80 Q250,140 500,60 T1000,100" fill="none" stroke="rgba(0,210,255,0.4)" strokeWidth="1" strokeDasharray="4 6" />
+            </svg>
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
