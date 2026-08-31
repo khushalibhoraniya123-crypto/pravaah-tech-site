@@ -43,13 +43,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                 {/* 1. Deep Radiant Ambient Multi-Color Glow Layer */}
                 <div 
                   aria-hidden="true"
-                  className="absolute -inset-[150%] animate-[spin_8.5s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_190deg,#00D2FF_235deg,#1769E0_270deg,#6638E8_305deg,#EC4899_340deg,#FFFFFF_360deg)] blur-xl opacity-90 pointer-events-none"
+                  className="absolute -inset-[150%] animate-[spin_24s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_190deg,#00D2FF_235deg,#1769E0_270deg,#6638E8_305deg,#EC4899_340deg,#FFFFFF_360deg)] blur-xl opacity-90 pointer-events-none"
                 />
 
                 {/* 2. Crisp, Solid, Thick Multi-Color Light Beam Tracer */}
                 <div 
                   aria-hidden="true"
-                  className="absolute -inset-[150%] animate-[spin_8.5s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_190deg,#00D2FF_235deg,#1769E0_270deg,#6638E8_305deg,#EC4899_340deg,#FFFFFF_360deg)] pointer-events-none opacity-100"
+                  className="absolute -inset-[150%] animate-[spin_24s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_190deg,#00D2FF_235deg,#1769E0_270deg,#6638E8_305deg,#EC4899_340deg,#FFFFFF_360deg)] pointer-events-none opacity-100"
                 />
 
                 {/* 3. Inner Card Content (Zero distortion, perfectly framed) */}
