@@ -1,20 +1,23 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import type { PortfolioProject } from '@/types';
 
 interface ProjectCardProps {
   project: PortfolioProject;
-  onViewDetails: (project: PortfolioProject) => void;
+  onViewDetails?: (project: PortfolioProject) => void;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => {
+  const caseStudyUrl = `/portfolio/${project.id}`;
+
   return (
-    <div className="group rounded-3xl bg-white border border-[#E4E7EC] shadow-soft hover:shadow-elevated transition-all duration-300 overflow-hidden flex flex-col justify-between hover:-translate-y-1">
+    <div className="group rounded-3xl bg-white/95 backdrop-blur-sm border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:-translate-y-1">
       <div>
         {/* Project Thumbnail Image with Overlay */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
+        <Link href={caseStudyUrl} className="block relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
           <img
             src={project.image}
             alt={project.name}
@@ -35,13 +38,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
             <span className="truncate">{project.client}</span>
             <span className="text-slate-300 font-mono">{project.year}</span>
           </div>
-        </div>
+        </Link>
 
         {/* Project Info */}
         <div className="p-6 sm:p-7">
-          <h3 className="text-xl font-bold text-[#0B1B3A] group-hover:text-[#1769E0] transition-colors mb-1.5">
-            {project.name}
-          </h3>
+          <Link href={caseStudyUrl} className="block">
+            <h3 className="text-xl font-bold text-[#0B1B3A] group-hover:text-[#1769E0] transition-colors mb-1.5">
+              {project.name}
+            </h3>
+          </Link>
           <p className="text-xs font-semibold text-[#6C3FE8] mb-3">
             {project.subtitle}
           </p>
@@ -82,14 +87,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
 
       {/* Action Footer */}
       <div className="p-6 sm:p-7 pt-0">
-        <button
-          onClick={() => onViewDetails(project)}
+        <Link
+          href={caseStudyUrl}
+          onClick={() => onViewDetails?.(project)}
           className="w-full py-3 px-4 rounded-xl border border-[#E4E7EC] bg-white group-hover:bg-[#0B1B3A] group-hover:border-[#0B1B3A] group-hover:text-white text-[#0B1B3A] text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs"
         >
           <span>View Case Study</span>
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </button>
+        </Link>
       </div>
     </div>
   );
 };
+

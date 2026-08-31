@@ -63,10 +63,10 @@ export const TechCard: React.FC<TechCardProps> = ({ item }) => {
   const IconComponent = TECH_ICON_MAP[item.icon] || Code2;
 
   return (
-    <div className="group rounded-2xl bg-white p-5 border border-[#E4E7EC] shadow-soft hover:shadow-medium hover:border-[#1769E0]/40 transition-all duration-300 flex items-start gap-4">
+    <div className="group rounded-2xl bg-white/90 backdrop-blur-sm p-5 border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 flex items-start gap-4">
       {/* Icon */}
       <div 
-        className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shrink-0 text-[#0B1B3A] group-hover:scale-105 group-hover:bg-[#0B1B3A] group-hover:text-white transition-all duration-300"
+        className="w-12 h-12 rounded-xl bg-blue-50/80 border border-blue-100/80 flex items-center justify-center shrink-0 text-[#1769E0] group-hover:scale-105 group-hover:bg-[#0B1B3A] group-hover:text-white transition-all duration-300"
       >
         <IconComponent className="w-6 h-6" />
       </div>

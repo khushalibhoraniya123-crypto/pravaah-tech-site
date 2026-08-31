@@ -58,19 +58,62 @@ export interface ProcessStep {
 
 export type PortfolioCategory = 'all' | 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
 
+export interface CaseStudyChallenge {
+  title: string;
+  description: string;
+  points: string[];
+}
+
+export interface CaseStudySolution {
+  title: string;
+  description: string;
+  highlights: string[];
+  architecture?: string[];
+}
+
+export interface CaseStudyFeature {
+  title: string;
+  description: string;
+}
+
+export interface CaseStudyProcessStep {
+  step: string;
+  phase: string;
+  description: string;
+}
+
+export interface CaseStudyResult {
+  metric: string;
+  label: string;
+  description: string;
+}
+
+export interface CaseStudyGalleryItem {
+  url: string;
+  caption: string;
+}
+
 export interface PortfolioProject {
   id: string;
   name: string;
   category: 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
   subtitle: string;
+  client: string;
+  industry: string;
+  year: string;
+  timeline: string;
   shortDesc: string;
   fullDesc: string;
   image: string;
   technologies: string[];
   stats: { label: string; value: string }[];
-  client: string;
-  year: string;
   deliverables: string[];
+  challenge: CaseStudyChallenge;
+  solution: CaseStudySolution;
+  keyFeatures: CaseStudyFeature[];
+  process: CaseStudyProcessStep[];
+  results: CaseStudyResult[];
+  gallery?: CaseStudyGalleryItem[];
   liveUrl?: string;
   featured?: boolean;
 }

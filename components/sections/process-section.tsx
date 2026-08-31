@@ -23,61 +23,71 @@ const PROCESS_ICON_MAP: Record<string, React.ElementType> = {
   TrendingUp,
 };
 
+import { Reveal } from '@/components/ui/reveal';
+
 export const ProcessSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const currentStep = PROCESS_DATA[activeStep];
   const IconComponent = PROCESS_ICON_MAP[currentStep.iconName] || Search;
 
   return (
-    <section id="process" className="py-20 md:py-28 bg-[#F7F9FC] relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+    <section id="process" className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-[#EDF4FC] via-[#F7F3FE]/70 to-[#EBF3FD] relative overflow-hidden border-b border-[#D8E4F5]">
+      {/* Ambient background glows */}
+      <div className="absolute top-10 left-1/3 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge variant="blue">OUR METHODOLOGY</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-            How We Deliver <span className="gradient-text-blue-purple">Excellence</span>
-          </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
-            Our battle-tested 6-phase engineering lifecycle ensures transparent communication, rapid iteration, and reliable production deployments.
-          </p>
-        </div>
+        <Reveal direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-3">
+            <Badge variant="blue">OUR METHODOLOGY</Badge>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
+              How We Deliver <span className="gradient-text-blue-purple">Excellence</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
+              Our battle-tested 6-phase engineering lifecycle ensures transparent communication, rapid iteration, and reliable production deployments.
+            </p>
+          </div>
+        </Reveal>
 
         {/* 6 Step Tab Selectors */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
-          {PROCESS_DATA.map((step, idx) => {
-            const StepIcon = PROCESS_ICON_MAP[step.iconName] || Search;
-            const isSelected = activeStep === idx;
+        <Reveal direction="up" delay={100}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 mb-8 sm:mb-10">
+            {PROCESS_DATA.map((step, idx) => {
+              const StepIcon = PROCESS_ICON_MAP[step.iconName] || Search;
+              const isSelected = activeStep === idx;
 
-            return (
-              <button
-                key={step.number}
-                onClick={() => setActiveStep(idx)}
-                className={`p-4 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[110px] ${
-                  isSelected
-                    ? 'bg-[#0B1B3A] text-white border-[#0B1B3A] shadow-medium scale-[1.02]'
-                    : 'bg-white text-[#334155] border-[#E4E7EC] hover:border-slate-300 hover:bg-slate-50'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className={`font-mono text-xs font-bold ${isSelected ? 'text-[#38BDF8]' : 'text-slate-400'}`}>
-                    {step.number}
-                  </span>
-                  <StepIcon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-slate-500'}`} />
-                </div>
-                <div>
-                  <div className="text-sm font-bold truncate">{step.title}</div>
-                  <div className={`text-[11px] truncate ${isSelected ? 'text-slate-300' : 'text-[#667085]'}`}>
-                    {step.tagline}
+              return (
+                <button
+                  key={step.number}
+                  onClick={() => setActiveStep(idx)}
+                  className={`p-3 sm:p-3.5 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[95px] sm:min-h-[105px] hover:scale-[1.02] active:scale-[0.98] ${
+                    isSelected
+                      ? 'bg-[#0B1B3A] text-white border-[#0B1B3A] shadow-elevated scale-[1.02]'
+                      : 'bg-white/90 backdrop-blur-sm text-[#334155] border-[#D6E3F4] hover:border-[#1769E0]/40 hover:bg-white'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className={`font-mono text-xs font-bold ${isSelected ? 'text-[#38BDF8]' : 'text-slate-400'}`}>
+                      {step.number}
+                    </span>
+                    <StepIcon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-slate-500'}`} />
                   </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                  <div>
+                    <div className="text-sm font-bold truncate">{step.title}</div>
+                    <div className={`text-[11px] truncate ${isSelected ? 'text-slate-300' : 'text-[#667085]'}`}>
+                      {step.tagline}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
 
         {/* Detailed Spotlight Card for Active Step */}
-        <div className="rounded-3xl bg-white border border-[#E4E7EC] shadow-elevated p-8 sm:p-10 lg:p-12">
+        <Reveal direction="up" delay={180}>
+          <div className="rounded-3xl bg-white/95 backdrop-blur-sm border border-[#D6E3F4] shadow-elevated p-8 sm:p-10 lg:p-12 transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left: Step Details (7 cols) */}
@@ -135,6 +145,7 @@ export const ProcessSection: React.FC = () => {
 
           </div>
         </div>
+      </Reveal>
 
       </div>
     </section>

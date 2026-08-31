@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { HeroSection } from '@/components/sections/hero-section';
 import { ServicesStrip } from '@/components/sections/services-strip';
 import { ServicesSection } from '@/components/sections/services-section';
-import { SolutionsSection } from '@/components/sections/solutions-section';
 import { AboutSection } from '@/components/sections/about-section';
 import { StatsSection } from '@/components/sections/stats-section';
 import { TechSection } from '@/components/sections/tech-section';
@@ -54,10 +53,7 @@ export default function HomePage() {
       <ServicesStrip />
       <ServicesSection onStartInquiryWithService={scrollToContact} />
 
-      {/* 3. Industry Solutions Section */}
-      <SolutionsSection onConsultSolution={(s) => scrollToContact(s)} />
-
-      {/* 4. About Us Section */}
+      {/* 3. About Us Section */}
       <AboutSection onLearnMore={() => scrollToSection('about')} />
 
       {/* 5. Performance Statistics */}

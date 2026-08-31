@@ -37,10 +37,19 @@ const GitHubIcon = () => (
   </svg>
 );
 
+import { useRouter, usePathname } from 'next/navigation';
+
 export const Footer: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   const scrollToSection = (targetId: string) => {
+    if (pathname !== '/') {
+      router.push(`/#${targetId}`);
+      return;
+    }
+
     const element = document.getElementById(targetId);
     if (element) {
       const navOffset = 70;
@@ -49,6 +58,8 @@ export const Footer: React.FC = () => {
         top: elementPosition - navOffset,
         behavior: 'smooth',
       });
+    } else {
+      router.push(`/#${targetId}`);
     }
   };
 
@@ -58,7 +69,7 @@ export const Footer: React.FC = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-8 border-b border-white/10">
           
           {/* Col 1: Brand & Tagline (4 cols) */}
@@ -119,11 +130,6 @@ export const Footer: React.FC = () => {
               <li>
                 <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
                   Services
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-[#38BDF8] font-medium transition-colors cursor-pointer">
-                  Solutions
                 </button>
               </li>
               <li>

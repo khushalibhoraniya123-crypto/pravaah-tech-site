@@ -25,10 +25,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
   return (
     <div
       onClick={() => onSelect && onSelect(service)}
-      className="group relative rounded-3xl bg-white p-7 sm:p-8 border border-[#E4E7EC] shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden hover:-translate-y-1.5"
+      className="group relative rounded-3xl bg-white/95 backdrop-blur-sm p-7 sm:p-8 border border-[#D4E2F5] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/50 transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden hover:-translate-y-1.5"
     >
       {/* Subtle top gradient accent on hover */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1769E0] to-[#6C3FE8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1769E0] to-[#6638E8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       <div>
         {/* Header: Icon & Badge */}

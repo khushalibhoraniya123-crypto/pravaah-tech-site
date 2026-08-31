@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { CustomCursor } from '@/components/ui/custom-cursor';
+
 export default function RootLayout({
   children,
 }: {
@@ -51,6 +53,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen flex flex-col bg-white text-[#0B1B3A]">
         <QueryProvider>
+          <CustomCursor />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

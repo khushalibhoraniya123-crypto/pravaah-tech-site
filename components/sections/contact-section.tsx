@@ -19,28 +19,32 @@ import { Textarea } from '@/components/ui/textarea';
 import { CONTACT_CONFIG } from '@/config/contact';
 import type { ContactFormData } from '@/types';
 import { useContactMutation } from '@/lib/api';
+import { Reveal } from '@/components/ui/reveal';
 
 interface ContactSectionProps {
   preselectedService?: string;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedService = '' }) => {
-  const [formData, setFormData] = useState<ContactFormData>(() => ({
+export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedService }) => {
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     phone: '',
     company: '',
     service: preselectedService || CONTACT_CONFIG.inquiryServices[0],
     budget: CONTACT_CONFIG.budgetRanges[0],
-    message: preselectedService 
-      ? `Hi Pravaah team, I am interested in getting a consultation regarding ${preselectedService}.` 
-      : '',
-  }));
+    message: '',
+  });
 
   const [validationError, setValidationError] = useState<string | null>(null);
 
-  // TanStack React Query Mutation Hook
-  const { mutate, isPending, isSuccess, isError, error, reset } = useContactMutation();
+  // TanStack React Query Mutation
+  const contactMutation = useContactMutation();
+
+  const isPending = contactMutation.isPending;
+  const isSuccess = contactMutation.isSuccess;
+  const isError = contactMutation.isError;
+  const error = contactMutation.error;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -50,9 +54,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setValidationError(null);
 
-    // Form validation
     if (!formData.name.trim()) {
       setValidationError('Please enter your full name.');
       return;
@@ -61,28 +63,35 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
       setValidationError('Please enter a valid email address.');
       return;
     }
+    if (formData.phone && !formData.phone.trim()) {
+      setValidationError('Please enter a valid phone number.');
+      return;
+    }
     if (!formData.message.trim()) {
       setValidationError('Please describe your project requirements.');
       return;
     }
 
-    // Execute TanStack Mutation
-    mutate(formData, {
+    setValidationError(null);
+
+    contactMutation.mutate(formData, {
       onSuccess: () => {
         try {
           confetti({
             particleCount: 80,
             spread: 70,
             origin: { y: 0.6 },
-            colors: ['#1769E0', '#6C3FE8', '#38BDF8', '#10B981'],
+            colors: ['#1769E0', '#6C3FE8', '#00D2FF', '#10B981'],
           });
-        } catch {}
+        } catch {
+          // Ignore
+        }
       },
     });
   };
 
   const handleResetForm = () => {
-    reset();
+    contactMutation.reset();
     setFormData({
       name: '',
       email: '',
@@ -96,123 +105,131 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-[#FFFFFF] relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+    <section id="contact" className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-[#E7F0FC] via-[#F4F0FE]/70 to-[#E2EEFC] relative overflow-hidden border-t border-[#D8E4F5]">
+      {/* Ambient background glows */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#6638E8]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge variant="blue">LET&apos;S TALK BUSINESS</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-            Ready to Build <span className="gradient-text-blue-purple">Something Great?</span>
-          </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
-            Fill out the form below and our lead technical architects will get back to you within 24 hours with a preliminary estimate.
-          </p>
-        </div>
+        <Reveal direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
+            <Badge variant="blue">LET&apos;S TALK BUSINESS</Badge>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
+              Ready to Build <span className="gradient-text-blue-purple">Something Great?</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
+              Fill out the form below and our lead technical architects will get back to you within 24 hours with a preliminary estimate.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Left Column: Direct Channels & Company Details (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="rounded-3xl bg-[#06132D] text-white p-8 sm:p-9 shadow-elevated border border-white/10 relative overflow-hidden space-y-6">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
+            <Reveal direction="right" duration={700}>
+              <div className="rounded-3xl bg-[#06132D] text-white p-6 sm:p-8 shadow-elevated border border-white/10 relative overflow-hidden space-y-5">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
 
-              <div className="relative z-10 space-y-2">
-                <Badge variant="blue" size="sm">DIRECT CONTACT</Badge>
-                <h3 className="text-2xl font-bold text-white">Get in Touch With Us</h3>
-                <p className="text-sm text-slate-300">
-                  Whether you have an inquiry, need a consultation, or want a custom demo, we are here for you.
-                </p>
-              </div>
-
-              {/* Contact Item list */}
-              <div className="space-y-4 pt-2 relative z-10">
-                {/* Phone */}
-                <a
-                  href={`tel:${CONTACT_CONFIG.phoneRaw}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400">Direct Phone Support</div>
-                    <div className="text-sm font-semibold text-white group-hover:text-[#38BDF8] transition-colors">
-                      {CONTACT_CONFIG.phone}
-                    </div>
-                  </div>
-                </a>
-
-                {/* Email */}
-                <a
-                  href={`mailto:${CONTACT_CONFIG.email}`}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-[#9B7BFF] flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400">Email Inquiry</div>
-                    <div className="text-sm font-semibold text-white group-hover:text-[#9B7BFF] transition-colors break-all">
-                      {CONTACT_CONFIG.email}
-                    </div>
-                  </div>
-                </a>
-
-                {/* WhatsApp */}
-                <a
-                  href={`https://wa.me/${CONTACT_CONFIG.whatsappRaw}?text=${encodeURIComponent(CONTACT_CONFIG.whatsappMessage)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                    <MessageSquare className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400">WhatsApp Instant Chat</div>
-                    <div className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                      {CONTACT_CONFIG.whatsapp}
-                    </div>
-                  </div>
-                </a>
-
-                {/* Office Location */}
-                <a
-                  href={CONTACT_CONFIG.address.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400">Office Location (Google Maps)</div>
-                    <div className="text-xs text-slate-300 leading-relaxed group-hover:text-white transition-colors pt-0.5">
-                      {CONTACT_CONFIG.address.fullFormatted}
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Guarantees */}
-              <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-3 text-xs text-slate-300">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                  <span>24hr Fast Response</span>
+                <div className="relative z-10 space-y-2">
+                  <Badge variant="blue" size="sm">DIRECT CONTACT</Badge>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">Get in Touch With Us</h3>
+                  <p className="text-xs sm:text-sm text-slate-300">
+                    Whether you have an inquiry, need a consultation, or want a custom demo, we are here for you.
+                  </p>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>NDA & IP Protected</span>
+
+                {/* Contact Item list */}
+                <div className="space-y-3 pt-1 relative z-10">
+                  {/* Phone */}
+                  <a
+                    href={`tel:${CONTACT_CONFIG.phoneRaw}`}
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-blue-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400">Direct Phone Support</div>
+                      <div className="text-sm font-semibold text-white group-hover:text-[#38BDF8] transition-colors">
+                        {CONTACT_CONFIG.phone}
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Email */}
+                  <a
+                    href={`mailto:${CONTACT_CONFIG.email}`}
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-purple-500/20 text-[#9B7BFF] flex items-center justify-center shrink-0">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400">Email Inquiry</div>
+                      <div className="text-sm font-semibold text-white group-hover:text-[#9B7BFF] transition-colors break-all">
+                        {CONTACT_CONFIG.email}
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* WhatsApp */}
+                  <a
+                    href={`https://wa.me/${CONTACT_CONFIG.whatsappRaw}?text=${encodeURIComponent(CONTACT_CONFIG.whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                      <MessageSquare className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400">WhatsApp Instant Chat</div>
+                      <div className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                        {CONTACT_CONFIG.whatsapp}
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* Office Location */}
+                  <a
+                    href={CONTACT_CONFIG.address.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400">Office Location (Google Maps)</div>
+                      <div className="text-xs text-slate-300 leading-relaxed group-hover:text-white transition-colors pt-0.5">
+                        {CONTACT_CONFIG.address.fullFormatted}
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Guarantees */}
+                <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 text-xs text-slate-300">
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                    <span>24hr Fast Response</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>NDA & IP Protected</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right Column: Inquiry Form (7 cols) powered by TanStack React Query */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#F7F9FC] border border-[#E4E7EC] p-8 sm:p-10 shadow-soft">
+            <Reveal direction="left" delay={120} duration={700}>
+              <div className="rounded-3xl bg-white/95 backdrop-blur-sm border border-[#D6E3F4] p-6 sm:p-8 shadow-elevated">
               {isSuccess ? (
                 /* Success Confirmation State */
                 <div className="text-center py-8 space-y-4 animate-in fade-in duration-300">
@@ -345,7 +362,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                 </form>
               )}
             </div>
-          </div>
+          </Reveal>
+        </div>
 
         </div>
 

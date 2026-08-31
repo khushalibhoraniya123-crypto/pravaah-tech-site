@@ -14,6 +14,7 @@ import { ServiceCard } from '@/components/cards/service-card';
 import { SERVICES_DATA } from '@/data/services';
 import type { ServiceItem } from '@/types';
 import { CheckCircle2, Layers, Sparkles } from 'lucide-react';
+import { Reveal } from '@/components/ui/reveal';
 
 interface ServicesSectionProps {
   onStartInquiryWithService?: (serviceName: string) => void;
@@ -39,28 +40,34 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onStartInquiry
   };
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-[#F7F9FC] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="services" className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-[#EAF2FC] via-[#F4F1FD]/60 to-[#E8F1FB] relative overflow-hidden border-b border-[#D8E4F5]">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge variant="blue">OUR EXPERTISE</Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#081A3A] tracking-tight">
-            What We <span className="gradient-text-blue-purple">Build</span>
-          </h2>
-          <p className="text-base sm:text-lg text-[#667085] leading-relaxed">
-            From initial strategy and modern UI/UX design to enterprise software architecture, cloud platforms and cognitive AI systems.
-          </p>
-        </div>
+        <Reveal direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
+            <Badge variant="blue">OUR EXPERTISE</Badge>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#081A3A] tracking-tight">
+              What We <span className="gradient-text-blue-purple">Build</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
+              From initial strategy and modern UI/UX design to enterprise software architecture, cloud platforms and cognitive AI systems.
+            </p>
+          </div>
+        </Reveal>
 
         {/* 6 Grid Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES_DATA.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              onSelect={handleSelectService}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {SERVICES_DATA.map((service, idx) => (
+            <Reveal key={service.id} delay={idx * 75} direction="up">
+              <ServiceCard
+                service={service}
+                onSelect={handleSelectService}
+              />
+            </Reveal>
           ))}
         </div>
 

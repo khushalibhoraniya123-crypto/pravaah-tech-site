@@ -5,6 +5,8 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { Logo } from './logo';
 import { Button } from '@/components/ui/button';
 
+import { useRouter, usePathname } from 'next/navigation';
+
 interface NavLinkItem {
   label: string;
   targetId: string;
@@ -13,7 +15,6 @@ interface NavLinkItem {
 const NAV_ITEMS: NavLinkItem[] = [
   { label: 'Home', targetId: 'home' },
   { label: 'Services', targetId: 'services' },
-  { label: 'Solutions', targetId: 'solutions' },
   { label: 'About Us', targetId: 'about' },
   { label: 'Process', targetId: 'process' },
   { label: 'Portfolio', targetId: 'portfolio' },
@@ -21,6 +22,8 @@ const NAV_ITEMS: NavLinkItem[] = [
 ];
 
 export const Navbar: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -34,7 +37,7 @@ export const Navbar: React.FC = () => {
       }
 
       const scrollPosition = window.scrollY + 140;
-      const sectionIds = ['contact', 'portfolio', 'process', 'technologies', 'about', 'solutions', 'services', 'home'];
+      const sectionIds = ['contact', 'portfolio', 'process', 'technologies', 'about', 'services', 'home'];
       
       for (const id of sectionIds) {
         const el = document.getElementById(id);
@@ -56,6 +59,11 @@ export const Navbar: React.FC = () => {
   const scrollToSection = (targetId: string) => {
     setIsMobileMenuOpen(false);
 
+    if (pathname !== '/') {
+      router.push(`/#${targetId}`);
+      return;
+    }
+
     const element = document.getElementById(targetId);
     if (element) {
       const navOffset = 70;
@@ -65,6 +73,8 @@ export const Navbar: React.FC = () => {
         behavior: 'smooth',
       });
       setActiveSection(targetId);
+    } else {
+      router.push(`/#${targetId}`);
     }
   };
 
@@ -72,11 +82,11 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-xs border-b border-[#E4E7EC] py-2 sm:py-2.5'
-          : 'bg-white/90 backdrop-blur-sm border-b border-[#E4E7EC]/60 py-3 sm:py-4'
+          ? 'bg-[#F4F8FE]/95 backdrop-blur-md shadow-xs border-b border-[#D4E2F5] py-2 sm:py-2.5'
+          : 'bg-[#F8FAFD]/90 backdrop-blur-sm border-b border-[#DDE7F6]/80 py-3 sm:py-4'
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div className="flex items-center justify-between">
           
           {/* 1. Official Pravaah Logo */}
