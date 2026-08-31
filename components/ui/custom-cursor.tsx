@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
 
 export const CustomCursor: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -10,10 +9,8 @@ export const CustomCursor: React.FC = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const cursorRef = useRef<HTMLDivElement>(null);
-  const auraRef = useRef<HTMLDivElement>(null);
-
   const mousePos = useRef({ x: -100, y: -100 });
-  const auraPos = useRef({ x: -100, y: -100 });
+  const currentPos = useRef({ x: -100, y: -100 });
   const animationFrameId = useRef<number | null>(null);
 
   useEffect(() => {
@@ -28,12 +25,7 @@ export const CustomCursor: React.FC = () => {
       mousePos.current = { x: e.clientX, y: e.clientY };
       if (!isVisible) setIsVisible(true);
 
-      // Direct instant crisp positioning for the Pravaah logo
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-      }
-
-      // Check if hovering over interactive element
+      // Check if hovering over interactive elements
       const target = e.target as HTMLElement | null;
       if (target) {
         const isInteractive = Boolean(
@@ -61,14 +53,14 @@ export const CustomCursor: React.FC = () => {
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
-    // Smooth physics lerp loop for the ambient aura
+    // Ultra-smooth physics interpolation loop
     const render = () => {
-      const ease = 0.22;
-      auraPos.current.x += (mousePos.current.x - auraPos.current.x) * ease;
-      auraPos.current.y += (mousePos.current.y - auraPos.current.y) * ease;
+      const ease = 0.35;
+      currentPos.current.x += (mousePos.current.x - currentPos.current.x) * ease;
+      currentPos.current.y += (mousePos.current.y - currentPos.current.y) * ease;
 
-      if (auraRef.current) {
-        auraRef.current.style.transform = `translate3d(${auraPos.current.x}px, ${auraPos.current.y}px, 0) translate(-50%, -50%)`;
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${currentPos.current.x}px, ${currentPos.current.y}px, 0) translate(-50%, -50%)`;
       }
 
       animationFrameId.current = requestAnimationFrame(render);
@@ -92,41 +84,28 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden select-none">
-      {/* Subtle Dynamic Ambient Aura */}
-      <div
-        ref={auraRef}
-        className={`fixed top-0 left-0 rounded-full transition-all duration-300 ease-out will-change-transform ${
-          isHovered
-            ? 'w-14 h-14 bg-gradient-to-tr from-[#1769E0]/25 via-[#6638E8]/20 to-[#00D2FF]/25 blur-md scale-110'
-            : isClicked
-            ? 'w-10 h-10 bg-[#6638E8]/30 blur-sm scale-95'
-            : 'w-12 h-12 bg-gradient-to-tr from-[#1769E0]/15 to-[#6638E8]/15 blur-sm scale-100 opacity-75'
-        }`}
-        style={{
-          transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
-        }}
-      />
-
-      {/* Original Pravaah Logo as Custom Cursor */}
+      {/* Pravaah Logo Icon Custom Cursor (No text, only icon mark) */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 transition-transform duration-200 ease-out will-change-transform flex items-center justify-center ${
+        className={`fixed top-0 left-0 transition-transform duration-150 ease-out will-change-transform flex items-center justify-center ${
           isHovered
-            ? 'scale-120 drop-shadow-[0_4px_12px_rgba(23,105,224,0.45)]'
+            ? 'scale-125'
             : isClicked
             ? 'scale-90 opacity-90'
-            : 'scale-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)]'
+            : 'scale-100'
         }`}
         style={{
           transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
         }}
       >
-        {/* Medium-sized, clean, perfectly centered Pravaah Logo */}
-        <div className="relative w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center pointer-events-none">
+        {/* Crisp cropped container displaying strictly the Pravaah wave emblem icon */}
+        <div 
+          className="relative w-7 h-7 sm:w-8 sm:h-8 overflow-hidden flex items-center justify-start pointer-events-none select-none filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.35)]"
+        >
           <img
             src="/logo/Logo Horizontal Dark Transparent.png"
-            alt="Pravaah Cursor"
-            className="w-full h-full object-contain filter drop-shadow-sm select-none"
+            alt="Pravaah Logo Icon"
+            className="h-full w-auto max-w-none object-contain object-left pointer-events-none select-none"
             draggable={false}
           />
         </div>
