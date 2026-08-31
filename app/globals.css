@@ -50,6 +50,13 @@
   }
 }
 
+/* Hide default OS arrow cursor so only Pravaah logo cursor is active */
+@media (pointer: fine) {
+  *, html, body, a, button, input, select, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
 /* Brand Custom Gradient Text Utility */
 .gradient-text-blue-purple {
   background: linear-gradient(135deg, #1769E0 0%, #6638E8 60%, #00D2FF 100%);

@@ -53,9 +53,9 @@ export const CustomCursor: React.FC = () => {
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
-    // Ultra-smooth physics interpolation loop
+    // Direct, ultra-responsive GPU interpolation loop
     const render = () => {
-      const ease = 0.35;
+      const ease = 0.4;
       currentPos.current.x += (mousePos.current.x - currentPos.current.x) * ease;
       currentPos.current.y += (mousePos.current.y - currentPos.current.y) * ease;
 
@@ -83,31 +83,34 @@ export const CustomCursor: React.FC = () => {
   if (!mounted || !isVisible) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden select-none">
-      {/* Pravaah Logo Icon Custom Cursor (No text, only icon mark) */}
+    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden select-none">
+      {/* Exact Pravaah Logo Circular Emblem Cursor */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 transition-transform duration-150 ease-out will-change-transform flex items-center justify-center ${
+        className={`fixed top-0 left-0 transition-transform duration-150 ease-out will-change-transform flex items-center justify-center pointer-events-none ${
           isHovered
             ? 'scale-125'
             : isClicked
-            ? 'scale-90 opacity-90'
+            ? 'scale-90'
             : 'scale-100'
         }`}
         style={{
           transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
         }}
       >
-        {/* Crisp cropped container displaying strictly the Pravaah wave emblem icon */}
-        <div 
-          className="relative w-7 h-7 sm:w-8 sm:h-8 overflow-hidden flex items-center justify-start pointer-events-none select-none filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.35)]"
-        >
-          <img
-            src="/logo/Logo Horizontal Dark Transparent.png"
-            alt="Pravaah Logo Icon"
-            className="h-full w-auto max-w-none object-contain object-left pointer-events-none select-none"
-            draggable={false}
-          />
+        {/* Soft Glowing Circular Background Disc */}
+        <div className={`relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 backdrop-blur-md border border-cyan-400/40 flex items-center justify-center p-1 shadow-[0_4px_14px_rgba(23,105,224,0.28)] transition-all duration-200 ${
+          isHovered ? 'ring-2 ring-cyan-400/60 shadow-[0_6px_20px_rgba(23,105,224,0.45)]' : ''
+        }`}>
+          {/* Exact Pravaah Flowing Wave Emblem */}
+          <div className="relative w-5 h-5 overflow-hidden flex items-center justify-start pointer-events-none select-none">
+            <img
+              src="/logo/Logo Horizontal Dark Transparent.png"
+              alt="Pravaah Logo Cursor"
+              className="h-full w-auto max-w-none object-contain object-left pointer-events-none select-none"
+              draggable={false}
+            />
+          </div>
         </div>
       </div>
     </div>
