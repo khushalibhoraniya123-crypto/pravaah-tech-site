@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
   Globe, 
@@ -12,17 +12,10 @@ import {
   ArrowUpRight,
   ArrowRight,
   CheckCircle2,
-  Activity,
-  Layers,
-  Zap,
-  ShieldCheck,
-  Code2
+  ShieldCheck
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { SERVICES_DATA } from '@/data/services';
-import type { ServiceItem } from '@/types';
 import { Reveal } from '@/components/ui/reveal';
-
 import { ParticleBackground } from '@/components/ui/particle-background';
 
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
@@ -40,21 +33,9 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onStartInquiryWithService }) => {
   const [activeId, setActiveId] = useState<string>(SERVICES_DATA[0].id);
-  const [isRotating, setIsRotating] = useState<boolean>(true);
 
   const activeService = SERVICES_DATA.find((s) => s.id === activeId) || SERVICES_DATA[0];
   const ActiveIcon = SERVICE_ICON_MAP[activeService.iconName] || Globe;
-
-  // Orbit node layout coordinates for desktop (6 nodes around central core in degrees)
-  // Angles: [ -150, -90, -30, 30, 90, 150 ] or symmetrical 60 deg increments
-  const NODE_POSITIONS = [
-    { id: 'web-development', angle: 300, labelPos: 'top-left' },
-    { id: 'app-development', angle: 0, labelPos: 'top-center' },
-    { id: 'ui-ux-design', angle: 60, labelPos: 'top-right' },
-    { id: 'software-solutions', angle: 120, labelPos: 'bottom-right' },
-    { id: 'ai-solutions', angle: 180, labelPos: 'bottom-center' },
-    { id: 'digital-transformation', angle: 240, labelPos: 'bottom-left' },
-  ];
 
   return (
     <section id="services" className="relative bg-dark-cosmos text-white py-16 sm:py-20 md:py-24 overflow-hidden border-b border-[#0E2856]">

@@ -1,23 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  CheckCircle2, 
-  Globe, 
   Sparkles, 
-  Palette, 
-  Zap, 
-  Code2, 
+  Check, 
   ArrowRight,
-  ShieldCheck,
-  Cpu,
-  Layers,
-  FileCode,
-  Activity
+  Link as LinkIcon,
+  Bot
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { CONTACT_CONFIG } from '@/config/contact';
 import { Reveal } from '@/components/ui/reveal';
 
 interface HeroSectionProps {
@@ -25,341 +15,404 @@ interface HeroSectionProps {
   onExploreServices?: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExploreServices }) => {
-  const [activeTab, setActiveTab] = useState<'code' | 'metrics' | 'arch'>('code');
-
+export const HeroSection: React.FC<HeroSectionProps> = ({ 
+  onStartProject, 
+  onExploreServices 
+}) => {
   return (
     <section
       id="home"
-      className="relative pt-20 sm:pt-24 md:pt-28 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden bg-gradient-to-b from-[#EEF5FD] via-[#F6F2FE]/80 to-[#EAF2FC] border-b border-[#D8E4F5]"
+      className="relative min-h-[94vh] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#EDF6FD] via-[#F4F9FE] to-[#E9F3FC] border-b border-[#D8E4F5]"
     >
-      {/* Background Tech Grid & Dynamic Ambient Glows */}
-      <div className="absolute inset-0 bg-tech-grid opacity-60 pointer-events-none" />
-      
-      {/* Brand Glow Orbs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-[850px] h-[450px] bg-gradient-to-tr from-[#1769E0]/20 via-[#6638E8]/15 to-[#00D2FF]/20 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
-      <div className="absolute bottom-0 right-10 w-96 h-96 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 left-5 w-80 h-80 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* 1. Precise Background Square Grid Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-60"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(23, 105, 224, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 105, 224, 0.08) 1px, transparent 1px)
+          `,
+          backgroundSize: '48px 48px',
+        }}
+      />
+
+      {/* 2. Soft Ambient Lighting */}
+      <div className="absolute top-12 left-1/4 w-[520px] h-[520px] bg-[#1769E0]/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[620px] h-[620px] bg-[#6638E8]/10 rounded-full blur-[140px] pointer-events-none" />
+
+      {/* 3. Floating Cyan/Purple Wave Ribbon on Far Left Edge (Matching Screenshot) */}
+      <div className="absolute top-[38%] left-2 sm:left-4 xl:left-8 pointer-events-none select-none hidden lg:block animate-float-slow">
+        <div className="w-10 h-10 rounded-xl bg-white/90 border border-[#D5E3F5] shadow-xs flex items-center justify-center p-2 backdrop-blur-md">
+          <svg viewBox="0 0 40 24" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 18 C12 18, 18 20, 24 12 C28 6, 32 4, 36 4" stroke="#00D2FF" strokeWidth="3.5" strokeLinecap="round" />
+            <path d="M8 20 C16 20, 22 22, 28 14 C32 8, 34 6, 38 6" stroke="#6638E8" strokeWidth="2.8" strokeLinecap="round" />
+          </svg>
+        </div>
+      </div>
 
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
           
-          {/* Left Column: Headline & Value Proposition (6.5 cols) */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
+          {/* ========================================================= */}
+          {/* LEFT CONTENT AREA                                         */}
+          {/* ========================================================= */}
+          <div className="lg:col-span-6 xl:col-span-6 space-y-6 sm:space-y-7 text-left">
             
-            {/* Badge */}
+            {/* Top Pill Badge */}
             <Reveal direction="down" duration={500}>
-              <div className="inline-flex items-center gap-2">
-                <Badge variant="gradient" size="md" className="shadow-xs hover:scale-105 transition-transform duration-200">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1" />
-                  {CONTACT_CONFIG.badgeText}
-                </Badge>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#D5E3F5] shadow-[0_2px_8px_rgba(23,105,224,0.06)]">
+                <Sparkles className="w-3.5 h-3.5 text-[#00D2FF] shrink-0" />
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#1769E0]">
+                  DIGITAL SOLUTIONS FOR AMBITIOUS TEAMS
+                </span>
               </div>
             </Reveal>
 
-            {/* Main Heading */}
+            {/* Main Heading (Exact line breaks & gradient for "forward.") */}
             <Reveal direction="up" delay={80} duration={600}>
-              <div className="space-y-1">
-                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[60px] font-extrabold text-[#0B1B3A] tracking-tight leading-[1.08] break-words">
-                  WE BUILD <br />
-                  WHAT&apos;S <span className="gradient-text-blue-purple">NEXT.</span>
-                </h1>
-              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[68px] font-black text-[#0B1B3A] tracking-[-0.03em] leading-[1.05]">
+                Build what moves <br />
+                your business <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#1769E0] to-[#7C3AED]">
+                  forward.
+                </span>
+              </h1>
             </Reveal>
 
-            {/* Subheading */}
+            {/* Description (Exact 2 lines) */}
             <Reveal direction="up" delay={140} duration={600}>
-              <div className="text-base sm:text-lg font-bold text-[#1769E0] tracking-wide flex items-center gap-2.5">
-                <span className="w-6 h-0.5 bg-gradient-to-r from-[#1769E0] to-[#6638E8] rounded-full inline-block shrink-0" />
-                <span>Design. Develop. Innovate. Automate.</span>
-              </div>
-            </Reveal>
-
-            {/* Description */}
-            <Reveal direction="up" delay={200} duration={600}>
-              <p className="text-sm sm:text-base text-[#475467] leading-relaxed max-w-xl">
-                {CONTACT_CONFIG.tagline} We engineer bespoke digital software, enterprise web applications, mobile ecosystems, and AI automations built for high-performance scale.
+              <p className="text-base sm:text-lg text-[#475467] leading-relaxed max-w-xl font-normal">
+                Pravaah Technology turns complex ideas into clear, reliable digital
+                products that help your team grow with confidence.
               </p>
             </Reveal>
 
-            {/* Action Buttons */}
-            <Reveal direction="up" delay={260} duration={600}>
-              <div className="pt-2 flex flex-col xs:flex-row items-stretch xs:items-center gap-3.5">
-                <Button
-                  variant="primary"
-                  size="md"
-                  withArrow
-                  onClick={onStartProject}
-                  className="w-full xs:w-auto justify-center shadow-glow-blue hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
-                >
-                  Start Your Project
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="md"
+            {/* CTA Buttons */}
+            <Reveal direction="up" delay={200} duration={600}>
+              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3.5 pt-1">
+                {/* Primary Button: Blue to Purple Gradient */}
+                <button
                   onClick={onExploreServices}
-                  className="w-full xs:w-auto justify-center hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 bg-white/80 hover:bg-white"
+                  className="px-6 sm:px-7 py-3.5 rounded-2xl bg-gradient-to-r from-[#1E6BFF] via-[#3363F3] to-[#7C3AED] hover:from-[#1760E8] hover:to-[#6D28D9] text-white text-sm sm:text-base font-bold shadow-[0_8px_20px_rgba(30,107,255,0.32)] hover:shadow-[0_12px_28px_rgba(30,107,255,0.42)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  Explore Services
-                </Button>
+                  <span>Explore our services</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                {/* Secondary Button: Solid White with Dark Text */}
+                <button
+                  onClick={onStartProject}
+                  className="px-6 sm:px-7 py-3.5 rounded-2xl bg-white hover:bg-[#F8FAFC] border border-[#D6E3F4] text-[#0B1B3A] text-sm sm:text-base font-bold shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer"
+                >
+                  <span>Start a conversation</span>
+                  <ArrowRight className="w-4 h-4 text-slate-500" />
+                </button>
               </div>
             </Reveal>
 
-            {/* Micro Highlights Strip */}
-            <Reveal direction="up" delay={320} duration={600}>
-              <div className="pt-4 border-t border-[#D6E3F4] flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-semibold text-[#334155]">
-                <div className="flex items-center gap-1.5 hover:text-[#1769E0] transition-colors">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Custom Web & Mobile Apps</span>
+            {/* Bottom 3 Feature Checkpoints */}
+            <Reveal direction="up" delay={260} duration={600}>
+              <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-2 text-xs sm:text-sm font-bold text-[#334155]">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#1769E0] stroke-[3]" />
+                  <span>Design</span>
                 </div>
-                <div className="flex items-center gap-1.5 hover:text-[#1769E0] transition-colors">
-                  <CheckCircle2 className="w-4 h-4 text-[#1769E0] shrink-0" />
-                  <span>Clean & Maintainable Code</span>
+
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#1769E0] stroke-[3]" />
+                  <span>Develop</span>
                 </div>
-                <div className="flex items-center gap-1.5 hover:text-[#6638E8] transition-colors">
-                  <CheckCircle2 className="w-4 h-4 text-[#6638E8] shrink-0" />
-                  <span>Full Post-Launch Warranty</span>
+
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#1769E0] stroke-[3]" />
+                  <span>Scale</span>
                 </div>
               </div>
             </Reveal>
 
           </div>
 
-          {/* Right Column: Dynamic Interactive Showcase with Floating Satellites & Center Terminal (6 cols) */}
-          <div className="lg:col-span-6 relative w-full pt-6 pb-6 lg:py-8 flex items-center justify-center min-h-[420px] sm:min-h-[460px]">
+          {/* ========================================================= */}
+          {/* RIGHT VISUAL DASHBOARD COMPOSITION                         */}
+          {/* ========================================================= */}
+          <div className="lg:col-span-6 xl:col-span-6 relative w-full flex items-center justify-center py-6 sm:py-8 lg:py-10">
             
-            {/* Seamless Decorative Tech Graphic Composition */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-visible">
-              
-              {/* Crisp SVG Vector Wave Ribbons & Orbit Lines */}
-              <svg className="absolute w-[130%] h-[130%] -top-[15%] -left-[15%] pointer-events-none opacity-80" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="heroWaveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#1769E0" stopOpacity="0.5" />
-                    <stop offset="50%" stopColor="#6638E8" stopOpacity="0.4" />
-                    <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.5" />
-                  </linearGradient>
-                  <linearGradient id="heroWaveGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#1769E0" stopOpacity="0.2" />
-                  </linearGradient>
-                </defs>
+            {/* Background SVG Delicate Orbit Curves */}
+            <svg 
+              className="absolute w-[140%] h-[140%] -top-[20%] -left-[20%] pointer-events-none opacity-50 hidden sm:block" 
+              viewBox="0 0 600 600" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <ellipse 
+                cx="300" 
+                cy="300" 
+                rx="260" 
+                ry="170" 
+                transform="rotate(-15 300 300)" 
+                stroke="#1769E0" 
+                strokeOpacity="0.16" 
+                strokeWidth="1.5" 
+                strokeDasharray="4 8" 
+              />
+              <ellipse 
+                cx="300" 
+                cy="300" 
+                rx="190" 
+                ry="120" 
+                transform="rotate(20 300 300)" 
+                stroke="#00D2FF" 
+                strokeOpacity="0.22" 
+                strokeWidth="1.2" 
+              />
+            </svg>
 
-                {/* Flowing abstract wave curves */}
-                <path d="M 40 300 Q 180 160, 320 270 T 560 230" stroke="url(#heroWaveGrad1)" strokeWidth="2.5" strokeDasharray="6 6" fill="none" className="animate-pulse-subtle" />
-                <path d="M 70 410 Q 230 490, 390 350 T 570 410" stroke="url(#heroWaveGrad2)" strokeWidth="2" fill="none" />
-                
-                {/* Tech Orbit Rings */}
-                <ellipse cx="300" cy="300" rx="230" ry="145" transform="rotate(-15 300 300)" stroke="#1769E0" strokeOpacity="0.2" strokeWidth="1.5" strokeDasharray="4 8" fill="none" />
-                <ellipse cx="300" cy="300" rx="170" ry="105" transform="rotate(25 300 300)" stroke="#6638E8" strokeOpacity="0.2" strokeWidth="1.5" fill="none" />
-                
-                {/* Glowing Nodes */}
-                <circle cx="210" cy="225" r="4" fill="#1769E0" className="animate-ping opacity-60" />
-                <circle cx="210" cy="225" r="3" fill="#1769E0" />
-                <circle cx="440" cy="310" r="4" fill="#6638E8" className="animate-ping opacity-60" />
-                <circle cx="440" cy="310" r="3" fill="#6638E8" />
-                <circle cx="370" cy="420" r="3" fill="#00D2FF" />
-              </svg>
+            {/* Container for the 3 layered cards and 2 floating badges */}
+            <div className="relative w-full max-w-[440px] sm:max-w-[470px] lg:max-w-[480px] flex items-center justify-center">
 
-              {/* Floating Geometric Glass Accents */}
-              <div className="absolute top-10 right-14 w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-400/20 to-purple-400/20 border border-white/80 backdrop-blur-md shadow-xs animate-float-slow -rotate-12" />
-              <div className="absolute bottom-14 left-10 w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-400/20 to-cyan-400/20 border border-white/80 backdrop-blur-md shadow-xs animate-float-reverse rotate-45" />
-            </div>
-
-            {/* 1. Top-Left Floating Card: Web Apps */}
-            <div className="absolute -top-3 left-0 sm:top-1 sm:left-1 z-30 animate-float-slow">
-              <div className="bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-2xl border border-[#D6E3F4] shadow-elevated hover:shadow-glow-blue hover:scale-105 transition-all duration-300 flex items-center gap-3 cursor-default">
-                <div className="w-9 h-9 rounded-xl bg-[#1769E0] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Globe className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#0B1B3A]">Web Apps</div>
-                  <div className="text-[11px] text-[#667085]">React • Next.js 15</div>
-                  <div className="text-[10px] font-bold text-emerald-600 flex items-center gap-1 mt-0.5">
-                    <span>✓ &lt;0.6s TTFB</span>
-                  </div>
+              {/* 1. TOP-LEFT FLOATING STATUS PILL */}
+              <div className="absolute -top-5 left-8 sm:-top-4 sm:left-10 z-40 animate-float-slow">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D5E3F5] shadow-[0_4px_14px_rgba(23,105,224,0.12)]">
+                  <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                  <span className="text-[11px] font-bold text-[#0B1B3A]">AI Ready</span>
                 </div>
               </div>
-            </div>
 
-            {/* 2. Top-Right Floating Card: AI Solutions */}
-            <div className="absolute -top-3 right-0 sm:top-1 sm:right-1 z-30 animate-float-reverse">
-              <div className="bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-2xl border border-[#D6E3F4] shadow-elevated hover:shadow-glow-blue hover:scale-105 transition-all duration-300 flex items-center gap-3 cursor-default">
-                <div className="w-9 h-9 rounded-xl bg-[#6638E8] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Sparkles className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#0B1B3A] flex items-center gap-1.5">
-                    <span>AI Solutions</span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  </div>
-                  <div className="text-[11px] text-[#667085]">Autonomous AI Agents</div>
-                  <div className="text-[10px] font-bold text-[#6638E8] flex items-center gap-1 mt-0.5">
-                    <span>⚡ 99.4% Accuracy</span>
-                  </div>
+              {/* 2. BOTTOM-RIGHT FLOATING STATUS PILL */}
+              <div className="absolute -bottom-5 right-2 sm:-bottom-4 sm:right-4 z-40 animate-float-reverse">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D5E3F5] shadow-[0_4px_14px_rgba(23,105,224,0.12)]">
+                  <Sparkles className="w-3 h-3 text-[#00D2FF]" />
+                  <span className="text-[11px] font-bold text-[#0B1B3A]">System Active</span>
                 </div>
               </div>
-            </div>
 
-            {/* 3. Central Dark Interactive Terminal Box */}
-            <div className="relative z-20 w-full max-w-[360px] sm:max-w-[400px] rounded-3xl bg-[#08152E] text-white p-5 sm:p-6 shadow-2xl border border-white/15 hover:border-blue-500/50 transition-all duration-300">
-              {/* Internal glow */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#1769E0]/25 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#6638E8]/25 rounded-full blur-2xl pointer-events-none" />
-
-              <div className="relative z-10 space-y-3.5">
-                {/* Header with Switchable Tabs */}
-                <div className="flex items-center justify-between pb-2.5 border-b border-white/10 text-xs">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
-                  </div>
-
-                  {/* Interactive Tabs */}
-                  <div className="flex items-center gap-1 bg-white/5 p-0.5 rounded-lg">
-                    <button
-                      onClick={() => setActiveTab('code')}
-                      className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
-                        activeTab === 'code' ? 'bg-[#1769E0] text-white font-bold' : 'text-slate-400 hover:text-white'
-                      }`}
-                    >
-                      pravaah.ts
-                    </button>
-                    <button
-                      onClick={() => setActiveTab('metrics')}
-                      className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
-                        activeTab === 'metrics' ? 'bg-[#6638E8] text-white font-bold' : 'text-slate-400 hover:text-white'
-                      }`}
-                    >
-                      metrics.json
-                    </button>
-                    <button
-                      onClick={() => setActiveTab('arch')}
-                      className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
-                        activeTab === 'arch' ? 'bg-[#00D2FF]/30 text-cyan-300 font-bold' : 'text-slate-400 hover:text-white'
-                      }`}
-                    >
-                      arch.config
-                    </button>
-                  </div>
+              {/* 3. LAYERED BACKGROUND CARD (LEFT / WHITE - Pravaah Services / Build) */}
+              <div 
+                className="absolute -top-5 -left-6 sm:-top-5 sm:-left-8 w-[260px] sm:w-[280px] rounded-2xl bg-white border border-[#D6E3F4] p-3.5 sm:p-4 shadow-[0_10px_28px_rgba(23,105,224,0.08)] z-10 hidden sm:block pointer-events-none select-none"
+              >
+                {/* Mini Browser Bar */}
+                <div className="flex items-center gap-1 pb-2 border-b border-slate-100">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#FF5F56]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#FFBD2E]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#27C93F]" />
+                  <span className="ml-1.5 text-[9px] font-mono text-slate-400">Pravaah Services / Build</span>
                 </div>
 
-                {/* Tab 1: Code Body */}
-                {activeTab === 'code' && (
-                  <div className="font-mono text-[11px] sm:text-xs leading-relaxed space-y-1 text-slate-300 animate-in fade-in duration-200">
+                <div className="pt-2 space-y-2">
+                  <div>
+                    <span className="text-[8px] font-mono font-bold text-[#00D2FF] uppercase tracking-wider block">BUILD</span>
+                    <h4 className="text-xs font-extrabold text-[#0B1B3A]">Pravaah Services</h4>
+                  </div>
+
+                  {/* Service rows with bottom underline accents */}
+                  <div className="space-y-2 text-[11px]">
                     <div>
-                      <span className="text-[#38BDF8]">import</span> &#123; <span className="text-purple-300">FutureStack</span> &#125; <span className="text-[#38BDF8]">from</span> <span className="text-emerald-300">&apos;@pravaah/core&apos;</span>;
+                      <div className="flex items-center justify-between pb-0.5">
+                        <div>
+                          <span className="font-bold text-[#0B1B3A] block leading-tight">Web Development</span>
+                          <span className="text-[8px] text-slate-400">React / Node.js</span>
+                        </div>
+                      </div>
+                      <div className="w-full h-0.5 rounded-full bg-[#00D2FF]" />
                     </div>
-                    <div className="pt-0.5">
-                      <span className="text-[#38BDF8]">export const</span> <span className="text-amber-300">architectSolution</span> = <span className="text-[#38BDF8]">async</span> () =&gt; &#123;
-                    </div>
-                    <div className="pl-3.5">
-                      <span className="text-[#38BDF8]">return await</span> <span className="text-cyan-300">PravaahEngine</span>.<span className="text-purple-300">build</span>(&#123;
-                    </div>
-                    <div className="pl-7">
-                      scalability: <span className="text-emerald-300">&apos;100k_concurrent&apos;</span>,
-                    </div>
-                    <div className="pl-7">
-                      aiEnabled: <span className="text-cyan-300">true</span>,
-                    </div>
-                    <div className="pl-7">
-                      uptimeSLA: <span className="text-amber-300">99.99</span>,
-                    </div>
-                    <div className="pl-3.5">&#125;);</div>
-                    <div>&#125;;</div>
-                  </div>
-                )}
 
-                {/* Tab 2: Live Metrics Body */}
-                {activeTab === 'metrics' && (
-                  <div className="font-mono text-[11px] sm:text-xs leading-relaxed space-y-1.5 text-slate-300 animate-in fade-in duration-200">
-                    <div className="flex items-center justify-between text-slate-400">
-                      <span>&quot;performance_score&quot;:</span>
-                      <span className="text-emerald-400 font-bold">100 / 100</span>
+                    <div>
+                      <div className="flex items-center justify-between pb-0.5">
+                        <div>
+                          <span className="font-bold text-[#0B1B3A] block leading-tight">Mobile Development</span>
+                          <span className="text-[8px] text-slate-400">iOS / Android</span>
+                        </div>
+                      </div>
+                      <div className="w-full h-0.5 rounded-full bg-[#2563EB]" />
                     </div>
-                    <div className="flex items-center justify-between text-slate-400">
-                      <span>&quot;api_latency&quot;:</span>
-                      <span className="text-cyan-400 font-bold">&lt; 35ms</span>
-                    </div>
-                    <div className="flex items-center justify-between text-slate-400">
-                      <span>&quot;cloud_redundancy&quot;:</span>
-                      <span className="text-purple-300 font-bold">&quot;Multi-Region&quot;</span>
-                    </div>
-                    <div className="flex items-center justify-between text-slate-400">
-                      <span>&quot;security_audit&quot;:</span>
-                      <span className="text-emerald-400 font-bold">&quot;PASSED (A+)&quot;</span>
-                    </div>
-                  </div>
-                )}
 
-                {/* Tab 3: Architecture Config */}
-                {activeTab === 'arch' && (
-                  <div className="font-mono text-[11px] sm:text-xs leading-relaxed space-y-1.5 text-slate-300 animate-in fade-in duration-200">
-                    <div className="flex items-center gap-2 text-cyan-300">
-                      <Cpu className="w-3.5 h-3.5" />
-                      <span>Next.js 15 App Router Edge</span>
+                    <div>
+                      <div className="flex items-center justify-between pb-0.5">
+                        <div>
+                          <span className="font-bold text-[#0B1B3A] block leading-tight">UI/UX Design</span>
+                          <span className="text-[8px] text-slate-400">Design systems</span>
+                        </div>
+                      </div>
+                      <div className="w-full h-0.5 rounded-full bg-[#6366F1]" />
                     </div>
-                    <div className="flex items-center gap-2 text-purple-300">
-                      <Layers className="w-3.5 h-3.5" />
-                      <span>PostgreSQL + Redis Cache</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-emerald-300">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                      <span>Zero-Trust API Gateway</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-amber-300">
-                      <Activity className="w-3.5 h-3.5" />
-                      <span>24/7 Automated Health Monitors</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Footer status */}
-                <div className="pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-                  <div className="flex items-center gap-2 text-emerald-400 font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Engine Online</span>
-                  </div>
-                  <span className="text-slate-400">v2.5.0 • Surat, IN</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 4. Bottom-Left Floating Card: UI/UX Design */}
-            <div className="absolute -bottom-3 left-0 sm:bottom-1 sm:left-1 z-30 animate-float-reverse">
-              <div className="bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-2xl border border-[#D6E3F4] shadow-elevated hover:shadow-glow-blue hover:scale-105 transition-all duration-300 flex items-center gap-3 cursor-default">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#6638E8] to-[#1769E0] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Palette className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#0B1B3A]">UI/UX Design</div>
-                  <div className="text-[11px] text-[#667085]">Figma Design System</div>
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <span className="text-[10px] text-slate-400">Tokens:</span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#1769E0]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#6638E8]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00D2FF]" />
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* 5. Bottom-Right Floating Card: Automation */}
-            <div className="absolute -bottom-3 right-0 sm:bottom-1 sm:right-1 z-30 animate-float-slow">
-              <div className="bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-2xl border border-[#D6E3F4] shadow-elevated hover:shadow-glow-blue hover:scale-105 transition-all duration-300 flex items-center gap-3 cursor-default">
-                <div className="w-9 h-9 rounded-xl bg-[#00D2FF] text-slate-950 flex items-center justify-center shrink-0 shadow-xs">
-                  <Zap className="w-4 h-4" />
+              {/* 4. LAYERED BACKGROUND CARD (RIGHT / WHITE - Technology System / Architecture) */}
+              <div 
+                className="absolute top-8 -right-6 sm:top-8 sm:-right-8 w-[220px] sm:w-[240px] rounded-2xl bg-white border border-[#D6E3F4] p-3.5 sm:p-4 shadow-[0_10px_28px_rgba(23,105,224,0.08)] z-10 hidden sm:block pointer-events-none select-none"
+              >
+                <div className="text-[8px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">
+                  Technology System / Architecture
                 </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#0B1B3A]">Automation</div>
-                  <div className="text-[11px] text-[#667085]">Pipelines & CI/CD</div>
-                  <div className="inline-block mt-0.5 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-[9px] font-extrabold uppercase tracking-wider">
-                    ACTIVE 24/7
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                  <span className="text-xs font-extrabold text-[#0B1B3A]">Technology System</span>
+                  <LinkIcon className="w-3 h-3 text-[#1769E0]" />
+                </div>
+
+                <div className="pt-2.5 space-y-2.5 text-xs text-slate-500">
+                  <div className="flex items-center justify-between">
+                    <div className="w-20 h-1.5 rounded-full bg-slate-100" />
+                    <Check className="w-3.5 h-3.5 text-emerald-500 stroke-[3]" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="w-16 h-1.5 rounded-full bg-slate-100" />
+                    <Check className="w-3.5 h-3.5 text-emerald-500 stroke-[3]" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="w-24 h-1.5 rounded-full bg-slate-100" />
+                    <Check className="w-3.5 h-3.5 text-emerald-500 stroke-[3]" />
                   </div>
                 </div>
               </div>
+
+              {/* 5. MAIN COMPACT DARK NAVY DASHBOARD PANEL (FOREGROUND) */}
+              <div className="relative z-30 w-full rounded-2xl sm:rounded-3xl bg-[#081225] text-white p-3.5 sm:p-4 md:p-5 shadow-[0_20px_50px_rgba(6,19,45,0.45)] border border-[#1C2C4A] hover:border-blue-500/40 transition-all duration-300">
+                
+                {/* Internal Ambient Glow */}
+                <div className="absolute top-0 right-0 w-36 h-36 bg-[#1769E0]/20 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#6638E8]/20 rounded-full blur-2xl pointer-events-none" />
+
+                <div className="relative z-10 space-y-3">
+                  
+                  {/* Browser Top Bar */}
+                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
+                      <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+                      <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+                    </div>
+                    <span className="text-[9px] font-mono text-slate-400 truncate">
+                      Pravaah Technology / Digital Platform
+                    </span>
+                    <div className="w-4" />
+                  </div>
+
+                  {/* Dashboard Header Bar */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      {/* Exact Pravaah Emblem Brand Icon */}
+                      <div className="w-7 h-7 rounded-lg bg-[#0F1E36] border border-white/15 flex items-center justify-center p-1 shrink-0 shadow-xs">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/logo/emblem.png" alt="Pravaah" className="w-full h-full object-contain" />
+                      </div>
+                      <div>
+                        <span className="text-[8px] font-mono font-bold text-[#00D2FF] uppercase tracking-wider block">
+                          DIGITAL PLATFORM
+                        </span>
+                        <h3 className="text-sm sm:text-base font-extrabold text-white leading-tight">
+                          Digital Solutions
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Top-Right Status Pill */}
+                    <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#064E3B]/90 border border-[#059669]/60 text-[#34D399] text-[9px] font-bold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Active</span>
+                    </div>
+                  </div>
+
+                  <p className="text-[10px] sm:text-[11px] text-slate-300">
+                    Building scalable digital experiences for modern businesses.
+                  </p>
+
+                  {/* 2-Column Dashboard Cards Grid */}
+                  <div className="grid grid-cols-12 gap-2.5 pt-0.5">
+                    
+                    {/* Left Card (7 cols): Project Overview */}
+                    <div className="col-span-7 p-2.5 sm:p-3 rounded-xl bg-[#0D1B36] border border-white/10 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-slate-300">
+                          Project Overview
+                        </span>
+                        <span className="text-[8px] font-mono font-bold text-[#00D2FF] bg-[#00D2FF]/10 px-1.5 py-0.5 rounded">
+                          Live
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-1.5">
+                        <div className="space-y-0.5">
+                          <div className="text-sm sm:text-base font-black text-white">24+</div>
+                          <div className="text-[8px] text-slate-400 uppercase font-medium">Projects</div>
+                        </div>
+
+                        <div className="space-y-0.5">
+                          <div className="text-sm sm:text-base font-black text-[#00D2FF]">18</div>
+                          <div className="text-[8px] text-slate-400 uppercase font-medium">Active</div>
+                        </div>
+
+                        <div className="space-y-0.5">
+                          <div className="text-sm sm:text-base font-black text-white">6</div>
+                          <div className="text-[8px] text-slate-400 uppercase font-medium">Completed</div>
+                        </div>
+
+                        <div className="space-y-0.5">
+                          <div className="text-sm sm:text-base font-black text-white">98%</div>
+                          <div className="text-[8px] text-slate-400 uppercase font-medium">Satisfaction</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Cards Stack (5 cols): System Health & Automation */}
+                    <div className="col-span-5 flex flex-col justify-between gap-1.5">
+                      
+                      {/* System Health */}
+                      <div className="p-2.5 rounded-xl bg-[#0D1B36] border border-white/10 space-y-1">
+                        <div className="flex items-center justify-between text-[9px]">
+                          <span className="text-slate-300 font-medium">System Health</span>
+                        </div>
+                        <div className="text-sm sm:text-base font-black text-[#00D2FF]">99.9%</div>
+                        <div className="w-full h-1 rounded-full bg-slate-800 overflow-hidden">
+                          <div className="w-[99.9%] h-full bg-gradient-to-r from-[#00D2FF] to-[#10B981] rounded-full" />
+                        </div>
+                      </div>
+
+                      {/* Automation */}
+                      <div className="p-2.5 rounded-xl bg-[#0D1B36] border border-white/10 flex items-center justify-between">
+                        <div>
+                          <span className="text-[8px] text-slate-400 block font-medium">Automation</span>
+                          <span className="text-[11px] font-bold text-white">AI Active</span>
+                        </div>
+                        <div className="w-6 h-6 rounded-md bg-blue-500/20 text-[#00D2FF] flex items-center justify-center">
+                          <Bot className="w-3.5 h-3.5" />
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  {/* Technology Pills Row */}
+                  <div className="flex flex-wrap items-center gap-1 pt-0.5">
+                    {['React', 'Node.js', 'MongoDB', 'AI', 'Cloud', 'API'].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 rounded-md bg-[#0D1B36] border border-white/10 text-[9px] font-mono font-medium text-slate-300 hover:text-white transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Bottom Progress Timeline Pipeline */}
+                  <div className="pt-1.5 border-t border-white/10">
+                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-300 relative">
+                      <span className="text-cyan-300 font-bold">Design</span>
+                      <span className="h-0.5 flex-1 mx-1.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500" />
+                      <span className="text-blue-300 font-bold">Develop</span>
+                      <span className="h-0.5 flex-1 mx-1.5 bg-gradient-to-r from-blue-500 to-indigo-500" />
+                      <span className="text-indigo-300 font-bold">Test</span>
+                      <span className="h-0.5 flex-1 mx-1.5 bg-gradient-to-r from-indigo-500 to-purple-500" />
+                      <span className="text-purple-300 font-bold">Deploy</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
 
           </div>
@@ -369,4 +422,3 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartProject, onExpl
     </section>
   );
 };
-

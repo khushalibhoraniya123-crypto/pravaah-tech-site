@@ -1,349 +1,423 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { 
-  ArrowUpRight, 
   ArrowRight,
-  ChevronLeft, 
-  ChevronRight, 
-  Sparkles, 
-  CheckCircle2, 
-  Activity, 
+  Globe,
+  Palette,
+  Sparkles,
+  Video,
   Layers,
-  Calendar,
-  Building2,
-  TrendingUp,
-  Globe
+  Network,
+  Bot,
+  Settings
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { PORTFOLIO_DATA } from '@/data/portfolio';
-import type { PortfolioProject, PortfolioCategory } from '@/types';
 import { Reveal } from '@/components/ui/reveal';
 
 interface PortfolioSectionProps {
-  onRequestSimilarProject?: (projectName: string) => void;
+  onRequestSimilarProject?: (scopeName?: string) => void;
 }
 
 export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onRequestSimilarProject }) => {
-  const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
-  const [selectedCategory, setSelectedCategory] = useState<string>('Web');
-
-  // Specific domain category tabs (WITHOUT generic "All Showcase")
-  const DOMAIN_TABS = ['Web', 'Mobile', 'UI/UX', 'Software', 'AI'];
-
-  // Current project on main stage
-  const activeProject = PORTFOLIO_DATA[activeProjectIndex] || PORTFOLIO_DATA[0];
-
-  const handleCategorySelect = (cat: string) => {
-    setSelectedCategory(cat);
-    const matchingIdx = PORTFOLIO_DATA.findIndex((p) => p.category === cat);
-    if (matchingIdx !== -1) {
-      setActiveProjectIndex(matchingIdx);
-    }
-  };
-
-  const nextProject = () => {
-    setActiveProjectIndex((prev) => (prev + 1) % PORTFOLIO_DATA.length);
-  };
-
-  const prevProject = () => {
-    setActiveProjectIndex((prev) => (prev - 1 + PORTFOLIO_DATA.length) % PORTFOLIO_DATA.length);
-  };
-
   return (
-    <section id="portfolio" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#EBF3FD] via-[#F5F2FE]/60 to-[#E8F1FC] relative overflow-hidden border-b border-[#D8E4F5]">
-      {/* Background ambient lighting & tech grid */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#1769E0]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-[#6638E8]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 bg-tech-grid opacity-15 pointer-events-none" />
+    <section id="services" className="py-16 sm:py-20 md:py-24 bg-[#050C1A] text-white relative overflow-hidden border-b border-[#0E2856]">
+      {/* Anchor targets for solutions and portfolio */}
+      <span id="solutions" className="sr-only" />
+      <span id="portfolio" className="sr-only" />
+      {/* Background Ambient Glows & Grid */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#1769E0]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-[140px] pointer-events-none" />
+      
+      {/* Left Ambient Floating Logo Mark */}
+      <div className="absolute top-1/4 left-4 pointer-events-none select-none opacity-40 hidden xl:block animate-float-slow">
+        <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo/emblem.png" alt="Pravaah" className="w-full h-full object-contain" />
+        </div>
+      </div>
 
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
-        {/* 1. Section Header */}
-        <Reveal direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-3">
-            <Badge variant="blue">Our Work</Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-              Featured <span className="gradient-text-blue-purple">Projects</span>
+        {/* 1. Top Centered Section Header */}
+        <Reveal direction="up" duration={600}>
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16 space-y-3.5">
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#0D1C34] border border-[#193256] text-[#38BDF8] text-[11px] font-bold uppercase tracking-wider shadow-xs">
+              <span>WHAT WE DO</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-white tracking-[-0.02em] leading-tight">
+              Services & Solutions For the{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] via-[#60A5FA] to-[#A855F7]">
+                Digital
+              </span> <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#818CF8] via-[#A855F7] to-[#C084FC]">
+                Future
+              </span>
             </h2>
-            <p className="text-sm sm:text-base text-[#667085] leading-relaxed max-w-2xl mx-auto">
-              Explore how we architected mission-critical enterprise platforms, high-speed mobile apps, and autonomous AI systems with verified ROI metrics.
+            
+            <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              We combine creativity, technology and innovation to deliver digital services and business solutions designed around your goals.
             </p>
           </div>
         </Reveal>
 
-        {/* 2. Domain Category Switcher (Without generic "All Showcase") */}
-        <Reveal direction="up" delay={80}>
-          <div className="flex items-center justify-center flex-wrap gap-2.5 mb-10 sm:mb-12">
-            {DOMAIN_TABS.map((cat) => {
-              const isActive = activeProject.category === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => handleCategorySelect(cat)}
-                  className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer flex items-center gap-2 ${
-                    isActive
-                      ? 'bg-[#0B1B3A] text-white shadow-elevated scale-105 ring-4 ring-blue-500/20'
-                      : 'bg-white/90 backdrop-blur-md text-[#334155] border border-[#D6E3F4] hover:bg-white hover:border-[#1769E0]/50 hover:shadow-soft'
-                  }`}
-                >
-                  <span>{cat} Engineering</span>
-                </button>
-              );
-            })}
-          </div>
-        </Reveal>
-
-        {/* 3. Main Interactive Case Study Stage */}
-        <Reveal direction="up" delay={120}>
-          <div className="rounded-3xl sm:rounded-[36px] bg-white/95 backdrop-blur-md border border-[#D6E3F4] shadow-elevated p-6 sm:p-10 lg:p-12 relative overflow-hidden mb-12">
+        {/* 2. Main Two Column Groups: OUR SERVICES & OUR SOLUTIONS */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12">
+          
+          {/* ========================================================= */}
+          {/* LEFT GROUP: OUR SERVICES                                  */}
+          {/* ========================================================= */}
+          <div className="space-y-6">
             
-            {/* Top Accent Gradient Bar */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1769E0] via-[#6638E8] to-[#00D2FF]" />
-            
-            {/* Ambient Interior Glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
+            {/* Header Bar */}
+            <div className="flex items-center justify-between pb-1">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#00D2FF] shadow-[0_0_12px_#00D2FF]" />
+                <h3 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-wider">
+                  OUR SERVICES
+                </h3>
+              </div>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <span className="px-3 py-1 rounded-full text-[11px] font-bold text-[#00D2FF] bg-[#00D2FF]/10 border border-[#00D2FF]/30">
+                Design & Engineering
+              </span>
+            </div>
+
+            {/* 2x2 Services Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* Left Column: Project Identity, Metrics & Narrative (6.5 cols) */}
-              <div className="lg:col-span-6 space-y-6">
-                
-                {/* Meta Tag Badges */}
-                <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold text-[#1769E0] bg-blue-50 border border-blue-100 uppercase tracking-wider">
-                    {activeProject.category}
-                  </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold text-[#6638E8] bg-purple-50 border border-purple-200/60 font-mono">
-                    {activeProject.industry}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full text-xs text-[#667085] bg-slate-100 font-mono">
-                    {activeProject.year} • {activeProject.timeline}
-                  </span>
-                </div>
-
-                {/* Project Title & Subtitle */}
-                <div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1B3A] tracking-tight mb-2">
-                    {activeProject.name}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[#1769E0] font-semibold">
-                    {activeProject.subtitle}
-                  </p>
-                </div>
-
-                <p className="text-xs sm:text-sm text-[#667085] leading-relaxed">
-                  {activeProject.fullDesc}
-                </p>
-
-                {/* Verified Performance Metrics */}
-                {activeProject.stats && activeProject.stats.length > 0 && (
-                  <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-gradient-to-r from-blue-50/70 via-purple-50/50 to-blue-50/70 border border-blue-100/80">
-                    {activeProject.stats.map((stat, i) => (
-                      <div key={i} className="text-center">
-                        <div className="text-lg sm:text-xl font-black text-[#0B1B3A] font-mono">
-                          {stat.value}
-                        </div>
-                        <div className="text-[10px] sm:text-xs font-bold text-[#667085] truncate uppercase tracking-wider mt-0.5">
-                          {stat.label}
-                        </div>
+              {/* Card 1: Web & App Development */}
+              <Reveal direction="up" delay={50}>
+                <Link
+                  href="/services/web-development"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-cyan-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,210,255,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+                        <Globe className="w-5 h-5" />
                       </div>
-                    ))}
-                  </div>
-                )}
+                      <span className="text-[10px] font-mono font-bold text-cyan-300 bg-[#0E223D] px-2 py-0.5 rounded border border-cyan-800/40">
+                        01 WEB & MOBILE
+                      </span>
+                    </div>
 
-                {/* Deliverables Checklist */}
-                <div className="space-y-2 pt-1">
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Key Architectural Deliverables:
+                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      Web & App Development
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Scalable full-stack web applications, interactive architectures, and performance-first mobile experiences.
+                    </p>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {activeProject.deliverables.slice(0, 4).map((del, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-[#334155] font-semibold">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                        <span>{del}</span>
+
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-cyan-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Explore Stream
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </Reveal>
+
+              {/* Card 2: UI/UX & Graphic Design */}
+              <Reveal direction="up" delay={100}>
+                <Link
+                  href="/services/ui-ux-design"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-cyan-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,210,255,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+                        <Palette className="w-5 h-5" />
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action CTA Buttons */}
-                <div className="pt-3 flex flex-wrap items-center gap-3">
-                  <Link
-                    href={`/portfolio/${activeProject.id}`}
-                    className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#1769E0] to-[#6638E8] hover:from-[#155fc9] hover:to-[#582ed4] text-white text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shadow-soft hover:scale-105"
-                  >
-                    <span>View Case Study Architecture</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-
-                  <button
-                    onClick={() => onRequestSimilarProject?.(activeProject.name)}
-                    className="px-5 py-3.5 rounded-xl border border-[#D6E3F4] bg-white hover:bg-slate-50 text-[#0B1B3A] text-xs sm:text-sm font-bold transition-all shadow-xs cursor-pointer"
-                  >
-                    Request Similar Build
-                  </button>
-                </div>
-
-              </div>
-
-              {/* Right Column: Immersive Device Stage Frame & Live Tech Preview (5.5 cols) */}
-              <div className="lg:col-span-6 space-y-4">
-                
-                {/* Browser Stage Mockup */}
-                <div className="relative rounded-3xl bg-[#06132D] p-3 sm:p-4 border border-white/15 shadow-2xl overflow-hidden group">
-                  
-                  {/* Browser Top Window Bar */}
-                  <div className="flex items-center justify-between pb-3 px-2 border-b border-white/10">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                      <span className="ml-2 text-[11px] font-mono text-slate-400 truncate">
-                        https://client.pravaah/{activeProject.id}
+                      <span className="text-[10px] font-mono font-bold text-cyan-300 bg-[#0E223D] px-2 py-0.5 rounded border border-cyan-800/40">
+                        02 PRODUCT UI
                       </span>
                     </div>
 
-                    <div className="text-[10px] font-mono text-cyan-300 font-bold bg-cyan-400/10 px-2 py-0.5 rounded-md">
-                      VERIFIED PRODUCTION
+                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      UI/UX & Graphic Design
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Human-centered user interfaces, comprehensive design systems, and engaging brand identity assets.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-cyan-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Explore Stream
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </Reveal>
+
+              {/* Card 3: AI & Automation Systems */}
+              <Reveal direction="up" delay={150}>
+                <Link
+                  href="/services/ai-solutions"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-cyan-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,210,255,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+                        <Sparkles className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-cyan-300 bg-[#0E223D] px-2 py-0.5 rounded border border-cyan-800/40">
+                        03 INTELLIGENCE
+                      </span>
                     </div>
+
+                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      AI & Automation Systems
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Integrating cognitive intelligence, LLMs, and custom automation algorithms into core workflows.
+                    </p>
                   </div>
 
-                  {/* High Quality Project Visual with Overlay Zoom */}
-                  <Link 
-                    href={`/portfolio/${activeProject.id}`}
-                    className="block relative aspect-[16/10] w-full mt-3 rounded-2xl overflow-hidden bg-slate-900"
-                  >
-                    <img
-                      src={activeProject.image}
-                      alt={activeProject.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#06132D]/90 via-transparent to-transparent" />
-                    
-                    {/* Bottom Client Watermark */}
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-semibold">
-                      <span className="bg-white/15 backdrop-blur-md px-3 py-1 rounded-lg border border-white/20">
-                        {activeProject.client}
-                      </span>
-                      <span className="text-cyan-300 font-mono text-[11px]">
-                        Click to Inspect ↗
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-cyan-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Explore Stream
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </Reveal>
+
+              {/* Card 4: Video & Creative Services */}
+              <Reveal direction="up" delay={200}>
+                <Link
+                  href="/services/digital-transformation"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-cyan-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,210,255,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+                        <Video className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-cyan-300 bg-[#0E223D] px-2 py-0.5 rounded border border-cyan-800/40">
+                        04 MOTION STUDIO
                       </span>
                     </div>
-                  </Link>
 
-                  {/* Deployed Tech Stack Pill Strip */}
-                  <div className="pt-3 flex flex-wrap items-center gap-1.5 px-1">
-                    {activeProject.technologies.slice(0, 6).map((tech, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-mono font-medium text-slate-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      Video & Creative Services
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      High-impact promotional media, 3D motion graphics, and narrative digital assets for technology products.
+                    </p>
                   </div>
 
-                </div>
-
-                {/* Stage Switcher Controls (Prev / Next & Counter) */}
-                <div className="flex items-center justify-between px-2 pt-1">
-                  <div className="text-xs font-mono text-[#667085]">
-                    Project <strong className="text-[#0B1B3A] font-bold">{activeProjectIndex + 1}</strong> of {PORTFOLIO_DATA.length}
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-cyan-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      Explore Stream
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={prevProject}
-                      aria-label="Previous project"
-                      className="w-9 h-9 rounded-xl border border-[#D6E3F4] bg-white hover:bg-[#0B1B3A] hover:text-white text-[#0B1B3A] transition-all flex items-center justify-center cursor-pointer shadow-xs"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={nextProject}
-                      aria-label="Next project"
-                      className="w-9 h-9 rounded-xl border border-[#D6E3F4] bg-white hover:bg-[#0B1B3A] hover:text-white text-[#0B1B3A] transition-all flex items-center justify-center cursor-pointer shadow-xs"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
+                </Link>
+              </Reveal>
 
             </div>
 
           </div>
-        </Reveal>
 
-        {/* 4. Filmstrip Project Showcase Switcher Grid */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              Quick Switch Projects Filmstrip:
-            </h4>
-            <span className="text-xs font-mono text-[#1769E0]">
-              6 Production Case Studies
-            </span>
-          </div>
+          {/* ========================================================= */}
+          {/* RIGHT GROUP: OUR SOLUTIONS                                */}
+          {/* ========================================================= */}
+          <div className="space-y-6">
+            
+            {/* Header Bar */}
+            <div className="flex items-center justify-between pb-1">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#A855F7] shadow-[0_0_12px_#A855F7]" />
+                <h3 className="text-sm sm:text-base font-extrabold text-white uppercase tracking-wider">
+                  OUR SOLUTIONS
+                </h3>
+              </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {PORTFOLIO_DATA.map((proj, idx) => {
-              const isSelected = activeProjectIndex === idx;
+              <span className="px-3 py-1 rounded-full text-[11px] font-bold text-[#C084FC] bg-[#A855F7]/10 border border-[#A855F7]/30">
+                Enterprise & Systems
+              </span>
+            </div>
 
-              return (
-                <button
-                  key={proj.id}
-                  onClick={() => setActiveProjectIndex(idx)}
-                  className={`p-3 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between h-[110px] ${
-                    isSelected
-                      ? 'bg-[#0B1B3A] text-white border-[#0B1B3A] shadow-elevated scale-105 ring-2 ring-cyan-400'
-                      : 'bg-white/95 text-[#0B1B3A] border-[#D6E3F4] hover:border-[#1769E0]/60 hover:scale-[1.02] shadow-xs'
-                  }`}
+            {/* 2x2 Solutions Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              
+              {/* Card 1: Custom Software Solutions */}
+              <Reveal direction="up" delay={50}>
+                <Link
+                  href="/solutions/business-automation"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-purple-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(168,85,247,0.12)] block"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className={`text-[10px] font-mono font-bold uppercase ${
-                      isSelected ? 'text-cyan-300' : 'text-[#1769E0]'
-                    }`}>
-                      {proj.category}
-                    </span>
-                    <span className={`text-[10px] font-mono ${isSelected ? 'text-slate-400' : 'text-slate-400'}`}>
-                      0{idx + 1}
-                    </span>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center">
+                        <Layers className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-purple-300 bg-[#1A1434] px-2 py-0.5 rounded border border-purple-800/40">
+                        01 CUSTOM PLATFORM
+                      </span>
+                    </div>
+
+                    <h4 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                      Custom Software Solutions
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Purpose-built enterprise platforms engineered to transform operations and streamline team workflows.
+                    </p>
                   </div>
 
-                  <div>
-                    <div className={`text-xs font-extrabold truncate ${isSelected ? 'text-white' : 'text-[#0B1B3A]'}`}>
-                      {proj.name}
-                    </div>
-                    <div className={`text-[10px] truncate ${isSelected ? 'text-slate-300' : 'text-[#667085]'}`}>
-                      {proj.client}
-                    </div>
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-purple-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      Explore System
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </button>
-              );
-            })}
+                </Link>
+              </Reveal>
+
+              {/* Card 2: Digital Business Platforms */}
+              <Reveal direction="up" delay={100}>
+                <Link
+                  href="/solutions/erp-solutions"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-purple-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(168,85,247,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center">
+                        <Network className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-purple-300 bg-[#1A1434] px-2 py-0.5 rounded border border-purple-800/40">
+                        02 ECOSYSTEM
+                      </span>
+                    </div>
+
+                    <h4 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                      Digital Business Platforms
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Scalable multi-tenant business software with centralized challans, billing, and real-time dashboards.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-purple-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      Explore System
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </Reveal>
+
+              {/* Card 3: AI-Powered Business Solutions */}
+              <Reveal direction="up" delay={150}>
+                <Link
+                  href="/solutions/ai-agents"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-purple-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(168,85,247,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center">
+                        <Bot className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-purple-300 bg-[#1A1434] px-2 py-0.5 rounded border border-purple-800/40">
+                        03 COGNITIVE TECH
+                      </span>
+                    </div>
+
+                    <h4 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                      AI-Powered Business Solutions
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Data-driven predictive systems and smart decision engines built for modern digital-first enterprises.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-purple-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      Explore System
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </Reveal>
+
+              {/* Card 4: Workflow & Process Automation */}
+              <Reveal direction="up" delay={200}>
+                <Link
+                  href="/solutions/crm-solutions"
+                  className="group relative rounded-2xl bg-[#091428] border border-[#162744] hover:border-purple-500/50 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between h-full min-h-[220px] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(168,85,247,0.12)] block"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center">
+                        <Settings className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-purple-300 bg-[#1A1434] px-2 py-0.5 rounded border border-purple-800/40">
+                        04 PROCESS FLOW
+                      </span>
+                    </div>
+
+                    <h4 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                      Workflow & Process Automation
+                    </h4>
+
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      Automating repetitive pipelines with zero friction, event webhooks, and secure cloud integrations.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 group-hover:text-purple-300 transition-colors mt-4">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      Explore System
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </Reveal>
+
+            </div>
+
           </div>
+
         </div>
 
-        {/* 5. Bottom Consultation Banner */}
+        {/* 3. Bottom Requirement Banner */}
         <Reveal direction="up" delay={150}>
-          <div className="mt-12 text-center">
-            <div className="inline-flex flex-wrap items-center justify-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D6E3F4] shadow-xs">
-              <span className="text-xs sm:text-sm font-bold text-[#0B1B3A]">
-                Explore our full portfolio of enterprise and consumer applications
-              </span>
-              <button
-                onClick={() => onRequestSimilarProject?.('General Portfolio Scope')}
-                className="px-5 py-2.5 rounded-xl bg-[#1769E0] hover:bg-[#155fc9] text-white text-xs sm:text-sm font-bold transition-all shadow-glow-blue cursor-pointer hover:scale-105 flex items-center gap-1.5"
-              >
-                <span>View All Projects</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+          <div className="mt-14 sm:mt-16 pt-8 sm:pt-10 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div className="space-y-1">
+              <h3 className="text-lg sm:text-xl font-bold text-white">
+                Have a unique business requirement?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-400">
+                Let&apos;s create the right digital solution for you.
+              </p>
             </div>
+
+            <button
+              onClick={() => onRequestSimilarProject?.('Custom Business Requirement')}
+              className="px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#071120] text-sm font-bold shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_6px_24px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2 cursor-pointer shrink-0"
+            >
+              <span>Start Your Project</span>
+              <ArrowRight className="w-4 h-4 text-[#071120]" />
+            </button>
           </div>
         </Reveal>
 

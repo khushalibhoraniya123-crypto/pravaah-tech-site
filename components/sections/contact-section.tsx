@@ -4,18 +4,13 @@ import React, { useState } from 'react';
 import {
   Phone,
   Mail,
-  MessageSquare,
   MapPin,
   CheckCircle2,
-  Clock,
-  ShieldCheck,
-  AlertCircle
+  AlertCircle,
+  ArrowRight,
+  ChevronDown
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { CONTACT_CONFIG } from '@/config/contact';
 import type { ContactFormData } from '@/types';
 import { useContactMutation } from '@/lib/api';
@@ -31,7 +26,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
     email: '',
     phone: '',
     company: '',
-    service: preselectedService || CONTACT_CONFIG.inquiryServices[0],
+    service: preselectedService || 'Select Project Type',
     budget: CONTACT_CONFIG.budgetRanges[0],
     message: '',
   });
@@ -63,10 +58,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
       setValidationError('Please enter a valid email address.');
       return;
     }
-    if (formData.phone && !formData.phone.trim()) {
-      setValidationError('Please enter a valid phone number.');
-      return;
-    }
     if (!formData.message.trim()) {
       setValidationError('Please describe your project requirements.');
       return;
@@ -78,10 +69,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
       onSuccess: () => {
         try {
           confetti({
-            particleCount: 80,
-            spread: 70,
+            particleCount: 90,
+            spread: 75,
             origin: { y: 0.6 },
-            colors: ['#1769E0', '#6C3FE8', '#00D2FF', '#10B981'],
+            colors: ['#00D2FF', '#1769E0', '#7C3AED', '#10B981'],
           });
         } catch {
           // Ignore
@@ -97,7 +88,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
       email: '',
       phone: '',
       company: '',
-      service: CONTACT_CONFIG.inquiryServices[0],
+      service: 'Select Project Type',
       budget: CONTACT_CONFIG.budgetRanges[0],
       message: '',
     });
@@ -105,265 +96,255 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-[#E7F0FC] via-[#F4F0FE]/70 to-[#E2EEFC] relative overflow-hidden border-t border-[#D8E4F5]">
-      {/* Ambient background glows */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#6638E8]/15 rounded-full blur-3xl pointer-events-none" />
+    <section id="contact" className="py-20 sm:py-24 md:py-28 bg-[#040A17] text-white relative overflow-hidden border-t border-[#0E2856]">
+      {/* Background Ambient Glows & Connecting Curve Wave */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#1769E0]/12 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#7C3AED]/12 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#00D2FF]/8 rounded-full blur-[130px] pointer-events-none" />
+      
+      {/* Sweeping Connecting Dotted Wave Trail */}
+      <svg className="absolute top-1/2 left-0 right-0 w-full h-44 -translate-y-1/2 pointer-events-none opacity-35 hidden lg:block" viewBox="0 0 1440 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -100 100 C 300 20, 700 190, 1100 70 C 1300 20, 1400 120, 1600 100" stroke="#38BDF8" strokeWidth="1.5" strokeDasharray="6 8" />
+        <circle cx="210" cy="75" r="3.5" fill="#00D2FF" className="animate-ping" />
+        <circle cx="1220" cy="65" r="3.5" fill="#C084FC" className="animate-ping" />
+      </svg>
+
+      {/* Far Left Ambient Floating Logo Mark on Trail */}
+      <div className="absolute top-1/3 left-6 pointer-events-none select-none opacity-80 hidden xl:block animate-float-slow">
+        <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-1.5 backdrop-blur-md shadow-xs">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo/emblem.png" alt="Pravaah" className="w-full h-full object-contain" />
+        </div>
+      </div>
+
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
-        {/* Section Header */}
-        <Reveal direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
-            <Badge variant="blue">LET&apos;S TALK BUSINESS</Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-              Ready to Build <span className="gradient-text-blue-purple">Something Great?</span>
+        {/* 1. Centered Section Header Matching Reference Screenshot */}
+        <Reveal direction="up" duration={600}>
+          <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E1C36] border border-[#1C355E] text-[#C084FC] text-xs font-bold uppercase tracking-wider shadow-xs">
+              <span>CONTACT US</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-black text-white tracking-[-0.03em] leading-tight">
+              Let&apos;s Build Something{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#38BDF8] to-[#C084FC]">
+                Great Together
+              </span>
             </h2>
-            <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
-              Fill out the form below and our lead technical architects will get back to you within 24 hours with a preliminary estimate.
+            
+            <p className="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal">
+              Have an idea, project or business challenge? <br className="hidden sm:block" />
+              Let&apos;s turn it into a powerful digital solution.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        {/* 2. Main 2-Column Content Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-center">
           
-          {/* Left Column: Direct Channels & Company Details (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Left Column: Let's Talk & Contact Direct Channels (5 cols) */}
+          <div className="lg:col-span-5 space-y-8">
             <Reveal direction="right" duration={700}>
-              <div className="rounded-3xl bg-[#06132D] text-white p-6 sm:p-8 shadow-elevated border border-white/10 relative overflow-hidden space-y-5">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="relative z-10 space-y-2">
-                  <Badge variant="blue" size="sm">DIRECT CONTACT</Badge>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">Get in Touch With Us</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">
-                    Whether you have an inquiry, need a consultation, or want a custom demo, we are here for you.
+              <div className="space-y-7">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+                    Let&apos;s Talk
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-sm font-normal">
+                    Whether you need a new website, custom software, AI solution, automation or full-scale digital innovation.
                   </p>
                 </div>
 
-                {/* Contact Item list */}
-                <div className="space-y-3 pt-1 relative z-10">
-                  {/* Phone */}
-                  <a
-                    href={`tel:${CONTACT_CONFIG.phoneRaw}`}
-                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-                  >
-                    <div className="w-9 h-9 rounded-xl bg-blue-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs text-slate-400">Direct Phone Support</div>
-                      <div className="text-sm font-semibold text-white group-hover:text-[#38BDF8] transition-colors">
-                        {CONTACT_CONFIG.phone}
-                      </div>
-                    </div>
-                  </a>
-
-                  {/* Email */}
+                {/* 3 Contact Info Rows */}
+                <div className="space-y-5 pt-2">
+                  
+                  {/* Email Channel */}
                   <a
                     href={`mailto:${CONTACT_CONFIG.email}`}
-                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+                    className="flex items-center gap-4 group cursor-pointer"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-purple-500/20 text-[#9B7BFF] flex items-center justify-center shrink-0">
-                      <Mail className="w-4 h-4" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#091830] border border-cyan-500/30 text-cyan-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,210,255,0.15)] group-hover:scale-105 group-hover:border-cyan-400 group-hover:bg-[#0C2244] transition-all duration-300">
+                      <Mail className="w-5 h-5" />
                     </div>
-                    <div>
-                      <div className="text-xs text-slate-400">Email Inquiry</div>
-                      <div className="text-sm font-semibold text-white group-hover:text-[#9B7BFF] transition-colors break-all">
-                        {CONTACT_CONFIG.email}
-                      </div>
-                    </div>
+                    <span className="text-sm sm:text-base text-slate-300 group-hover:text-cyan-300 transition-colors font-medium">
+                      {CONTACT_CONFIG.email}
+                    </span>
                   </a>
 
-                  {/* WhatsApp */}
+                  {/* Phone Channel */}
                   <a
-                    href={`https://wa.me/${CONTACT_CONFIG.whatsappRaw}?text=${encodeURIComponent(CONTACT_CONFIG.whatsappMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
+                    href={`tel:${CONTACT_CONFIG.phoneRaw}`}
+                    className="flex items-center gap-4 group cursor-pointer"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                      <MessageSquare className="w-4 h-4" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#091830] border border-cyan-500/30 text-cyan-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,210,255,0.15)] group-hover:scale-105 group-hover:border-cyan-400 group-hover:bg-[#0C2244] transition-all duration-300">
+                      <Phone className="w-5 h-5" />
                     </div>
-                    <div>
-                      <div className="text-xs text-slate-400">WhatsApp Instant Chat</div>
-                      <div className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                        {CONTACT_CONFIG.whatsapp}
-                      </div>
-                    </div>
+                    <span className="text-sm sm:text-base text-slate-300 group-hover:text-cyan-300 transition-colors font-medium">
+                      {CONTACT_CONFIG.phone}
+                    </span>
                   </a>
 
-                  {/* Office Location */}
-                  <a
-                    href={CONTACT_CONFIG.address.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group"
-                  >
-                    <div className="w-9 h-9 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
-                      <MapPin className="w-4 h-4" />
+                  {/* Location */}
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 rounded-2xl bg-[#171233] border border-purple-500/30 text-purple-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(168,85,247,0.15)] group-hover:scale-105 group-hover:border-purple-400 transition-all duration-300">
+                      <MapPin className="w-5 h-5" />
                     </div>
-                    <div>
-                      <div className="text-xs text-slate-400">Office Location (Google Maps)</div>
-                      <div className="text-xs text-slate-300 leading-relaxed group-hover:text-white transition-colors pt-0.5">
-                        {CONTACT_CONFIG.address.fullFormatted}
-                      </div>
-                    </div>
-                  </a>
+                    <span className="text-sm sm:text-base text-slate-300 font-medium">
+                      Surat, Gujarat, India
+                    </span>
+                  </div>
+
                 </div>
 
-                {/* Guarantees */}
-                <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 text-xs text-slate-300">
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                    <span>24hr Fast Response</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>NDA & IP Protected</span>
-                  </div>
+                {/* Bottom Label */}
+                <div className="pt-6">
+                  <span className="text-[11px] font-mono font-bold text-slate-500 tracking-[0.25em] uppercase">
+                    START A CONVERSATION
+                  </span>
                 </div>
+
               </div>
             </Reveal>
           </div>
 
-          {/* Right Column: Inquiry Form (7 cols) powered by TanStack React Query */}
+          {/* Right Column: Contact & Project Request Form (7 cols) */}
           <div className="lg:col-span-7">
             <Reveal direction="left" delay={120} duration={700}>
-              <div className="rounded-3xl bg-white/95 backdrop-blur-sm border border-[#D6E3F4] p-6 sm:p-8 shadow-elevated">
-              {isSuccess ? (
-                /* Success Confirmation State */
-                <div className="text-center py-8 space-y-4 animate-in fade-in duration-300">
-                  <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#0B1B3A]">Inquiry Received!</h3>
-                  <p className="text-sm text-[#667085] max-w-md mx-auto leading-relaxed">
-                    Thank you for reaching out to <strong className="text-[#0B1B3A]">{CONTACT_CONFIG.companyName}</strong>. Our engineering leads will review your requirements and get back to you shortly.
-                  </p>
-                  <div className="pt-4">
-                    <Button variant="outline" size="sm" onClick={handleResetForm}>
-                      Submit Another Inquiry
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                /* Contact Form */
-                <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
-                  <div className="space-y-1 mb-2">
-                    <h3 className="text-xl font-bold text-[#0B1B3A]">Send Us a Message</h3>
-                    <p className="text-xs text-[#667085]">
-                      Tell us about your project or schedule a free technical roadmap session.
+              <div className="relative rounded-[32px] bg-[#071328]/95 backdrop-blur-xl border border-[#132748] p-7 sm:p-9 md:p-10 shadow-[0_24px_60px_rgba(0,0,0,0.6)] overflow-hidden group hover:border-[#1E3E6E] transition-colors duration-500">
+                
+                {/* Subtle Ambient Inside Corner Glows */}
+                <div className="absolute -top-10 -right-10 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                {isSuccess ? (
+                  /* Success Confirmation State */
+                  <div className="text-center py-10 space-y-4 animate-in fade-in duration-300 relative z-10">
+                    <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                      <CheckCircle2 className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">Inquiry Received!</h3>
+                    <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                      Thank you for reaching out to Pravaah Technologies. Our lead technical architects will review your requirements and get back to you shortly.
                     </p>
-                  </div>
-
-                  {/* Validation or API Error alert */}
-                  {(validationError || isError) && (
-                    <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 shrink-0" />
-                      <span>{validationError || (error as Error)?.message || 'Something went wrong. Please check your connection.'}</span>
-                    </div>
-                  )}
-
-                  {/* Row 1: Name & Email */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#0B1B3A]">Your Name *</label>
-                      <Input
-                        type="text"
-                        name="name"
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#0B1B3A]">Email Address *</label>
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
+                    <div className="pt-4">
+                      <button
+                        onClick={handleResetForm}
+                        className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all cursor-pointer"
+                      >
+                        Submit Another Inquiry
+                      </button>
                     </div>
                   </div>
+                ) : (
+                  /* Form */
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 relative z-10">
+                    
+                    {/* Error alert */}
+                    {(validationError || isError) && (
+                      <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 shrink-0" />
+                        <span>{validationError || (error as Error)?.message || 'Something went wrong. Please check your connection.'}</span>
+                      </div>
+                    )}
 
-                  {/* Row 2: Phone & Company */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#0B1B3A]">Phone / WhatsApp (Optional)</label>
-                      <Input
-                        type="tel"
-                        name="phone"
-                        placeholder="+91 98765 43210"
-                        value={formData.phone}
-                        onChange={handleChange}
-                      />
+                    {/* Row 1: Full Name & Email Address */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Full Name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-[#040B18] border border-[#142646] focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-white rounded-2xl px-5 py-4 text-sm placeholder:text-slate-500 focus:outline-none transition-all duration-300 hover:border-[#1C355E]"
+                        />
+                      </div>
+
+                      <div>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Email Address"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-[#040B18] border border-[#142646] focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-white rounded-2xl px-5 py-4 text-sm placeholder:text-slate-500 focus:outline-none transition-all duration-300 hover:border-[#1C355E]"
+                        />
+                      </div>
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#0B1B3A]">Company / Brand Name</label>
-                      <Input
+                    {/* Row 2: Company / Business */}
+                    <div>
+                      <input
                         type="text"
                         name="company"
-                        placeholder="Acme Corp"
+                        placeholder="Company / Business"
                         value={formData.company}
                         onChange={handleChange}
+                        className="w-full bg-[#040B18] border border-[#142646] focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-white rounded-2xl px-5 py-4 text-sm placeholder:text-slate-500 focus:outline-none transition-all duration-300 hover:border-[#1C355E]"
                       />
                     </div>
-                  </div>
 
-                  {/* Row 3: Service Selection */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-[#0B1B3A]">Interested Service *</label>
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="flex h-11 w-full rounded-xl border border-[#D2DEEE] bg-white px-3.5 py-2 text-sm text-[#081A3A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1769E0] shadow-xs cursor-pointer"
-                    >
-                      {CONTACT_CONFIG.inquiryServices.map((serviceName, idx) => (
-                        <option key={idx} value={serviceName}>
-                          {serviceName}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                    {/* Row 3: PROJECT TYPE Dropdown */}
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono font-bold text-slate-400 tracking-wider uppercase block">
+                        PROJECT TYPE
+                      </label>
+                      <div className="relative">
+                        <select
+                          name="service"
+                          value={formData.service}
+                          onChange={handleChange}
+                          className="w-full bg-[#040B18] border border-[#142646] focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-white rounded-2xl px-5 py-4 text-sm appearance-none cursor-pointer focus:outline-none transition-all duration-300 pr-12 hover:border-[#1C355E]"
+                        >
+                          <option value="Select Project Type" disabled>Select Project Type</option>
+                          <option value="Web & App Development">Web & App Development</option>
+                          <option value="UI/UX & Graphic Design">UI/UX & Graphic Design</option>
+                          <option value="AI & Automation Systems">AI & Automation Systems</option>
+                          <option value="Custom Software Solutions">Custom Software Solutions</option>
+                          <option value="Digital Business Platforms">Digital Business Platforms</option>
+                          <option value="Enterprise ERP / CRM Systems">Enterprise ERP / CRM Systems</option>
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                      </div>
+                    </div>
 
-                  {/* Row 4: Project Message */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-[#0B1B3A]">Project Details & Requirements *</label>
-                    <Textarea
-                      name="message"
-                      placeholder="Briefly describe your project, timeline expectations, or desired feature set..."
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={4}
-                      required
-                    />
-                  </div>
+                    {/* Row 4: TELL US ABOUT YOUR PROJECT */}
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono font-bold text-slate-400 tracking-wider uppercase block">
+                        TELL US ABOUT YOUR PROJECT
+                      </label>
+                      <textarea
+                        name="message"
+                        placeholder="Tell us about your goals, features or requirements..."
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows={4}
+                        required
+                        className="w-full bg-[#040B18] border border-[#142646] focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 text-white rounded-2xl px-5 py-4 text-sm placeholder:text-slate-500 focus:outline-none transition-all duration-300 resize-none hover:border-[#1C355E]"
+                      />
+                    </div>
 
-                  {/* Submit Button with TanStack loading state */}
-                  <div className="pt-2">
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      size="md"
-                      withArrow
-                      disabled={isPending}
-                      className="w-full justify-center shadow-glow-blue"
-                    >
-                      {isPending ? 'Sending Inquiry...' : 'Submit Project Inquiry'}
-                    </Button>
-                  </div>
-                </form>
-              )}
-            </div>
-          </Reveal>
-        </div>
+                    {/* Submit Button */}
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={isPending}
+                        className="group w-full py-4.5 rounded-2xl font-black text-white text-sm sm:text-base bg-gradient-to-r from-[#00D2FF] via-[#1769E0] to-[#9333EA] hover:opacity-95 shadow-[0_8px_30px_rgba(0,210,255,0.3)] hover:shadow-[0_12px_40px_rgba(0,210,255,0.45)] flex items-center justify-center gap-2.5 cursor-pointer hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none"
+                      >
+                        <span>{isPending ? 'Sending Message...' : 'Send Message'}</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </button>
+                    </div>
+
+                  </form>
+                )}
+
+              </div>
+            </Reveal>
+          </div>
 
         </div>
 

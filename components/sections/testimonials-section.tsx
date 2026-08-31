@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { TESTIMONIALS_DATA } from '@/data/testimonials';
-import { Star, ChevronLeft, ChevronRight, Quote, Sparkles } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Reveal } from '@/components/ui/reveal';
 
 export const TestimonialsSection: React.FC = () => {

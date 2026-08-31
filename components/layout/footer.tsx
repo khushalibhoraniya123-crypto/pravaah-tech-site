@@ -6,8 +6,7 @@ import {
   Phone, 
   Mail, 
   MessageSquare, 
-  MapPin,
-  ArrowUpRight 
+  MapPin
 } from 'lucide-react';
 import { Logo } from './logo';
 import { CONTACT_CONFIG } from '@/config/contact';

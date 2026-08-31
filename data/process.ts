@@ -1,52 +1,70 @@
-import type { ProcessStep } from '@/types';
+import type { ProcessPhase } from '@/types';
 
-export const PROCESS_DATA: ProcessStep[] = [
+export const PROCESS_DATA: ProcessPhase[] = [
   {
     number: '01',
-    title: 'Discovery',
-    tagline: 'Understand & Align',
-    description: 'We dive deep into your business goals, target audience, technical requirements, and project scope.',
-    highlights: ['Stakeholder Interviews', 'Technical Feasibility', 'Project Roadmap', 'Requirement Analysis'],
+    category: 'DISCOVERY',
+    title: 'Discover & Market Research',
+    tagline: 'Goal Alignment & Competitor Audit',
+    description:
+      'Deep-dive session to extract core business goals, target user behavior, and project technical scope.',
+    highlights: ['Goal Alignment', 'Competitor Audit'],
     iconName: 'Search',
+    color: '#00D2FF',
   },
   {
     number: '02',
-    title: 'Strategy',
-    tagline: 'Plan & Architect',
-    description: 'We design the architecture, select the optimal tech stack, and map out milestones for reliable execution.',
-    highlights: ['System Architecture', 'Database Modeling', 'Milestone Schedule', 'Resource Planning'],
+    category: 'ARCHITECTURE',
+    title: 'Strategic Blueprinting',
+    tagline: 'Tech Stack & Milestone Mapping',
+    description:
+      'Formulating the technical architecture, selecting modern stacks, and building the project roadmap.',
+    highlights: ['Tech Stack', 'Milestone Mapping'],
     iconName: 'Compass',
+    color: '#2563EB',
   },
   {
     number: '03',
-    title: 'UI/UX Design',
-    tagline: 'Design & Prototype',
-    description: 'We create intuitive, responsive user interfaces and interactive clickable prototypes using modern design systems.',
-    highlights: ['Wireframes & Flows', 'High-Fidelity Figma', 'Design System Tokens', 'Interactive Prototype'],
+    category: 'INTERFACE',
+    title: 'UI/UX Visual Crafting',
+    tagline: 'Figma Prototypes & Design System',
+    description:
+      'High-converting interactive wireframes, custom animations, and a cohesive design system for your brand.',
+    highlights: ['Figma Prototypes', 'Design System'],
     iconName: 'Palette',
+    color: '#7C3AED',
   },
   {
     number: '04',
-    title: 'Development',
-    tagline: 'Build & Integrate',
-    description: 'Our engineers write clean, modular, and performant code following industry standards and security best practices.',
-    highlights: ['Clean Architecture', 'API Integrations', 'Unit & E2E Testing', 'Sprint Reviews'],
+    category: 'ENGINEERING',
+    title: 'Robust Core Development',
+    tagline: 'Clean Code & API Integrations',
+    description:
+      'Transforming designs into clean, scalable, and secure production-ready code with responsive layouts.',
+    highlights: ['Clean Code', 'API Integrations'],
     iconName: 'Code',
+    color: '#4F46E5',
   },
   {
     number: '05',
-    title: 'QA & Launch',
-    tagline: 'Test & Deploy',
-    description: 'Thorough performance benchmarking, security audits, and zero-downtime deployment to production cloud environments.',
-    highlights: ['Performance Audits', 'Cross-browser Testing', 'Cloud Deployment', 'SEO Verification'],
+    category: 'DEPLOYMENT',
+    title: 'QA, Testing & Zero-Downtime Launch',
+    tagline: 'QA Automation & Cloud Launch',
+    description:
+      'Comprehensive multi-device testing, security auditing, and deployment to high-availability servers.',
+    highlights: ['QA Automation', 'Cloud Launch'],
     iconName: 'Rocket',
+    color: '#059669',
   },
   {
     number: '06',
-    title: 'Scale & Support',
-    tagline: 'Maintain & Grow',
-    description: 'Continuous monitoring, routine updates, new feature expansions, and dedicated technical maintenance.',
-    highlights: ['24/7 Monitoring', 'Security Patches', 'Feature Iterations', 'Ongoing Optimization'],
+    category: 'GROWTH',
+    title: 'Scale, Monitor & Continuous Iterate',
+    tagline: 'Performance Tuning & Scaling',
+    description:
+      'Post-launch performance optimization, real-time analytics monitoring, and continuous feature expansion.',
+    highlights: ['Performance Tuning', 'Scaling'],
     iconName: 'TrendingUp',
+    color: '#9333EA',
   },
 ];

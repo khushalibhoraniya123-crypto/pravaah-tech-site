@@ -10,7 +10,7 @@ import {
   Palette, 
   Server, 
   Terminal, 
-  Database, 
+  Database,
   HardDrive, 
   Cloud, 
   Box, 
@@ -348,7 +348,7 @@ export const TechSection: React.FC = () => {
                   })}
                 </svg>
 
-                {/* Center Core: Prominently Scaled Vector Pravaah Wave Emblem & Particle Cubes */}
+                {/* Center Core: Exact Official Pravaah Emblem Image & Glowing Aura */}
                 <div 
                   className="absolute hidden sm:flex items-center justify-center pointer-events-none select-none z-20"
                   style={{
@@ -357,43 +357,17 @@ export const TechSection: React.FC = () => {
                     transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  <div className="relative w-56 h-36 flex items-center justify-center">
-                    {/* Ambient Aura */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-blue-500/25 to-purple-500/30 rounded-full blur-2xl animate-pulse" />
+                  <div className="relative w-60 sm:w-72 md:w-84 h-36 sm:h-44 md:h-48 flex items-center justify-center">
+                    {/* Ambient Radial Glowing Aura */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/25 via-blue-500/20 to-purple-500/25 rounded-full blur-3xl animate-pulse" />
                     
-                    {/* Vector Pravaah Flow Wave Graphic with Particle Stream */}
-                    <svg viewBox="0 0 240 140" className="w-full h-full drop-shadow-[0_8px_26px_rgba(23,105,224,0.35)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="pravaahWave1" x1="0%" y1="50%" x2="100%" y2="50%">
-                          <stop offset="0%" stopColor="#00D2FF" />
-                          <stop offset="50%" stopColor="#1769E0" />
-                          <stop offset="100%" stopColor="#6638E8" />
-                        </linearGradient>
-                        <linearGradient id="pravaahWave2" x1="0%" y1="50%" x2="100%" y2="50%">
-                          <stop offset="0%" stopColor="#00D2FF" />
-                          <stop offset="60%" stopColor="#2563EB" />
-                          <stop offset="100%" stopColor="#7C3AED" />
-                        </linearGradient>
-                        <linearGradient id="pravaahWave3" x1="0%" y1="50%" x2="100%" y2="50%">
-                          <stop offset="0%" stopColor="#38BDF8" />
-                          <stop offset="70%" stopColor="#4F46E5" />
-                          <stop offset="100%" stopColor="#9333EA" />
-                        </linearGradient>
-                      </defs>
-
-                      {/* Main Dynamic Flow Wings */}
-                      <path d="M18 96 C58 96, 94 112, 130 86 C156 68, 178 42, 198 40 C178 52, 152 79, 126 91 C90 108, 48 96, 18 96Z" fill="url(#pravaahWave1)" />
-                      <path d="M38 82 C74 82, 110 92, 142 68 C164 52, 182 30, 204 28 C184 38, 160 62, 134 74 C100 88, 64 82, 38 82Z" fill="url(#pravaahWave2)" />
-                      <path d="M64 66 C94 66, 126 72, 152 50 C170 36, 188 20, 208 18 C188 26, 168 44, 144 55 C116 66, 88 66, 64 66Z" fill="url(#pravaahWave3)" />
-
-                      {/* Trailing Particle Digital Cubes */}
-                      <rect x="206" y="24" width="7" height="7" rx="1.5" fill="#8B5CF6" />
-                      <rect x="218" y="28" width="6" height="6" rx="1" fill="#6638E8" />
-                      <rect x="212" y="38" width="8" height="8" rx="1.5" fill="#A855F7" />
-                      <rect x="226" y="35" width="5" height="5" rx="1" fill="#C084FC" />
-                      <rect x="220" y="48" width="7" height="7" rx="1.5" fill="#7C3AED" />
-                      <rect x="232" y="46" width="5" height="5" rx="1" fill="#9333EA" />
-                    </svg>
+                    {/* Exact Official Pravaah Emblem Image */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src="/logo/emblem.png" 
+                      alt="Pravaah Technology Emblem" 
+                      className="w-full h-full object-contain drop-shadow-[0_12px_28px_rgba(23,105,224,0.35)] relative z-10 hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                 </div>
 

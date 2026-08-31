@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ArrowUpRight, Sparkles, MessageSquare, PhoneCall, CheckCircle2 } from 'lucide-react';
+import { Sparkles, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CONTACT_CONFIG } from '@/config/contact';
 import { Reveal } from '@/components/ui/reveal';

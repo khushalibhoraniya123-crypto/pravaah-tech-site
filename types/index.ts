@@ -104,12 +104,16 @@ export interface TechItem {
 
 export interface ProcessStep {
   number: string;
+  category?: string;
   title: string;
   tagline: string;
   description: string;
   highlights: string[];
   iconName: string;
+  color?: string;
 }
+
+export type ProcessPhase = ProcessStep;
 
 export type PortfolioCategory = 'all' | 'Web' | 'Mobile' | 'UI/UX' | 'Software' | 'AI';
 

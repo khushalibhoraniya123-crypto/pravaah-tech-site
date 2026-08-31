@@ -1,27 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { Logo } from './logo';
 import { Button } from '@/components/ui/button';
 import { useRouter, usePathname } from 'next/navigation';
 
-interface NavLinkItem {
-  label: string;
-  targetId: string;
-}
-
-const NAV_ITEMS: NavLinkItem[] = [
-  { label: 'Home', targetId: 'home' },
-  { label: 'Services', targetId: 'services' },
-  { label: 'Solutions', targetId: 'solutions' },
-  { label: 'About', targetId: 'about' },
-  { label: 'Process', targetId: 'process' },
-  { label: 'Why Us', targetId: 'why-us' },
-  { label: 'Portfolio', targetId: 'portfolio' },
-  { label: 'Reviews', targetId: 'testimonials' },
-  { label: 'Contact', targetId: 'contact' },
-];
+import { NAV_ITEMS } from '@/constants/navigation';
 
 export const Navbar: React.FC = () => {
   const router = useRouter();
@@ -42,12 +27,10 @@ export const Navbar: React.FC = () => {
       const sectionIds = [
         'contact',
         'testimonials',
-        'portfolio',
         'why-us',
-        'process',
         'technologies',
+        'process',
         'about',
-        'solutions',
         'services',
         'home',
       ];

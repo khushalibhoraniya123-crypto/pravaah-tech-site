@@ -13,18 +13,14 @@ import {
   GraduationCap, 
   TrendingUp, 
   Bot,
-  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
   Sparkles,
-  ShieldCheck,
-  Cpu,
-  Activity
+  Cpu
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { SOLUTIONS_DATA } from '@/data/solutions';
-import type { SolutionItem } from '@/types';
 import { Reveal } from '@/components/ui/reveal';
 
 const SOLUTION_ICON_MAP: Record<string, React.ElementType> = {
