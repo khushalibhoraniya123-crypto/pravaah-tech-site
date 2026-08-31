@@ -40,9 +40,20 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
               {/* Outer Card with Animated Glowing White Border Line */}
               <div className="relative rounded-3xl bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white shadow-elevated overflow-hidden group">
                 
-                {/* SVG Animated Glowing White Tracing Border */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none rounded-3xl z-20">
-                  {/* Subtle static outline */}
+                {/* SVG Animated Aesthetic Multi-Color Gradient Tracing Border */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none rounded-3xl z-20 overflow-visible">
+                  <defs>
+                    <linearGradient id="pravaahMultiBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.1" />
+                      <stop offset="25%" stopColor="#1769E0" stopOpacity="0.8" />
+                      <stop offset="50%" stopColor="#6638E8" stopOpacity="0.9" />
+                      <stop offset="75%" stopColor="#EC4899" stopOpacity="0.95" />
+                      <stop offset="90%" stopColor="#38BDF8" stopOpacity="1" />
+                      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="1" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Subtle static glass outline */}
                   <rect 
                     x="1" 
                     y="1" 
@@ -50,10 +61,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                     height="calc(100% - 2px)" 
                     rx="24" 
                     fill="none" 
-                    stroke="rgba(255, 255, 255, 0.14)" 
+                    stroke="rgba(255, 255, 255, 0.12)" 
                     strokeWidth="1" 
                   />
-                  {/* Soft cyan glow trail */}
+
+                  {/* Soft colorful ambient glow underlay */}
                   <rect 
                     pathLength="1000"
                     x="1" 
@@ -62,11 +74,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                     height="calc(100% - 2px)" 
                     rx="24" 
                     fill="none" 
-                    stroke="#38BDF8" 
-                    strokeWidth="3.5" 
-                    className="animate-border-trace opacity-75 blur-[2px]" 
+                    stroke="url(#pravaahMultiBorderGrad)" 
+                    strokeWidth="4.5" 
+                    className="animate-border-trace opacity-80 blur-[3px]" 
                   />
-                  {/* Crisp bright white glowing moving line */}
+
+                  {/* Crisp vibrant multi-color moving light trail */}
                   <rect 
                     pathLength="1000"
                     x="1" 
@@ -75,8 +88,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                     height="calc(100% - 2px)" 
                     rx="24" 
                     fill="none" 
-                    stroke="#FFFFFF" 
-                    strokeWidth="2" 
+                    stroke="url(#pravaahMultiBorderGrad)" 
+                    strokeWidth="2.5" 
                     className="animate-border-trace opacity-100" 
                   />
                 </svg>
