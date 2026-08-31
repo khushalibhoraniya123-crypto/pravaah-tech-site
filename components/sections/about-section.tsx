@@ -37,20 +37,53 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
           {/* Left Column: Visual Showcase & Highlight Grid (5 cols) */}
           <div className="lg:col-span-5 relative">
             <Reveal direction="right" duration={700}>
-              {/* Outer Glowing Border Beam Container */}
-              <div className="relative p-[1.5px] rounded-3xl overflow-hidden shadow-elevated group">
+              {/* Outer Card with Animated Glowing White Border Line */}
+              <div className="relative rounded-3xl bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white shadow-elevated overflow-hidden group">
                 
-                {/* Continuous Rotating Light Beam Tracer */}
-                <div 
-                  aria-hidden="true"
-                  className="absolute -inset-[200%] animate-[spin_8s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_310deg,#00D2FF_335deg,#6638E8_350deg,#1769E0_360deg)] pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                />
+                {/* SVG Animated Glowing White Tracing Border */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none rounded-3xl z-20">
+                  {/* Subtle static outline */}
+                  <rect 
+                    x="1" 
+                    y="1" 
+                    width="calc(100% - 2px)" 
+                    height="calc(100% - 2px)" 
+                    rx="24" 
+                    fill="none" 
+                    stroke="rgba(255, 255, 255, 0.14)" 
+                    strokeWidth="1" 
+                  />
+                  {/* Soft cyan glow trail */}
+                  <rect 
+                    pathLength="1000"
+                    x="1" 
+                    y="1" 
+                    width="calc(100% - 2px)" 
+                    height="calc(100% - 2px)" 
+                    rx="24" 
+                    fill="none" 
+                    stroke="#38BDF8" 
+                    strokeWidth="3.5" 
+                    className="animate-border-trace opacity-75 blur-[2px]" 
+                  />
+                  {/* Crisp bright white glowing moving line */}
+                  <rect 
+                    pathLength="1000"
+                    x="1" 
+                    y="1" 
+                    width="calc(100% - 2px)" 
+                    height="calc(100% - 2px)" 
+                    rx="24" 
+                    fill="none" 
+                    stroke="#FFFFFF" 
+                    strokeWidth="2" 
+                    className="animate-border-trace opacity-100" 
+                  />
+                </svg>
 
-                {/* Inner Box Content */}
-                <div className="relative rounded-[23px] bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white overflow-hidden">
-                  {/* Background ambient lighting */}
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-[#1769E0]/20 rounded-full blur-2xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#6638E8]/20 rounded-full blur-2xl pointer-events-none" />
+                {/* Background ambient lighting */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#1769E0]/20 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#6638E8]/20 rounded-full blur-2xl pointer-events-none" />
 
                 <div className="relative z-10 space-y-6">
                   <div className="space-y-2">
@@ -101,9 +134,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                   </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
-        </div>
+            </Reveal>
+          </div>
 
           {/* Right Column: Narrative & Values (7 cols) */}
           <div className="lg:col-span-7 space-y-6">

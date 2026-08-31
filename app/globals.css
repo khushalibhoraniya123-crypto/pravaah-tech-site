@@ -158,3 +158,18 @@
   animation: shimmer 3s infinite;
 }
 
+/* Clearly visible, slow, elegant white glowing border line tracer */
+@keyframes borderTrace {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.animate-border-trace {
+  stroke-dasharray: 140 860;
+  animation: borderTrace 9s linear infinite;
+}
+
