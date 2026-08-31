@@ -1,6 +1,9 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 
 export interface LogoProps {
   /**
@@ -19,6 +22,9 @@ export const Logo: React.FC<LogoProps> = ({
   onClick,
   priority = true,
 }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   // Check if logo is rendered on a dark background (needs white text) or light background (needs dark text)
   const isForDarkBackground = variant === 'light' || variant === 'footer' || variant === 'on-dark';
 
@@ -28,11 +34,24 @@ export const Logo: React.FC<LogoProps> = ({
     ? '/logo/Logo Horizontal Dark Transparent.png'
     : '/logo/Logo Horizontal Light Transparent.png';
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) onClick();
+
+    // If already on the homepage, smoothly scroll to top
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <Link 
-      href="/#home" 
-      onClick={onClick}
-      className={`inline-flex items-center group transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg shrink-0 ${className}`} 
+      href="/" 
+      onClick={handleClick}
+      className={`inline-flex items-center group transition-transform duration-200 hover:scale-[1.025] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1769E0] focus-visible:ring-offset-2 rounded-lg shrink-0 cursor-pointer ${className}`} 
       aria-label="Pravaah Technology Home"
     >
       <div className="relative flex items-center">
@@ -49,4 +68,3 @@ export const Logo: React.FC<LogoProps> = ({
     </Link>
   );
 };
-
