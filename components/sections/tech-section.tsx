@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Badge } from '@/components/ui/badge';
 import { Reveal } from '@/components/ui/reveal';
 import { 
   Atom, 
@@ -13,13 +12,11 @@ import {
   Terminal, 
   Database, 
   HardDrive, 
-  Zap, 
   Cloud, 
   Box, 
   GitBranch, 
   Sparkles,
-  Layers,
-  Cpu
+  Layers
 } from 'lucide-react';
 
 interface TechNode {
@@ -27,37 +24,184 @@ interface TechNode {
   name: string;
   category: 'frontend' | 'backend' | 'database' | 'cloud' | 'ai';
   categoryLabel: string;
+  categoryColor: string;
   iconName: string;
-  color: string;
-  // Positioning coordinates on the constellation canvas (percentage of canvas width/height)
+  iconColor: string;
   x: number; // percentage from left
   y: number; // percentage from top
   dotColor: string;
 }
 
 const CONSTELLATION_NODES: TechNode[] = [
-  // Frontend
-  { id: 'react', name: 'React.js', category: 'frontend', categoryLabel: 'FRONTEND', iconName: 'Atom', color: '#00D2FF', dotColor: '#00D2FF', x: 40, y: 22 },
-  { id: 'nextjs', name: 'Next.js', category: 'frontend', categoryLabel: 'FRONTEND', iconName: 'Globe', color: '#0B1B3A', dotColor: '#00D2FF', x: 33, y: 46 },
-  { id: 'javascript', name: 'JavaScript', category: 'frontend', categoryLabel: 'FRONTEND', iconName: 'FileCode2', color: '#F7DF1E', dotColor: '#00D2FF', x: 47, y: 38 },
-  { id: 'typescript', name: 'TypeScript', category: 'frontend', categoryLabel: 'FRONTEND', iconName: 'Code2', color: '#3178C6', dotColor: '#00D2FF', x: 46, y: 76 },
-  { id: 'tailwind', name: 'Tailwind CSS', category: 'frontend', categoryLabel: 'FRONTEND', iconName: 'Palette', color: '#38BDF8', dotColor: '#00D2FF', x: 31, y: 62 },
-
-  // Backend
-  { id: 'python', name: 'Python', category: 'backend', categoryLabel: 'BACKEND', iconName: 'Terminal', color: '#3776AB', dotColor: '#10B981', x: 40, y: 68 },
-  { id: 'php', name: 'PHP', category: 'backend', categoryLabel: 'BACKEND', iconName: 'Server', color: '#777BB4', dotColor: '#10B981', x: 60, y: 77 },
-  { id: 'nodejs', name: 'Node.js', category: 'backend', categoryLabel: 'BACKEND', iconName: 'Server', color: '#5FA04E', dotColor: '#10B981', x: 72, y: 77 },
-
-  // Database
-  { id: 'mongodb', name: 'MongoDB', category: 'database', categoryLabel: 'DATABASE', iconName: 'HardDrive', color: '#47A248', dotColor: '#F59E0B', x: 68, y: 68 },
-
-  // Cloud & DevOps
-  { id: 'aws', name: 'AWS Cloud', category: 'cloud', categoryLabel: 'CLOUD', iconName: 'Cloud', color: '#FF9900', dotColor: '#1769E0', x: 76, y: 32 },
-  { id: 'github', name: 'GitHub CI/CD', category: 'cloud', categoryLabel: 'CLOUD', iconName: 'GitBranch', color: '#2088FF', dotColor: '#1769E0', x: 73, y: 55 },
-  { id: 'docker', name: 'Docker', category: 'cloud', categoryLabel: 'CLOUD', iconName: 'Box', color: '#2496ED', dotColor: '#1769E0', x: 84, y: 54 },
-
-  // AI & Tools
-  { id: 'openai', name: 'OpenAI / LLMs', category: 'ai', categoryLabel: 'AI & TOOLS', iconName: 'Sparkles', color: '#10A37F', dotColor: '#9333EA', x: 69, y: 22 },
+  // Top-Left: React.js
+  { 
+    id: 'react', 
+    name: 'React.js', 
+    category: 'frontend', 
+    categoryLabel: 'FRONTEND', 
+    categoryColor: '#00D2FF',
+    iconName: 'Atom', 
+    iconColor: '#00D2FF', 
+    dotColor: '#00D2FF', 
+    x: 41, 
+    y: 20 
+  },
+  // Mid-Left: Next.js
+  { 
+    id: 'nextjs', 
+    name: 'Next.js', 
+    category: 'frontend', 
+    categoryLabel: 'FRONTEND', 
+    categoryColor: '#00D2FF',
+    iconName: 'Globe', 
+    iconColor: '#0B1B3A', 
+    dotColor: '#00D2FF', 
+    x: 34, 
+    y: 44 
+  },
+  // Left-Bottom: Tailwind CSS
+  { 
+    id: 'tailwind', 
+    name: 'Tailwind CSS', 
+    category: 'frontend', 
+    categoryLabel: 'FRONTEND', 
+    categoryColor: '#00D2FF',
+    iconName: 'Palette', 
+    iconColor: '#38BDF8', 
+    dotColor: '#00D2FF', 
+    x: 31, 
+    y: 64 
+  },
+  // Center-Left: JavaScript
+  { 
+    id: 'javascript', 
+    name: 'JavaScript', 
+    category: 'frontend', 
+    categoryLabel: 'FRONTEND', 
+    categoryColor: '#00D2FF',
+    iconName: 'FileCode2', 
+    iconColor: '#F7DF1E', 
+    dotColor: '#00D2FF', 
+    x: 48, 
+    y: 36 
+  },
+  // Bottom-Left Inner: TypeScript
+  { 
+    id: 'typescript', 
+    name: 'TypeScript', 
+    category: 'frontend', 
+    categoryLabel: 'FRONTEND', 
+    categoryColor: '#00D2FF',
+    iconName: 'Code2', 
+    iconColor: '#3178C6', 
+    dotColor: '#00D2FF', 
+    x: 47, 
+    y: 78 
+  },
+  // Bottom-Left Outer: Python
+  { 
+    id: 'python', 
+    name: 'Python', 
+    category: 'backend', 
+    categoryLabel: 'BACKEND', 
+    categoryColor: '#10B981',
+    iconName: 'Terminal', 
+    iconColor: '#3776AB', 
+    dotColor: '#10B981', 
+    x: 41, 
+    y: 69 
+  },
+  // Bottom-Center: PHP
+  { 
+    id: 'php', 
+    name: 'PHP', 
+    category: 'backend', 
+    categoryLabel: 'BACKEND', 
+    categoryColor: '#10B981',
+    iconName: 'Server', 
+    iconColor: '#777BB4', 
+    dotColor: '#10B981', 
+    x: 61, 
+    y: 78 
+  },
+  // Bottom-Right: Node.js
+  { 
+    id: 'nodejs', 
+    name: 'Node.js', 
+    category: 'backend', 
+    categoryLabel: 'BACKEND', 
+    categoryColor: '#10B981',
+    iconName: 'Server', 
+    iconColor: '#5FA04E', 
+    dotColor: '#10B981', 
+    x: 73, 
+    y: 78 
+  },
+  // Bottom-Mid-Right: MongoDB
+  { 
+    id: 'mongodb', 
+    name: 'MongoDB', 
+    category: 'database', 
+    categoryLabel: 'DATABASE', 
+    categoryColor: '#F59E0B',
+    iconName: 'HardDrive', 
+    iconColor: '#47A248', 
+    dotColor: '#F59E0B', 
+    x: 69, 
+    y: 69 
+  },
+  // Center-Right: GitHub CI/CD
+  { 
+    id: 'github', 
+    name: 'GitHub CI/CD', 
+    category: 'cloud', 
+    categoryLabel: 'CLOUD', 
+    categoryColor: '#1769E0',
+    iconName: 'GitBranch', 
+    iconColor: '#2088FF', 
+    dotColor: '#1769E0', 
+    x: 74, 
+    y: 54 
+  },
+  // Far-Right: Docker
+  { 
+    id: 'docker', 
+    name: 'Docker', 
+    category: 'cloud', 
+    categoryLabel: 'CLOUD', 
+    categoryColor: '#1769E0',
+    iconName: 'Box', 
+    iconColor: '#2496ED', 
+    dotColor: '#1769E0', 
+    x: 85, 
+    y: 53 
+  },
+  // Top-Right Mid: AWS Cloud
+  { 
+    id: 'aws', 
+    name: 'AWS Cloud', 
+    category: 'cloud', 
+    categoryLabel: 'CLOUD', 
+    categoryColor: '#1769E0',
+    iconName: 'Cloud', 
+    iconColor: '#FF9900', 
+    dotColor: '#1769E0', 
+    x: 77, 
+    y: 33 
+  },
+  // Top-Right High: OpenAI / LLMs
+  { 
+    id: 'openai', 
+    name: 'OpenAI / LLMs', 
+    category: 'ai', 
+    categoryLabel: 'AI & TOOLS', 
+    categoryColor: '#9333EA',
+    iconName: 'Sparkles', 
+    iconColor: '#10A37F', 
+    dotColor: '#9333EA', 
+    x: 70, 
+    y: 21 
+  },
 ];
 
 const FILTER_CATEGORIES = [
@@ -69,7 +213,7 @@ const FILTER_CATEGORIES = [
   { id: 'ai', label: 'AI & Tools', count: 1 },
 ];
 
-const ICON_COMPONENTS: Record<string, React.ElementType> = {
+const ICON_MAP: Record<string, React.ElementType> = {
   Atom,
   Globe,
   Code2,
@@ -79,25 +223,23 @@ const ICON_COMPONENTS: Record<string, React.ElementType> = {
   Terminal,
   Database,
   HardDrive,
-  Zap,
   Cloud,
   Box,
   GitBranch,
   Sparkles,
   Layers,
-  Cpu,
 };
 
 export const TechSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
 
-  // Center coordinate of the Pravaah logo emblem on canvas
-  const centerX = 59;
+  // Exact focal center coordinate of the Pravaah logo emblem on the canvas
+  const centerX = 58;
   const centerY = 50;
 
   return (
-    <section id="technologies" className="py-14 sm:py-16 md:py-20 bg-gradient-to-b from-[#EAF2FC] via-[#F6F2FE]/60 to-[#EDF4FC] relative overflow-hidden border-b border-[#D8E4F5]">
+    <section id="technologies" className="py-14 sm:py-16 md:py-20 bg-gradient-to-b from-[#EBF3FC] via-[#F6F2FE]/60 to-[#EDF4FC] relative overflow-hidden border-b border-[#D8E4F5]">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-20 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
@@ -178,11 +320,11 @@ export const TechSection: React.FC = () => {
           {/* Right Panel: Interactive Visual Constellation Canvas (8.5 cols) */}
           <div className="lg:col-span-8 xl:col-span-9">
             <Reveal direction="left" duration={700}>
-              <div className="relative rounded-3xl bg-white/90 backdrop-blur-md border border-[#D6E3F4] shadow-elevated p-6 sm:p-10 min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] flex items-center justify-center overflow-hidden">
+              <div className="relative rounded-[32px] bg-gradient-to-br from-white/95 via-[#F4F8FD]/90 to-white/95 border border-[#D5E3F5] shadow-elevated p-6 sm:p-10 min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] flex items-center justify-center overflow-hidden">
                 
-                {/* Background Tech Circuit Grid */}
+                {/* Background Tech Grid */}
                 <div className="absolute inset-0 bg-tech-grid opacity-15 pointer-events-none" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#1769E0]/8 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-[#1769E0]/8 rounded-full blur-3xl pointer-events-none" />
 
                 {/* SVG Connecting Dotted Lines from Center to Each Node */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 hidden sm:block">
@@ -196,17 +338,17 @@ export const TechSection: React.FC = () => {
                         y1={`${node.y}%`}
                         x2={`${centerX}%`}
                         y2={`${centerY}%`}
-                        stroke={isHovered ? '#1769E0' : isMatched ? '#CBD5E1' : '#E2E8F0'}
-                        strokeWidth={isHovered ? '2' : '1.2'}
+                        stroke={isHovered ? '#1769E0' : isMatched ? '#94A3B8' : '#CBD5E1'}
+                        strokeWidth={isHovered ? '2.2' : '1.2'}
                         strokeDasharray={isHovered ? 'none' : '3 4'}
-                        strokeOpacity={isMatched ? (isHovered ? '0.9' : '0.55') : '0.15'}
+                        strokeOpacity={isMatched ? (isHovered ? '0.95' : '0.45') : '0.12'}
                         className="transition-all duration-300"
                       />
                     );
                   })}
                 </svg>
 
-                {/* Center Core: Official Pravaah Flowing Wave Emblem */}
+                {/* Center Core: Official High-Definition Vector Pravaah Wave Emblem & Particle Cubes */}
                 <div 
                   className="absolute hidden sm:flex items-center justify-center pointer-events-none select-none z-20"
                   style={{
@@ -215,13 +357,43 @@ export const TechSection: React.FC = () => {
                     transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  <div className="relative w-36 h-24 sm:w-44 sm:h-28 flex items-center justify-center">
-                    <img
-                      src="/logo/Logo Horizontal Dark Transparent.png"
-                      alt="Pravaah Core"
-                      className="w-full h-full object-contain object-left scale-[1.35] filter drop-shadow-[0_4px_16px_rgba(23,105,224,0.3)] animate-pulse-subtle"
-                      draggable={false}
-                    />
+                  <div className="relative w-44 h-32 flex items-center justify-center">
+                    {/* Ambient Aura */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/25 via-blue-500/20 to-purple-500/25 rounded-full blur-2xl animate-pulse" />
+                    
+                    {/* Vector Pravaah Flow Wave Graphic with Particle Stream */}
+                    <svg viewBox="0 0 240 140" className="w-full h-full drop-shadow-[0_6px_22px_rgba(23,105,224,0.32)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="pravaahWave1" x1="0%" y1="50%" x2="100%" y2="50%">
+                          <stop offset="0%" stopColor="#00D2FF" />
+                          <stop offset="50%" stopColor="#1769E0" />
+                          <stop offset="100%" stopColor="#6638E8" />
+                        </linearGradient>
+                        <linearGradient id="pravaahWave2" x1="0%" y1="50%" x2="100%" y2="50%">
+                          <stop offset="0%" stopColor="#00D2FF" />
+                          <stop offset="60%" stopColor="#2563EB" />
+                          <stop offset="100%" stopColor="#7C3AED" />
+                        </linearGradient>
+                        <linearGradient id="pravaahWave3" x1="0%" y1="50%" x2="100%" y2="50%">
+                          <stop offset="0%" stopColor="#38BDF8" />
+                          <stop offset="70%" stopColor="#4F46E5" />
+                          <stop offset="100%" stopColor="#9333EA" />
+                        </linearGradient>
+                      </defs>
+
+                      {/* Main Dynamic Flow Wings */}
+                      <path d="M18 96 C58 96, 94 112, 130 86 C156 68, 178 42, 198 40 C178 52, 152 79, 126 91 C90 108, 48 96, 18 96Z" fill="url(#pravaahWave1)" />
+                      <path d="M38 82 C74 82, 110 92, 142 68 C164 52, 182 30, 204 28 C184 38, 160 62, 134 74 C100 88, 64 82, 38 82Z" fill="url(#pravaahWave2)" />
+                      <path d="M64 66 C94 66, 126 72, 152 50 C170 36, 188 20, 208 18 C188 26, 168 44, 144 55 C116 66, 88 66, 64 66Z" fill="url(#pravaahWave3)" />
+
+                      {/* Trailing Particle Digital Cubes */}
+                      <rect x="206" y="24" width="7" height="7" rx="1.5" fill="#8B5CF6" />
+                      <rect x="218" y="28" width="6" height="6" rx="1" fill="#6638E8" />
+                      <rect x="212" y="38" width="8" height="8" rx="1.5" fill="#A855F7" />
+                      <rect x="226" y="35" width="5" height="5" rx="1" fill="#C084FC" />
+                      <rect x="220" y="48" width="7" height="7" rx="1.5" fill="#7C3AED" />
+                      <rect x="232" y="46" width="5" height="5" rx="1" fill="#9333EA" />
+                    </svg>
                   </div>
                 </div>
 
@@ -232,7 +404,7 @@ export const TechSection: React.FC = () => {
                   {CONSTELLATION_NODES.map((node) => {
                     const isMatched = activeFilter === 'all' || activeFilter === node.category;
                     const isHovered = hoveredNodeId === node.id;
-                    const IconComponent = ICON_COMPONENTS[node.iconName] || Code2;
+                    const IconComponent = ICON_MAP[node.iconName] || Code2;
 
                     return (
                       <div
@@ -242,7 +414,7 @@ export const TechSection: React.FC = () => {
                         className={`absolute transition-all duration-300 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer ${
                           isMatched 
                             ? 'opacity-100 scale-100' 
-                            : 'opacity-25 scale-90 grayscale'
+                            : 'opacity-20 scale-90 grayscale'
                         } ${isHovered ? 'scale-110 z-40' : 'z-20'}`}
                         style={{
                           left: `${node.x}%`,
@@ -251,20 +423,20 @@ export const TechSection: React.FC = () => {
                       >
                         <div className={`px-3.5 py-2 rounded-2xl bg-white border transition-all duration-300 flex items-center gap-2.5 shadow-soft ${
                           isHovered
-                            ? 'border-[#1769E0] shadow-[0_6px_20px_rgba(23,105,224,0.25)] ring-2 ring-[#1769E0]/20'
+                            ? 'border-[#1769E0] shadow-[0_8px_24px_rgba(23,105,224,0.25)] ring-2 ring-[#1769E0]/25'
                             : isMatched && activeFilter !== 'all'
-                            ? 'border-[#1769E0]/60 ring-2 ring-[#1769E0]/15'
+                            ? 'border-[#1769E0]/70 ring-2 ring-[#1769E0]/15'
                             : 'border-[#D6E3F4] hover:border-[#1769E0]/40'
                         }`}>
-                          {/* Icon */}
+                          {/* Technology Brand Icon */}
                           <div 
                             className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0"
-                            style={{ color: node.color }}
+                            style={{ color: node.iconColor }}
                           >
                             <IconComponent className="w-4 h-4" />
                           </div>
 
-                          {/* Info */}
+                          {/* Technology Name & Category Label */}
                           <div className="flex flex-col text-left">
                             <div className="flex items-center gap-1.5">
                               <span className="text-xs font-bold text-[#0B1B3A] whitespace-nowrap">
@@ -275,7 +447,10 @@ export const TechSection: React.FC = () => {
                                 style={{ backgroundColor: node.dotColor }}
                               />
                             </div>
-                            <span className="text-[9px] font-bold text-[#667085] tracking-wider uppercase">
+                            <span 
+                              className="text-[9px] font-bold tracking-wider uppercase"
+                              style={{ color: node.categoryColor }}
+                            >
                               {node.categoryLabel}
                             </span>
                           </div>
@@ -289,7 +464,7 @@ export const TechSection: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3 w-full sm:hidden z-30">
                   {CONSTELLATION_NODES.map((node) => {
                     const isMatched = activeFilter === 'all' || activeFilter === node.category;
-                    const IconComponent = ICON_COMPONENTS[node.iconName] || Code2;
+                    const IconComponent = ICON_MAP[node.iconName] || Code2;
 
                     if (!isMatched && activeFilter !== 'all') return null;
 
@@ -300,7 +475,7 @@ export const TechSection: React.FC = () => {
                       >
                         <div 
                           className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0"
-                          style={{ color: node.color }}
+                          style={{ color: node.iconColor }}
                         >
                           <IconComponent className="w-4 h-4" />
                         </div>
@@ -314,7 +489,10 @@ export const TechSection: React.FC = () => {
                               style={{ backgroundColor: node.dotColor }}
                             />
                           </div>
-                          <span className="text-[9px] font-bold text-[#667085] uppercase">
+                          <span 
+                            className="text-[9px] font-bold uppercase"
+                            style={{ color: node.categoryColor }}
+                          >
                             {node.categoryLabel}
                           </span>
                         </div>
