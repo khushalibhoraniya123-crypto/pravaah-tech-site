@@ -8,8 +8,10 @@ export type ServiceCategory =
 
 export interface ServiceItem {
   id: string;
+  number: string;
   category: ServiceCategory;
   title: string;
+  tagline: string;
   badge: string;
   shortDesc: string;
   fullDesc: string;
@@ -17,18 +19,71 @@ export interface ServiceItem {
   features: string[];
   technologies: string[];
   deliverables: string[];
+  challenges: {
+    title: string;
+    points: string[];
+  };
+  approach: {
+    title: string;
+    points: string[];
+  };
+  benefits: string[];
+  process: {
+    step: string;
+    phase: string;
+    description: string;
+  }[];
+  metrics: {
+    value: string;
+    label: string;
+  }[];
+  caseStudyRef?: {
+    name: string;
+    link: string;
+  };
+}
+
+
+export interface SolutionChallenge {
+  title: string;
+  points: string[];
+}
+
+export interface SolutionApproach {
+  title: string;
+  points: string[];
+}
+
+export interface SolutionMetric {
+  value: string;
+  label: string;
 }
 
 export interface SolutionItem {
   id: string;
+  number: string;
   title: string;
+  tagline: string;
   badge: string;
+  category: 'enterprise' | 'industry';
   description: string;
+  fullDesc: string;
   iconName: string;
   features: string[];
   benefits: string[];
-  caseStudyHighlight?: string;
+  technologies: string[];
+  architecture: string[];
+  challenges: SolutionChallenge;
+  approach: SolutionApproach;
+  deliverables: string[];
+  metrics: SolutionMetric[];
+  caseStudyHighlight?: {
+    name: string;
+    link: string;
+    result: string;
+  };
 }
+
 
 export interface StatItem {
   value: string;

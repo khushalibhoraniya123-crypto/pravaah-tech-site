@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 export const CustomCursor: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -15,6 +16,7 @@ export const CustomCursor: React.FC = () => {
   const animationFrameId = useRef<number | null>(null);
 
   useEffect(() => {
+    setMounted(true);
     // Disable on touch devices
     if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
       return;
@@ -83,7 +85,7 @@ export const CustomCursor: React.FC = () => {
     };
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  if (!mounted || !isVisible) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden select-none">

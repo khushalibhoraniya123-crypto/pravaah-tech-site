@@ -13,7 +13,8 @@ import {
   TrendingUp, 
   Bot,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  CheckCircle2
 } from 'lucide-react';
 import type { SolutionItem } from '@/types';
 import { Badge } from '@/components/ui/badge';
@@ -40,12 +41,15 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({ solution, onConsult 
   const IconComponent = SOLUTION_ICON_MAP[solution.iconName] || Layers;
 
   return (
-    <div className="group relative rounded-3xl bg-white p-7 sm:p-8 border border-[#E4E7EC] shadow-soft hover:shadow-elevated transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+    <div className="group relative rounded-3xl bg-white/95 backdrop-blur-md p-7 sm:p-8 border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 overflow-hidden">
+      {/* Subtle top gradient bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1769E0] to-[#6638E8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
       <div>
         {/* Header Icon + Badge */}
         <div className="flex items-start justify-between gap-3 mb-5">
-          <div className="w-13 h-13 rounded-2xl bg-slate-50 border border-slate-200/80 text-[#0B1B3A] group-hover:bg-[#0B1B3A] group-hover:text-white transition-all duration-300 flex items-center justify-center p-3">
-            <IconComponent className="w-6 h-6" />
+          <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-blue-50 to-purple-50 border border-blue-100 text-[#1769E0] group-hover:bg-[#0B1B3A] group-hover:text-white transition-all duration-300 flex items-center justify-center p-3 shadow-xs">
+            <IconComponent className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
           </div>
           <Badge variant="blue" size="sm">
             {solution.badge}
@@ -62,11 +66,11 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({ solution, onConsult 
 
         {/* Feature points */}
         <div className="space-y-2 mb-6">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Capabilities</span>
-          <div className="grid grid-cols-1 gap-1.5 pt-1">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Core Capabilities</span>
+          <div className="grid grid-cols-1 gap-2 pt-1">
             {solution.features.map((feat, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-xs text-[#334155]">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1769E0]" />
+              <div key={idx} className="flex items-center gap-2 text-xs text-[#334155] font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#1769E0] shrink-0" />
                 <span>{feat}</span>
               </div>
             ))}
@@ -75,20 +79,21 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({ solution, onConsult 
 
         {/* Highlight Benefit */}
         {solution.benefits && solution.benefits.length > 0 && (
-          <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 mb-6 flex items-start gap-2 text-xs text-[#0B1B3A]">
-            <Sparkles className="w-4 h-4 text-[#6C3FE8] shrink-0 mt-0.5" />
-            <span className="font-medium">{solution.benefits[0]}</span>
+          <div className="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100/80 mb-6 flex items-start gap-2 text-xs text-[#0B1B3A]">
+            <Sparkles className="w-4 h-4 text-[#6638E8] shrink-0 mt-0.5" />
+            <span className="font-semibold">{solution.benefits[0]}</span>
           </div>
         )}
       </div>
 
       <button
         onClick={() => onConsult && onConsult(solution)}
-        className="w-full pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-[#1769E0] group-hover:text-[#6C3FE8] transition-colors cursor-pointer"
+        className="w-full pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-[#1769E0] group-hover:text-[#6638E8] transition-colors cursor-pointer"
       >
         <span>Request Solution Consultation</span>
-        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
       </button>
     </div>
   );
 };
+

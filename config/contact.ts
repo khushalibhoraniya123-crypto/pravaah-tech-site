@@ -5,8 +5,8 @@ export const CONTACT_CONFIG = {
   badgeText: 'INNOVATION • TECHNOLOGY • DIGITAL FUTURE',
   
   // Contact details
-  phone: '+91 95743 43531',
-  phoneRaw: '+919574343531',
+  phone: '+91 90161 41437',
+  phoneRaw: '+919016141437',
   whatsapp: '+91 95743 43531',
   whatsappRaw: '919574343531',
   whatsappMessage: 'Hello Pravaah Technology! I would like to discuss a project inquiry.',

@@ -4,11 +4,15 @@ import React, { useState } from 'react';
 import { HeroSection } from '@/components/sections/hero-section';
 import { ServicesStrip } from '@/components/sections/services-strip';
 import { ServicesSection } from '@/components/sections/services-section';
+import { SolutionsSection } from '@/components/sections/solutions-section';
 import { AboutSection } from '@/components/sections/about-section';
 import { StatsSection } from '@/components/sections/stats-section';
 import { TechSection } from '@/components/sections/tech-section';
 import { ProcessSection } from '@/components/sections/process-section';
+import { WhyChooseUsSection } from '@/components/sections/why-choose-us-section';
 import { PortfolioSection } from '@/components/sections/portfolio-section';
+import { TestimonialsSection } from '@/components/sections/testimonials-section';
+import { CtaBannerSection } from '@/components/sections/cta-banner-section';
 import { ContactSection } from '@/components/sections/contact-section';
 
 export default function HomePage() {
@@ -43,7 +47,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section with Interactive Code Terminal & Satellites */}
       <HeroSection
         onStartProject={() => scrollToContact()}
         onExploreServices={() => scrollToSection('services')}
@@ -53,23 +57,36 @@ export default function HomePage() {
       <ServicesStrip />
       <ServicesSection onStartInquiryWithService={scrollToContact} />
 
-      {/* 3. About Us Section */}
-      <AboutSection onLearnMore={() => scrollToSection('about')} />
+      {/* 3. Industry Solutions Showcase */}
+      <SolutionsSection onConsultSolution={(solutionName) => scrollToContact(`Solution: ${solutionName}`)} />
 
-      {/* 5. Performance Statistics */}
+      {/* 4. About Us Section & Company Engineering Core */}
+      <AboutSection onLearnMore={() => scrollToContact('General Technical Consultation')} />
+
+      {/* 5. Performance Statistics with Animated Counters */}
       <StatsSection />
 
       {/* 6. Technology Matrix */}
       <TechSection />
 
-      {/* 7. 6-Phase Engineering Methodology */}
+      {/* 7. 6-Phase Engineering Methodology with Progress Line */}
       <ProcessSection />
 
-      {/* 8. Featured Projects & Case Studies */}
+      {/* 8. Why Choose Us Section */}
+      <WhyChooseUsSection onConsult={() => scrollToContact('Enterprise Consultation')} />
+
+      {/* 9. Featured Projects & Case Studies */}
       <PortfolioSection onRequestSimilarProject={scrollToContact} />
 
-      {/* 9. Contact Section powered by TanStack React Query */}
+      {/* 10. Client Testimonials & Endorsements Carousel */}
+      <TestimonialsSection />
+
+      {/* 11. High-Impact Final CTA Banner */}
+      <CtaBannerSection onStartProject={() => scrollToContact()} />
+
+      {/* 12. Contact Section powered by TanStack React Query */}
       <ContactSection preselectedService={inquiryService} />
     </div>
   );
 }
+

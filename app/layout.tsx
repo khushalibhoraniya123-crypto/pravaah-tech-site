@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-white text-[#0B1B3A]">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col bg-white text-[#0B1B3A]" suppressHydrationWarning>
         <QueryProvider>
           <CustomCursor />
           <Navbar />

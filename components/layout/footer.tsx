@@ -6,10 +6,12 @@ import {
   Phone, 
   Mail, 
   MessageSquare, 
-  MapPin 
+  MapPin,
+  ArrowUpRight 
 } from 'lucide-react';
 import { Logo } from './logo';
 import { CONTACT_CONFIG } from '@/config/contact';
+import { useRouter, usePathname } from 'next/navigation';
 
 const LinkedInIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -37,8 +39,6 @@ const GitHubIcon = () => (
   </svg>
 );
 
-import { useRouter, usePathname } from 'next/navigation';
-
 export const Footer: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -64,19 +64,20 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#06132D] text-white pt-12 pb-6 border-t border-[#0E2856] relative overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/10 rounded-full blur-3xl pointer-events-none" />
+    <footer className="bg-[#06132D] text-white pt-14 pb-8 border-t border-[#0E2856] relative overflow-hidden">
+      {/* Ambient background glows & grid */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-tech-grid opacity-10 pointer-events-none" />
 
       <div className="max-w-[1536px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-8 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/10">
           
           {/* Col 1: Brand & Tagline (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <Logo variant="light" />
             <p className="text-slate-300 text-sm leading-relaxed max-w-sm pt-2">
-              {CONTACT_CONFIG.tagline}
+              {CONTACT_CONFIG.tagline} Custom software systems, enterprise web applications, and autonomous AI pipelines.
             </p>
             <div className="pt-2 flex items-center gap-3">
               <a
@@ -84,7 +85,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1769E0] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1769E0] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent hover:scale-105"
               >
                 <LinkedInIcon />
               </a>
@@ -93,7 +94,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#E1306C] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#E1306C] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent hover:scale-105"
               >
                 <InstagramIcon />
               </a>
@@ -102,7 +103,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent hover:scale-105"
               >
                 <FacebookIcon />
               </a>
@@ -111,62 +112,72 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#333] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent"
+                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#333] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent hover:scale-105"
               >
                 <GitHubIcon />
               </a>
             </div>
           </div>
 
-          {/* Col 2: Navigation (2 cols) */}
+          {/* Col 2: Navigation (2.5 cols) */}
           <div className="lg:col-span-2 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Navigation</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <button onClick={() => scrollToSection('home')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => scrollToSection('home')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
                   Services
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
+                  Industry Solutions
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('about')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
                   About Us
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('process')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Our Process
+                <button onClick={() => scrollToSection('process')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
+                  Methodology
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('portfolio')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Portfolio
+                <button onClick={() => scrollToSection('why-us')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
+                  Why Choose Us
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('contact')} className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Contact Us
+                <button onClick={() => scrollToSection('portfolio')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
+                  Portfolio Showcase
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('testimonials')} className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer">
+                  Client Reviews
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: What We Build (3 cols) */}
+          {/* Col 3: What We Build (2.5 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">What We Build</h3>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Services & Solutions</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
-                  Web Development
+                  Web App Development
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
-                  App Development
+                  Mobile App Engineering
                 </button>
               </li>
               <li>
@@ -176,17 +187,17 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
-                  Software Solutions & ERP
+                  Enterprise ERP & Cloud
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
-                  AI Solutions & Agents
+                  AI Agents & Workflows
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('services')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
-                  Digital Transformation
+                <button onClick={() => scrollToSection('solutions')} className="text-slate-300 hover:text-[#38BDF8] transition-colors inline-block cursor-pointer">
+                  Business Automation
                 </button>
               </li>
             </ul>
@@ -194,7 +205,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Contact & Office (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Get in Touch</h3>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Contact</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <a
@@ -205,7 +216,7 @@ export const Footer: React.FC = () => {
                     <Phone className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400">Call Us Directly</div>
+                    <div className="text-xs text-slate-400">Direct Phone Support</div>
                     <div className="font-semibold text-white">{CONTACT_CONFIG.phone}</div>
                   </div>
                 </a>
@@ -237,7 +248,7 @@ export const Footer: React.FC = () => {
                     <MessageSquare className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400">WhatsApp Chat</div>
+                    <div className="text-xs text-slate-400">WhatsApp Instant Chat</div>
                     <div className="font-medium text-white">{CONTACT_CONFIG.whatsapp}</div>
                   </div>
                 </a>
@@ -256,7 +267,7 @@ export const Footer: React.FC = () => {
                     <MapPin className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors">Office Location (Maps)</div>
+                    <div className="text-xs text-slate-400 group-hover:text-slate-200 transition-colors">Office Location (Surat, Gujarat)</div>
                     <div className="text-xs leading-relaxed text-slate-300 group-hover:text-white transition-colors">
                       {CONTACT_CONFIG.address.fullFormatted}
                     </div>
@@ -268,17 +279,19 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <div>
             <span>© {currentYear} {CONTACT_CONFIG.companyName}. All Rights Reserved.</span>
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="text-slate-400">Privacy Policy</span>
-            <span className="text-slate-400">Terms & Conditions</span>
+            <span className="text-slate-400 hover:text-slate-200 transition-colors cursor-default">Privacy Policy</span>
+            <span className="text-slate-400 hover:text-slate-200 transition-colors cursor-default">Terms of Service</span>
+            <span className="text-slate-400 hover:text-slate-200 transition-colors cursor-default">Security Policy</span>
           </div>
         </div>
       </div>
     </footer>
   );
 };
+

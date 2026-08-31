@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
 import type { PortfolioProject } from '@/types';
 
 interface ProjectCardProps {
@@ -14,29 +14,31 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
   const caseStudyUrl = `/portfolio/${project.id}`;
 
   return (
-    <div className="group rounded-3xl bg-white/95 backdrop-blur-sm border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:-translate-y-1">
+    <div className="group rounded-3xl bg-white/95 backdrop-blur-md border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:-translate-y-1.5 h-full">
       <div>
-        {/* Project Thumbnail Image with Overlay */}
+        {/* Project Thumbnail Image with Overlay and Zoom */}
         <Link href={caseStudyUrl} className="block relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
           <img
             src={project.image}
             alt={project.name}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:opacity-90"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108 group-hover:opacity-95"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07152F]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#06132D]/85 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
           {/* Category Pill Tag */}
           <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md text-[#0B1B3A] shadow-xs">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#0B1B3A] shadow-xs border border-white/60">
               {project.category}
             </span>
           </div>
 
           {/* Client & Year Tag */}
-          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs font-medium">
-            <span className="truncate">{project.client}</span>
-            <span className="text-slate-300 font-mono">{project.year}</span>
+          <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white text-xs font-medium">
+            <span className="truncate font-semibold">{project.client}</span>
+            <span className="text-slate-300 font-mono text-[11px] bg-white/10 px-2 py-0.5 rounded-md backdrop-blur-xs">
+              {project.year}
+            </span>
           </div>
         </Link>
 
@@ -47,7 +49,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
               {project.name}
             </h3>
           </Link>
-          <p className="text-xs font-semibold text-[#6C3FE8] mb-3">
+          <p className="text-xs font-semibold text-[#6638E8] mb-3">
             {project.subtitle}
           </p>
           <p className="text-sm text-[#667085] leading-relaxed line-clamp-2 mb-5">
@@ -56,7 +58,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
 
           {/* Stats Bar */}
           {project.stats && project.stats.length > 0 && (
-            <div className="grid grid-cols-3 gap-2 py-3 px-3.5 rounded-2xl bg-[#F7F9FC] border border-slate-100 mb-5">
+            <div className="grid grid-cols-3 gap-2 py-2.5 px-3 rounded-2xl bg-blue-50/60 border border-blue-100/70 mb-5">
               {project.stats.map((stat, i) => (
                 <div key={i} className="text-center">
                   <div className="text-sm font-extrabold text-[#0B1B3A]">{stat.value}</div>
@@ -90,7 +92,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
         <Link
           href={caseStudyUrl}
           onClick={() => onViewDetails?.(project)}
-          className="w-full py-3 px-4 rounded-xl border border-[#E4E7EC] bg-white group-hover:bg-[#0B1B3A] group-hover:border-[#0B1B3A] group-hover:text-white text-[#0B1B3A] text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+          className="w-full py-3 px-4 rounded-xl border border-[#D6E3F4] bg-white group-hover:bg-[#0B1B3A] group-hover:border-[#0B1B3A] group-hover:text-white text-[#0B1B3A] text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs group-hover:shadow-soft"
         >
           <span>View Case Study</span>
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -99,4 +101,5 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
     </div>
   );
 };
+
 

@@ -1,6 +1,10 @@
+"use client";
+
 import React from 'react';
 import { getStatsData } from '@/data/stats';
 import { CheckCircle2, Smile, Layers, Award } from 'lucide-react';
+import { Reveal } from '@/components/ui/reveal';
+import { AnimatedCounter } from '@/components/ui/animated-counter';
 
 const STATS_ICON_MAP: Record<string, React.ElementType> = {
   CheckCircle2,
@@ -8,8 +12,6 @@ const STATS_ICON_MAP: Record<string, React.ElementType> = {
   Layers,
   Award,
 };
-
-import { Reveal } from '@/components/ui/reveal';
 
 export const StatsSection: React.FC = () => {
   const stats = getStatsData();
@@ -23,13 +25,20 @@ export const StatsSection: React.FC = () => {
             return (
               <Reveal key={idx} delay={idx * 90} direction="up">
                 <div
-                  className="p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 flex flex-col items-center text-center group hover:-translate-y-1"
+                  className="p-5 sm:p-6 rounded-2xl bg-white/95 backdrop-blur-md border border-[#D6E3F4] shadow-soft hover:shadow-elevated hover:border-[#1769E0]/40 transition-all duration-300 flex flex-col items-center text-center group hover:-translate-y-1.5 cursor-default"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-50 to-purple-50 text-[#1769E0] group-hover:bg-gradient-to-tr group-hover:from-[#1769E0] group-hover:to-[#6638E8] group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 border border-blue-100/80 group-hover:scale-110">
-                    <Icon className="w-5 h-5" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-50 to-purple-50 text-[#1769E0] group-hover:bg-gradient-to-tr group-hover:from-[#1769E0] group-hover:to-[#6638E8] group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 border border-blue-100/80 group-hover:scale-110 shadow-xs">
+                    <Icon className="w-6 h-6" />
                   </div>
                   <div className="text-2xl sm:text-3xl font-extrabold text-[#0B1B3A] tracking-tight mb-1">
-                    {stat.value}
+                    {stat.numberOnly !== undefined ? (
+                      <AnimatedCounter
+                        value={stat.numberOnly}
+                        suffix={stat.suffix || ''}
+                      />
+                    ) : (
+                      stat.value
+                    )}
                   </div>
                   <div className="text-sm font-bold text-[#1769E0] mb-1">
                     {stat.label}
@@ -46,3 +55,4 @@ export const StatsSection: React.FC = () => {
     </section>
   );
 };
+
