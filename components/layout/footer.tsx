@@ -39,19 +39,18 @@ const GitHubIcon = () => (
   </svg>
 );
 
+import { ParticleBackground } from '@/components/ui/particle-background';
+
 export const Footer: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   const scrollToSection = (targetId: string) => {
-    if (pathname !== '/') {
-      router.push(`/#${targetId}`);
-      return;
-    }
+    if (pathname === '/') {
+      const element = document.getElementById(targetId);
+      if (!element) return;
 
-    const element = document.getElementById(targetId);
-    if (element) {
       const navOffset = 70;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
@@ -65,6 +64,9 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-dark-cosmos text-white pt-14 pb-8 border-t border-[#0E2856] relative overflow-hidden">
+      {/* Subtle floating particles */}
+      <ParticleBackground particleCount={24} />
+
       {/* Ambient background glows & tech grid */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1769E0]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6638E8]/15 rounded-full blur-3xl pointer-events-none" />

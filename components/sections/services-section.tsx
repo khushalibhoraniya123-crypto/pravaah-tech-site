@@ -23,6 +23,8 @@ import { SERVICES_DATA } from '@/data/services';
 import type { ServiceItem } from '@/types';
 import { Reveal } from '@/components/ui/reveal';
 
+import { ParticleBackground } from '@/components/ui/particle-background';
+
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
   Globe,
   Smartphone,
@@ -56,6 +58,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onStartInquiry
 
   return (
     <section id="services" className="relative bg-dark-cosmos text-white py-16 sm:py-20 md:py-24 overflow-hidden border-b border-[#0E2856]">
+      {/* Subtle floating particles background */}
+      <ParticleBackground particleCount={32} />
+
       {/* Ambient background glows, geometric circuits & dark tech grid */}
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#1769E0]/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[550px] h-[550px] bg-[#6638E8]/15 rounded-full blur-[140px] pointer-events-none" />

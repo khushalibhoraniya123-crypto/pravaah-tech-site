@@ -5,6 +5,7 @@ import { ArrowUpRight, Sparkles, MessageSquare, PhoneCall, CheckCircle2 } from '
 import { Button } from '@/components/ui/button';
 import { CONTACT_CONFIG } from '@/config/contact';
 import { Reveal } from '@/components/ui/reveal';
+import { ParticleBackground } from '@/components/ui/particle-background';
 
 interface CtaBannerSectionProps {
   onStartProject?: () => void;
@@ -17,6 +18,9 @@ export const CtaBannerSection: React.FC<CtaBannerSectionProps> = ({ onStartProje
         
         <Reveal direction="up" duration={700}>
           <div className="relative rounded-3xl sm:rounded-[36px] bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] text-white p-8 sm:p-12 lg:p-16 shadow-2xl border border-white/15 overflow-hidden text-center lg:text-left">
+            
+            {/* Subtle floating particles */}
+            <ParticleBackground particleCount={20} />
             
             {/* Background glowing tech elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#1769E0]/30 via-[#6638E8]/25 to-[#00D2FF]/20 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
