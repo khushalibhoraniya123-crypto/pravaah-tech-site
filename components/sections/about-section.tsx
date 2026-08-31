@@ -61,7 +61,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                   <div className="relative z-10 space-y-6">
                     <div className="space-y-2">
                       <div className="inline-flex items-center gap-2">
-                        <Badge variant="blue" size="sm">ABOUT PRAVAAH</Badge>
+                        <Badge variant="blue" size="sm">ABOUT US</Badge>
                       </div>
                       <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
                         Engineering The Future of Technology
@@ -118,7 +118,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
                 <div className="space-y-3">
                   <Badge variant="blue">WHO WE ARE</Badge>
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight leading-tight">
-                    Turning Ideas Into <span className="gradient-text-blue-purple">Digital Realities</span>
+                    Turning Ideas Into <span className="gradient-text-blue-purple">Digital Solutions</span>
                   </h2>
                 </div>
 

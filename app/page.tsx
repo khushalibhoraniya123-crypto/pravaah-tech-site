@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import { HeroSection } from '@/components/sections/hero-section';
+import { AboutSection } from '@/components/sections/about-section';
+import { StatsSection } from '@/components/sections/stats-section';
 import { ServicesStrip } from '@/components/sections/services-strip';
 import { ServicesSection } from '@/components/sections/services-section';
 import { SolutionsSection } from '@/components/sections/solutions-section';
-import { AboutSection } from '@/components/sections/about-section';
-import { StatsSection } from '@/components/sections/stats-section';
-import { TechSection } from '@/components/sections/tech-section';
 import { ProcessSection } from '@/components/sections/process-section';
+import { TechSection } from '@/components/sections/tech-section';
 import { WhyChooseUsSection } from '@/components/sections/why-choose-us-section';
 import { PortfolioSection } from '@/components/sections/portfolio-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
@@ -47,46 +47,39 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Section with Interactive Code Terminal & Satellites */}
+      {/* 1. Hero Section */}
       <HeroSection
         onStartProject={() => scrollToContact()}
         onExploreServices={() => scrollToSection('services')}
       />
 
-      {/* 2. Services Marquee Strip & What We Build */}
-      <ServicesStrip />
-      <ServicesSection onStartInquiryWithService={scrollToContact} />
-
-      {/* 3. Industry Solutions Showcase */}
-      <SolutionsSection onConsultSolution={(solutionName) => scrollToContact(`Solution: ${solutionName}`)} />
-
-      {/* 4. About Us Section & Company Engineering Core */}
+      {/* 2. About Us Section & Performance Statistics */}
       <AboutSection onLearnMore={() => scrollToContact('General Technical Consultation')} />
-
-      {/* 5. Performance Statistics with Animated Counters */}
       <StatsSection />
 
-      {/* 6. Technology Matrix */}
-      <TechSection />
+      {/* 3. Services & Solutions Section */}
+      <ServicesStrip />
+      <ServicesSection onStartInquiryWithService={scrollToContact} />
+      <SolutionsSection onConsultSolution={(solutionName) => scrollToContact(`Solution: ${solutionName}`)} />
 
-      {/* 7. 6-Phase Engineering Methodology with Progress Line */}
+      {/* 4. Our Process Section */}
       <ProcessSection />
 
-      {/* 8. Why Choose Us Section */}
+      {/* 5. Technologies Section (Technology Matrix) */}
+      <TechSection />
+
+      {/* 6. Why Pravaah / Why Businesses Choose Pravaah Technology */}
       <WhyChooseUsSection onConsult={() => scrollToContact('Enterprise Consultation')} />
 
-      {/* 9. Featured Projects & Case Studies */}
+      {/* 7. Featured Projects Section */}
       <PortfolioSection onRequestSimilarProject={scrollToContact} />
 
-      {/* 10. Client Testimonials & Endorsements Carousel */}
+      {/* 8. Testimonials Section & CTA Banner */}
       <TestimonialsSection />
-
-      {/* 11. High-Impact Final CTA Banner */}
       <CtaBannerSection onStartProject={() => scrollToContact()} />
 
-      {/* 12. Contact Section powered by TanStack React Query */}
+      {/* 9. Contact Us Section */}
       <ContactSection preselectedService={inquiryService} />
     </div>
   );
 }
-

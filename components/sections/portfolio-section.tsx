@@ -63,9 +63,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onRequestSim
         {/* 1. Section Header */}
         <Reveal direction="up">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-3">
-            <Badge variant="blue">PROVEN RESULTS & CASE STUDIES</Badge>
+            <Badge variant="blue">Our Work</Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-              Featured Client <span className="gradient-text-blue-purple">Deliveries</span>
+              Featured <span className="gradient-text-blue-purple">Projects</span>
             </h2>
             <p className="text-sm sm:text-base text-[#667085] leading-relaxed max-w-2xl mx-auto">
               Explore how we architected mission-critical enterprise platforms, high-speed mobile apps, and autonomous AI systems with verified ROI metrics.
@@ -334,13 +334,13 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onRequestSim
           <div className="mt-12 text-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D6E3F4] shadow-xs">
               <span className="text-xs sm:text-sm font-bold text-[#0B1B3A]">
-                Have a specialized industry platform in mind?
+                Explore our full portfolio of enterprise and consumer applications
               </span>
               <button
-                onClick={() => onRequestSimilarProject?.('Custom Enterprise Architecture')}
+                onClick={() => onRequestSimilarProject?.('General Portfolio Scope')}
                 className="px-5 py-2.5 rounded-xl bg-[#1769E0] hover:bg-[#155fc9] text-white text-xs sm:text-sm font-bold transition-all shadow-glow-blue cursor-pointer hover:scale-105 flex items-center gap-1.5"
               >
-                <span>Discuss Your Technical Scope</span>
+                <span>View All Projects</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>

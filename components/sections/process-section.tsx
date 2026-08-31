@@ -72,13 +72,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onStartProject }
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18 space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-[#1769E0] text-xs font-bold uppercase tracking-wider border border-blue-100 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#6638E8]" />
-              <span>THE PRAVAAH METHODOLOGY</span>
+              <span>Our Process</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-              How We Turn Ideas Into <span className="gradient-text-blue-purple">Digital Solutions</span>
+              From Raw Idea to <span className="gradient-text-blue-purple">Market Leader</span>
             </h2>
             <p className="text-sm sm:text-base text-[#667085] leading-relaxed max-w-2xl mx-auto">
-              A synchronized, transparent engineering journey from initial roadmap discovery to production cloud resilience.
+              A continuous, collaborative development journey engineered for speed, quality, and precision.
             </p>
           </div>
         </Reveal>
@@ -290,7 +290,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onStartProject }
                 <span>MILESTONE ZERO TO SCALE</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Ready to Build Something Great?
+                Ready to transform your idea into reality?
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Let&apos;s map out your project architecture, milestone sprints, and exact technical roadmap today.
@@ -301,7 +301,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onStartProject }
               onClick={scrollToContact}
               className="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-[#1769E0] to-[#6638E8] hover:from-[#155fc9] hover:to-[#582ed4] text-white text-xs sm:text-sm font-bold shadow-glow-blue transition-all hover:scale-105 shrink-0 flex items-center gap-2 cursor-pointer"
             >
-              <span>Start a Project</span>
+              <span>Start Your Project</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

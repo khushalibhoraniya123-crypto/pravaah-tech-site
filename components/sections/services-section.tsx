@@ -86,11 +86,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onStartInquiry
           <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-bold uppercase tracking-wider border border-white/15 backdrop-blur-sm shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
-              <span>THE DIGITAL ECOSYSTEM</span>
+              <span>WHAT WE DO</span>
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-              Technology Services Built <br className="hidden sm:inline" />
-              <span className="gradient-text-blue-purple">Around Your Business.</span>
+              Services & Solutions For the <br className="hidden sm:inline" />
+              <span className="gradient-text-blue-purple">Digital Future</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
               Hover or tap any service satellite below to explore how our unified engineering ecosystem powers your digital transformation.

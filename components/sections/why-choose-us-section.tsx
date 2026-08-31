@@ -42,7 +42,7 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onConsul
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
             <Badge variant="blue">WHY PRAVAAH</Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B1B3A] tracking-tight">
-              Why Forward-Thinking Brands <span className="gradient-text-blue-purple">Choose Us</span>
+              Why Businesses Choose <span className="gradient-text-blue-purple">Pravaah Technology</span>
             </h2>
             <p className="text-sm sm:text-base text-[#667085] leading-relaxed">
               We combine enterprise-grade technical engineering with obsessive attention to design detail, speed, and business outcomes.
@@ -105,6 +105,18 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onConsul
             );
           })}
         </div>
+
+        {/* Bottom Statement Matching Reference */}
+        <Reveal direction="up" delay={120}>
+          <div className="mt-12 sm:mt-16 text-center space-y-2 pt-8 border-t border-[#D6E3F4]/80">
+            <h3 className="text-lg sm:text-xl font-extrabold text-[#0B1B3A]">
+              Technology that flows with your business.
+            </h3>
+            <p className="text-xs sm:text-sm font-semibold text-[#6638E8] tracking-wide">
+              Innovation • Collaboration • Quality • Growth
+            </p>
+          </div>
+        </Reveal>
 
       </div>
     </section>
