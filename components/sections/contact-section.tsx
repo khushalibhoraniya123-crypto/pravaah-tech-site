@@ -248,7 +248,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedServi
                 </div>
               ) : (
                 /* Contact Form */
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
                   <div className="space-y-1 mb-2">
                     <h3 className="text-xl font-bold text-[#0B1B3A]">Send Us a Message</h3>
                     <p className="text-xs text-[#667085]">
