@@ -37,113 +37,74 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMore }) => {
           {/* Left Column: Visual Showcase & Highlight Grid (5 cols) */}
           <div className="lg:col-span-5 relative">
             <Reveal direction="right" duration={700}>
-              {/* Outer Card with Animated Glowing White Border Line */}
-              <div className="relative rounded-3xl bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white shadow-elevated overflow-hidden group">
+              {/* Outer Card with Exact Multi-Color Glowing Border Perimeter */}
+              <div className="relative p-[2px] rounded-3xl overflow-hidden shadow-elevated group">
                 
-                {/* SVG Animated Aesthetic Multi-Color Gradient Tracing Border */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none rounded-3xl z-20 overflow-visible">
-                  <defs>
-                    <linearGradient id="pravaahMultiBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.1" />
-                      <stop offset="25%" stopColor="#1769E0" stopOpacity="0.8" />
-                      <stop offset="50%" stopColor="#6638E8" stopOpacity="0.9" />
-                      <stop offset="75%" stopColor="#EC4899" stopOpacity="0.95" />
-                      <stop offset="90%" stopColor="#38BDF8" stopOpacity="1" />
-                      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="1" />
-                    </linearGradient>
-                  </defs>
+                {/* 1. Soft Ambient Multi-Color Glow Layer */}
+                <div 
+                  aria-hidden="true"
+                  className="absolute -inset-[150%] animate-[spin_10s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_260deg,#00D2FF_290deg,#1769E0_315deg,#6638E8_338deg,#EC4899_355deg,#FFFFFF_360deg)] blur-md opacity-80 pointer-events-none"
+                />
 
-                  {/* Subtle static glass outline */}
-                  <rect 
-                    x="1" 
-                    y="1" 
-                    width="calc(100% - 2px)" 
-                    height="calc(100% - 2px)" 
-                    rx="24" 
-                    fill="none" 
-                    stroke="rgba(255, 255, 255, 0.12)" 
-                    strokeWidth="1" 
-                  />
+                {/* 2. Crisp Multi-Color Light Beam Tracer */}
+                <div 
+                  aria-hidden="true"
+                  className="absolute -inset-[150%] animate-[spin_10s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_260deg,#00D2FF_290deg,#1769E0_315deg,#6638E8_338deg,#EC4899_355deg,#FFFFFF_360deg)] pointer-events-none opacity-100"
+                />
 
-                  {/* Soft colorful ambient glow underlay */}
-                  <rect 
-                    pathLength="1000"
-                    x="1" 
-                    y="1" 
-                    width="calc(100% - 2px)" 
-                    height="calc(100% - 2px)" 
-                    rx="24" 
-                    fill="none" 
-                    stroke="url(#pravaahMultiBorderGrad)" 
-                    strokeWidth="4.5" 
-                    className="animate-border-trace opacity-80 blur-[3px]" 
-                  />
+                {/* 3. Inner Card Content (Zero distortion, perfectly framed) */}
+                <div className="relative rounded-[22px] bg-gradient-to-br from-[#06132D] via-[#0B1B3A] to-[#0E2856] p-6 sm:p-8 text-white overflow-hidden h-full">
+                  {/* Background ambient lighting */}
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-[#1769E0]/20 rounded-full blur-2xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#6638E8]/20 rounded-full blur-2xl pointer-events-none" />
 
-                  {/* Crisp vibrant multi-color moving light trail */}
-                  <rect 
-                    pathLength="1000"
-                    x="1" 
-                    y="1" 
-                    width="calc(100% - 2px)" 
-                    height="calc(100% - 2px)" 
-                    rx="24" 
-                    fill="none" 
-                    stroke="url(#pravaahMultiBorderGrad)" 
-                    strokeWidth="2.5" 
-                    className="animate-border-trace opacity-100" 
-                  />
-                </svg>
-
-                {/* Background ambient lighting */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#1769E0]/20 rounded-full blur-2xl pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#6638E8]/20 rounded-full blur-2xl pointer-events-none" />
-
-                <div className="relative z-10 space-y-6">
-                  <div className="space-y-2">
-                    <div className="inline-flex items-center gap-2">
-                      <Badge variant="blue" size="sm">ABOUT PRAVAAH</Badge>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                      Engineering The Future of Technology
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                      Based in Surat, Gujarat, we partner with visionary entrepreneurs, established businesses, and ambitious startups worldwide to build scalable software assets.
-                    </p>
-                  </div>
-
-                  {/* 4 Core pillars */}
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
-                      <Sparkles className="w-5 h-5 text-[#38BDF8]" />
-                      <div className="text-sm font-bold text-white">Innovation First</div>
-                      <div className="text-[11px] text-slate-300">Modern architectures</div>
+                  <div className="relative z-10 space-y-6">
+                    <div className="space-y-2">
+                      <div className="inline-flex items-center gap-2">
+                        <Badge variant="blue" size="sm">ABOUT PRAVAAH</Badge>
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                        Engineering The Future of Technology
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Based in Surat, Gujarat, we partner with visionary entrepreneurs, established businesses, and ambitious startups worldwide to build scalable software assets.
+                      </p>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
-                      <ShieldCheck className="w-5 h-5 text-[#9B7BFF]" />
-                      <div className="text-sm font-bold text-white">Bank Grade Security</div>
-                      <div className="text-[11px] text-slate-300">Strict data protection</div>
+                    {/* 4 Core pillars */}
+                    <div className="grid grid-cols-2 gap-3 pt-2">
+                      <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
+                        <Sparkles className="w-5 h-5 text-[#38BDF8]" />
+                        <div className="text-sm font-bold text-white">Innovation First</div>
+                        <div className="text-[11px] text-slate-300">Modern architectures</div>
+                      </div>
+
+                      <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
+                        <ShieldCheck className="w-5 h-5 text-[#9B7BFF]" />
+                        <div className="text-sm font-bold text-white">Bank Grade Security</div>
+                        <div className="text-[11px] text-slate-300">Strict data protection</div>
+                      </div>
+
+                      <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
+                        <Clock className="w-5 h-5 text-emerald-400" />
+                        <div className="text-sm font-bold text-white">Agile Timelines</div>
+                        <div className="text-[11px] text-slate-300">Transparent delivery</div>
+                      </div>
+
+                      <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
+                        <Code2 className="w-5 h-5 text-amber-400" />
+                        <div className="text-sm font-bold text-white">Clean Code</div>
+                        <div className="text-[11px] text-slate-300">Maintainable scale</div>
+                      </div>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
-                      <Clock className="w-5 h-5 text-emerald-400" />
-                      <div className="text-sm font-bold text-white">Agile Timelines</div>
-                      <div className="text-[11px] text-slate-300">Transparent delivery</div>
+                    {/* Client Quote Strip */}
+                    <div className="p-4 rounded-2xl bg-[#06132D]/90 border border-blue-500/20 text-xs text-slate-300 italic flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-[#1769E0]/20 flex items-center justify-center shrink-0 text-[#38BDF8] not-italic font-bold">
+                        &ldquo;
+                      </div>
+                      <span>Pravaah Technology turned our complex manual workflows into a seamless automated platform in record time.</span>
                     </div>
-
-                    <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 hover:bg-white/10 transition-colors">
-                      <Code2 className="w-5 h-5 text-amber-400" />
-                      <div className="text-sm font-bold text-white">Clean Code</div>
-                      <div className="text-[11px] text-slate-300">Maintainable scale</div>
-                    </div>
-                  </div>
-
-                  {/* Client Quote Strip */}
-                  <div className="p-4 rounded-2xl bg-[#06132D]/90 border border-blue-500/20 text-xs text-slate-300 italic flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#1769E0]/20 flex items-center justify-center shrink-0 text-[#38BDF8] not-italic font-bold">
-                      &ldquo;
-                    </div>
-                    <span>Pravaah Technology turned our complex manual workflows into a seamless automated platform in record time.</span>
                   </div>
                 </div>
               </div>
