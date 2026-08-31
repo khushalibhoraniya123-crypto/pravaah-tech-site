@@ -70,13 +70,13 @@ export const TechCard: React.FC<TechCardProps> = ({ item }) => {
       {/* 1. Soft Ambient Multi-Color Glow Layer */}
       <div 
         aria-hidden="true"
-        className="absolute -inset-[180%] animate-[spin_10s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_240deg,#00D2FF_280deg,#1769E0_310deg,#6638E8_335deg,#EC4899_355deg,#FFFFFF_360deg)] blur-md opacity-45 group-hover:opacity-85 pointer-events-none transition-opacity duration-300"
+        className="absolute -inset-[180%] animate-[spin_20s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_240deg,#00D2FF_280deg,#1769E0_310deg,#6638E8_335deg,#EC4899_355deg,#FFFFFF_360deg)] blur-md opacity-45 group-hover:opacity-85 pointer-events-none transition-opacity duration-300"
       />
 
       {/* 2. Moving Light Trail Around Exact Border */}
       <div 
         aria-hidden="true"
-        className="absolute -inset-[180%] animate-[spin_10s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_240deg,#00D2FF_280deg,#1769E0_310deg,#6638E8_335deg,#EC4899_355deg,#FFFFFF_360deg)] pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute -inset-[180%] animate-[spin_20s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0_240deg,#00D2FF_280deg,#1769E0_310deg,#6638E8_335deg,#EC4899_355deg,#FFFFFF_360deg)] pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity duration-300"
       />
 
       {/* 3. Inner Card Content Frame */}
