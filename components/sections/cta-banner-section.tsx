@@ -76,10 +76,12 @@ export const CtaBannerSection: React.FC<CtaBannerSectionProps> = ({ onStartProje
                   href={`https://wa.me/${CONTACT_CONFIG.whatsappRaw}?text=${encodeURIComponent(CONTACT_CONFIG.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 sm:py-3.5 px-6 rounded-2xl border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2.5 backdrop-blur-sm hover:scale-[1.02] shadow-xs"
+                  className="group relative w-full py-3.5 sm:py-4 px-6 rounded-2xl border border-white/25 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2.5 backdrop-blur-md hover:scale-[1.03] active:scale-[0.97] shadow-soft hover:shadow-[0_6px_20px_rgba(16,185,129,0.35)] overflow-hidden"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
-                  <span>Chat on WhatsApp Instantly</span>
+                  {/* Subtle Light Sweep Effect */}
+                  <span aria-hidden="true" className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+                  <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span className="relative z-10">Chat on WhatsApp Instantly</span>
                 </a>
               </div>
 
